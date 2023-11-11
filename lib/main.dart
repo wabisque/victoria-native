@@ -11,6 +11,8 @@ import 'src/theme/theme_provider.dart';
 import 'src/theme/theme_service.dart';
 
 Future<void> _setup() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  
   Preferences.instance = await SharedPreferences.getInstance();
 
   // await Preferences.instance.clear();

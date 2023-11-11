@@ -95,7 +95,7 @@ class _RegisterViewState extends State<RegisterView> {
                       children: [
                         FilledButton(
                           onPressed: () {
-                            navigatorState.pushReplacementNamed('/settings');
+                            navigatorState.pushNamed('/settings');
                           },
                           child: Text(appLocalizations.registerViewSubmitActionText)
                         )

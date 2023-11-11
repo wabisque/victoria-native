@@ -79,7 +79,7 @@ class _LoginViewState extends State<LoginView> {
                         ),
                         FilledButton(
                           onPressed: () {
-                            navigatorState.pushReplacementNamed('/settings');
+                            navigatorState.pushNamed('/settings');
                           },
                           child: Text(appLocalizations.loginViewSubmitActionText)
                         )
