@@ -1,0 +1,74 @@
+{
+  "title": "Victoria",
+  "@title": {
+    "description": "The title of the application."
+  },
+  "loginViewTitle": "Welcome Back!",
+  "@loginViewTitle": {
+    "description": "The title of the login view."
+  },
+  "loginViewText": "Login to continue your work.",
+  "@loginViewText": {
+    "description": "The text underneath the title of the login view."
+  },
+  "loginViewIdFieldLabel": "Email address or phone number",
+  "@loginViewIdFieldLabel": {
+    "description": "The label of the id field on the login view."
+  },
+  "loginViewPasswordFieldLabel": "Password",
+  "@loginViewPasswordFieldLabel": {
+    "description": "The label of the password field on the login view."
+  },
+  "loginViewForgotPasswordActionText": "Forgot password?",
+  "@loginViewForgotPasswordActionText": {
+    "description": "The label of the forgot password action on the login view."
+  },
+  "loginViewSubmitActionText": "Login",
+  "@loginViewSubmitActionText": {
+    "description": "The label of the submit action on the login view."
+  },
+  "loginViewRegisterActionText": "Don't have an account?",
+  "@loginViewRegisterActionText": {
+    "description": "The label of the register action on the login view."
+  },
+  "loginViewDividerText": "OR",
+  "@loginViewDividerText": {
+    "description": "The label of the divider on the login view."
+  },
+  "registerViewTitle": "Hello!",
+  "@registerViewTitle": {
+    "description": "The title of the register view."
+  },
+  "registerViewText": "Register to begin your journey.",
+  "@registerViewText": {
+    "description": "The text underneath the title of the register view."
+  },
+  "registerViewEmailFieldLabel": "Email address",
+  "@registerViewEmailFieldLabel": {
+    "description": "The label of the email field on the register view."
+  },
+  "registerViewPhoneFieldLabel": "Phone number",
+  "@registerViewPhoneFieldLabel": {
+    "description": "The label of the phone field on the register view."
+  },
+  "registerViewPasswordFieldLabel": "Password",
+  "@registerViewPasswordFieldLabel": {
+    "description": "The label of the password field on the register view."
+  },
+  "registerViewPasswordConfirmFieldLabel": "Confirm password",
+  "@registerViewPasswordConfirmFieldLabel": {
+    "description": "The label of the password confirm field on the register view."
+  },
+  "registerViewSubmitActionText": "Register",
+  "@registerViewSubmitActionText": {
+    "description": "The text of the submit action on the register view."
+  },
+  "registerViewDividerText": "OR",
+  "@registerViewDividerText": {
+    "description": "The text of the divider on the register view."
+  },
+  "registerViewLoginActionText": "Already have an account?",
+  "@registerViewLoginActionText": {
+    "description": "The text of the login action on the register view."
+  }
+}
