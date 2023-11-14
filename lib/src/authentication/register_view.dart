@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
+import '../dashboard/dashboard_view.dart';
 import '../widgets/password_field_widget.dart';
 import 'authentication_provider.dart';
+import 'login_view.dart';
 
 class RegisterView extends StatefulWidget {
   static const String routeName = '/register';
@@ -120,10 +122,8 @@ class _RegisterViewState extends State<RegisterView> {
                               passwordConfirmation: _passwordConfirmFieldController.text,
                               phoneNumber: _phoneFieldController.text
                             );
-
-                            print(error);
                             
-                            if(error == null) navigatorState.pushNamed('/dashboard');
+                            if(error == null) navigatorState.restorablePushReplacementNamed(DashboardView.routeName);
 
                             setState(() {
                               _formErrors = error?['errors']?.cast<String, List>();
@@ -163,7 +163,7 @@ class _RegisterViewState extends State<RegisterView> {
                     Center(
                       child: TextButton(
                         onPressed: () {
-                          navigatorState.pushReplacementNamed('/login');
+                          navigatorState.restorablePushReplacementNamed(LoginView.routeName);
                         },
                         child: Text(appLocalizations.registerViewLoginActionText)
                       )
