@@ -3,10 +3,11 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 
+import 'dashboard/dashboard_view.dart';
 import 'localization/i10n.dart';
 import 'localization/localization_provider.dart';
-import 'login/login_view.dart';
-import 'register/register_view.dart';
+import 'authentication/login_view.dart';
+import 'authentication/register_view.dart';
 import 'settings/settings_view.dart';
 import 'splash/splash_view.dart';
 import 'theme/theme_provider.dart';
@@ -121,9 +122,10 @@ class App extends StatelessWidget {
             return MaterialPageRoute<void>(
               settings: routeSettings,
               builder: (BuildContext context) => switch (routeSettings.name) {
-                SettingsView.routeName => const SettingsView(),
-                RegisterView.routeName => const RegisterView(),
+                DashboardView.routeName => const DashboardView(),
                 LoginView.routeName => const LoginView(),
+                RegisterView.routeName => const RegisterView(),
+                SettingsView.routeName => const SettingsView(),
                 _ => const SplashView()
               },
             );

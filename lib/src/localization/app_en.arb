@@ -43,6 +43,10 @@
   "@registerViewText": {
     "description": "The text underneath the title of the register view."
   },
+  "registerViewNameFieldLabel": "Name",
+  "@registerViewNameFieldLabel": {
+    "description": "The label of the name field on the register view."
+  },
   "registerViewEmailFieldLabel": "Email address",
   "@registerViewEmailFieldLabel": {
     "description": "The label of the email field on the register view."

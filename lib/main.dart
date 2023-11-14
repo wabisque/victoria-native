@@ -3,6 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'src/app.dart';
+import 'src/authentication/authentication_provider.dart';
+import 'src/authentication/authentication_service.dart';
 import 'src/localization/i10n.dart';
 import 'src/localization/localization_provider.dart';
 import 'src/localization/localization_service.dart';
@@ -23,6 +25,10 @@ Future<void> _setup() async {
 
   await Future.wait<void>([
     Preferences.instance.setString(
+      'authentication:token',
+      ''
+    ),
+    Preferences.instance.setString(
       'localization:locale',
       I10n.en.locale.languageCode
     ),
@@ -40,8 +46,13 @@ Future<void> _setup() async {
 void main() async {
   await _setup();
   
+  final AuthenticationProvider authenticationProvider = AuthenticationProvider(AuthenticationService());
   final LocalizationProvider localizationProvider = LocalizationProvider(LocalizationService());
   final ThemeProvider themeProvider = ThemeProvider(ThemeService());
+
+  await Future.wait([
+    authenticationProvider.init()
+  ]);
 
   // Run the app and pass in the SettingsController. The app listens to the
   // SettingsController for changes, then passes it further down to the
@@ -49,6 +60,9 @@ void main() async {
   runApp(
     MultiProvider(
       providers: [
+        ChangeNotifierProvider<AuthenticationProvider>(
+          create: (BuildContext context) => authenticationProvider
+        ),
         ChangeNotifierProvider<LocalizationProvider>(
           create: (BuildContext context) => localizationProvider
         ),

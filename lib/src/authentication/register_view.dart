@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 import '../widgets/password_field_widget.dart';
+import 'authentication_provider.dart';
 
 class RegisterView extends StatefulWidget {
   static const String routeName = '/register';
@@ -15,8 +17,10 @@ class RegisterView extends StatefulWidget {
 }
 
 class _RegisterViewState extends State<RegisterView> {
+  Map<String, List>? _formErrors;
   late GlobalKey _formKey;
   late TextEditingController _emailFieldController;
+  late TextEditingController _nameFieldController;
   late TextEditingController _passwordFieldController;
   late TextEditingController _passwordConfirmFieldController;
   late TextEditingController _phoneFieldController;
@@ -26,6 +30,7 @@ class _RegisterViewState extends State<RegisterView> {
     final AppLocalizations appLocalizations = AppLocalizations.of(context)!;
     final NavigatorState navigatorState = Navigator.of(context);
     final ThemeData themeData = Theme.of(context);
+    final AuthenticationProvider authenticationProvider = context.read<AuthenticationProvider>();
 
     return SafeArea(
       child: Scaffold(
@@ -52,8 +57,19 @@ class _RegisterViewState extends State<RegisterView> {
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           TextFormField(
+                            controller: _nameFieldController,
+                            decoration: InputDecoration(
+                              errorText: _formErrors?['name']?.first,
+                              labelText: appLocalizations.registerViewNameFieldLabel
+                            )
+                          ),
+                          const SizedBox(
+                            height: 7.0
+                          ),
+                          TextFormField(
                             controller: _emailFieldController,
                             decoration: InputDecoration(
+                              errorText: _formErrors?['email']?.first,
                               labelText: appLocalizations.registerViewEmailFieldLabel
                             )
                           ),
@@ -63,6 +79,7 @@ class _RegisterViewState extends State<RegisterView> {
                           TextFormField(
                             controller: _phoneFieldController,
                             decoration: InputDecoration(
+                              errorText: _formErrors?['phone_number']?.first,
                               labelText: appLocalizations.registerViewPhoneFieldLabel
                             )
                           ),
@@ -72,6 +89,7 @@ class _RegisterViewState extends State<RegisterView> {
                           PasswordFieldWidget(
                             controller: _passwordFieldController,
                             decoration: InputDecoration(
+                              errorText: _formErrors?['password']?.first,
                               labelText: appLocalizations.registerViewPasswordFieldLabel
                             )
                           ),
@@ -94,8 +112,22 @@ class _RegisterViewState extends State<RegisterView> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         FilledButton(
-                          onPressed: () {
-                            navigatorState.pushNamed('/settings');
+                          onPressed: () async {
+                            final Map<String, dynamic>? error = await authenticationProvider.register(
+                              email: _emailFieldController.text,
+                              name: _nameFieldController.text,
+                              password: _passwordFieldController.text,
+                              passwordConfirmation: _passwordConfirmFieldController.text,
+                              phoneNumber: _phoneFieldController.text
+                            );
+
+                            print(error);
+                            
+                            if(error == null) navigatorState.pushNamed('/dashboard');
+
+                            setState(() {
+                              _formErrors = error?['errors']?.cast<String, List>();
+                            });
                           },
                           child: Text(appLocalizations.registerViewSubmitActionText)
                         )
@@ -149,6 +181,7 @@ class _RegisterViewState extends State<RegisterView> {
   @override
   void dispose() {
     _emailFieldController.dispose();
+    _nameFieldController.dispose();
     _passwordFieldController.dispose();
     _passwordConfirmFieldController.dispose();
     _phoneFieldController.dispose();
@@ -162,6 +195,7 @@ class _RegisterViewState extends State<RegisterView> {
 
     _formKey = GlobalKey(debugLabel: 'login_view_form_key');
     _emailFieldController = TextEditingController();
+    _nameFieldController = TextEditingController();
     _passwordFieldController = TextEditingController();
     _passwordConfirmFieldController = TextEditingController();
     _phoneFieldController = TextEditingController();

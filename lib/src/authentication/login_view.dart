@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
+import 'authentication_provider.dart';
 import '../widgets/password_field_widget.dart';
 
 class LoginView extends StatefulWidget {
@@ -15,6 +17,7 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
+  Map<String, List>? _formErrors;
   late GlobalKey _formKey;
   late TextEditingController _idFieldController;
   late TextEditingController _passwordFieldController;
@@ -24,6 +27,7 @@ class _LoginViewState extends State<LoginView> {
     final AppLocalizations appLocalizations = AppLocalizations.of(context)!;
     final NavigatorState navigatorState = Navigator.of(context);
     final ThemeData themeData = Theme.of(context);
+    final AuthenticationProvider authenticationProvider = context.read<AuthenticationProvider>();
 
     return SafeArea(
       child: Scaffold(
@@ -52,8 +56,9 @@ class _LoginViewState extends State<LoginView> {
                           TextFormField(
                             controller: _idFieldController,
                             decoration: InputDecoration(
+                              errorText: _formErrors?['id']?.first,
                               labelText: appLocalizations.loginViewIdFieldLabel
-                            )
+                            ),
                           ),
                           const SizedBox(
                             height: 7.0
@@ -61,8 +66,9 @@ class _LoginViewState extends State<LoginView> {
                           PasswordFieldWidget(
                             controller: _passwordFieldController,
                             decoration: InputDecoration(
+                              errorText: _formErrors?['password']?.first,
                               labelText: appLocalizations.loginViewPasswordFieldLabel
-                            )
+                            ),
                           )
                         ]
                       )
@@ -78,8 +84,17 @@ class _LoginViewState extends State<LoginView> {
                           child: Text(appLocalizations.loginViewForgotPasswordActionText)
                         ),
                         FilledButton(
-                          onPressed: () {
-                            navigatorState.pushNamed('/settings');
+                          onPressed: () async {
+                            final Map<String, dynamic>? error = await authenticationProvider.login(
+                              id: _idFieldController.text,
+                              password: _passwordFieldController.text
+                            );
+
+                            if(error == null) navigatorState.pushNamed('/dashboard');
+
+                            setState(() {
+                              _formErrors = error?['errors']?.cast<String, List>();
+                            });
                           },
                           child: Text(appLocalizations.loginViewSubmitActionText)
                         )
@@ -135,7 +150,7 @@ class _LoginViewState extends State<LoginView> {
     _idFieldController.dispose();
     _passwordFieldController.dispose();
 
-    super.dispose();
+    super.dispose(); 
   }
 
   @override

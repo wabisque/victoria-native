@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../authentication/authentication_provider.dart';
 import '../widgets/logo_widget.dart';
 
 class SplashView extends StatefulWidget {
@@ -41,13 +43,14 @@ class _SplashViewState extends State<SplashView> {
     super.initState();
 
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      final AuthenticationProvider authenticationProvider = context.read<AuthenticationProvider>();
       final NavigatorState navigatorState = Navigator.of(context);
 
       Future.delayed(
         const Duration(
           seconds: 2
         ),
-        () => navigatorState.pushReplacementNamed('/login')
+        () => navigatorState.pushReplacementNamed(authenticationProvider.isLoggedIn ? '/dashboard' : '/login')
       );
     });
   }
