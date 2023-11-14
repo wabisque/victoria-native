@@ -3,6 +3,18 @@
   "@title": {
     "description": "The title of the application."
   },
+  "themeModeLight": "Light",
+  "@themeModeLight": {
+    "description": "The text for light theme mode."
+  },
+  "themeModeDark": "Dark",
+  "@themeModeDark": {
+    "description": "The text for dark theme mode."
+  },
+  "themeModeSystem": "System",
+  "@themeModeSystem": {
+    "description": "The text for system theme mode."
+  },
   "loginViewTitle": "Welcome Back!",
   "@loginViewTitle": {
     "description": "The title of the login view."
@@ -74,5 +86,25 @@
   "registerViewLoginActionText": "Already have an account?",
   "@registerViewLoginActionText": {
     "description": "The text of the login action on the register view."
+  },
+  "dashboardViewTitle": "Dashboard",
+  "@dashboardViewTitle": {
+    "description": "The title of the dashboard view."
+  },
+  "settingsViewTitle": "Settings",
+  "@settingsViewTitle": {
+    "description": "The title of the settings view."
+  },
+  "settingsViewThemeModeActionText": "Theme mode",
+  "@settingsViewThemeModeActionText": {
+    "description": "The text of the theme mode action on the settings view."
+  },
+  "settingsViewLanguageActionText": "Language",
+  "@settingsViewLanguageActionText": {
+    "description": "The text of the language action on the settings view."
+  },
+  "settingsViewLogoutActionText": "Logout",
+  "@settingsViewLogoutActionText": {
+    "description": "The text of the logout action on the settings view."
   }
 }
