@@ -33,15 +33,18 @@ class SettingsView extends StatelessWidget {
         title: Text(appLocalizations.settingsViewTitle)
       ),
       body: ListView(
+        padding: const EdgeInsets.symmetric(
+          vertical: 21.0
+        ),
         children: [
           ListTile(
             leading: const Icon(Icons.palette),
             onTap: () {
               showModalBottomSheet(
                 context: context,
-                builder: (BuildContext context) => ListView.separated(
+                builder: (BuildContext context) => ListView.builder(
                   padding: const EdgeInsets.only(
-                    top: 14.0
+                    top: 21.0
                   ),
                   itemBuilder: (BuildContext context, int index) => ListTile(
                     onTap: () async {
@@ -57,22 +60,20 @@ class SettingsView extends StatelessWidget {
                       }
                     )
                   ),
-                  separatorBuilder: (BuildContext context, int index) => const Divider(),
                   itemCount: ThemeMode.values.length
                 )
               );
             },
             title: Text(appLocalizations.settingsViewThemeModeActionText),
           ),
-          const Divider(),
           ListTile(
             leading: const Icon(Icons.translate),
             onTap: () {
               showModalBottomSheet(
                 context: context,
-                builder: (BuildContext context) => ListView.separated(
+                builder: (BuildContext context) => ListView.builder(
                   padding: const EdgeInsets.only(
-                    top: 14.0
+                    top: 21.0
                   ),
                   itemBuilder: (BuildContext context, int index) => ListTile(
                     onTap: () async {
@@ -82,16 +83,13 @@ class SettingsView extends StatelessWidget {
                     selected: I10n.values[index].locale == localizationProvider.locale,
                     title: Text(I10n.values[index].name)
                   ),
-                  separatorBuilder: (BuildContext context, int index) => const Divider(),
                   itemCount: I10n.values.length
                 )
               );
             },
             title: Text(appLocalizations.settingsViewLanguageActionText),
           ),
-          const SizedBox(
-            height: 35.0
-          ),
+          const Divider(),
           ListTile(
             hoverColor: themeData.colorScheme.error.withOpacity(0.075),
             iconColor: themeData.colorScheme.error,

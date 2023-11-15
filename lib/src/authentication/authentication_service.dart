@@ -1,9 +1,9 @@
-import '../preferences.dart';
+import '../constants.dart';
 
 class AuthenticationService {
-  String get token => Preferences.instance.getString('authentication:token')!;
+  String get token => Constants.preferences.getString('authentication:token')!;
 
-  Future<void> setToken(String token) async => await Preferences.instance.setString(
+  Future<void> setToken(String token) async => await Constants.preferences.setString(
     'authentication:token',
     token
   );

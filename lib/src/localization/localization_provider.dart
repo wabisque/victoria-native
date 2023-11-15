@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import '../provider.dart';
 import 'localization_service.dart';
@@ -14,6 +15,9 @@ class LocalizationProvider extends Provider {
     if(locale == null) return;
 
     await _localizationService.setLocale(locale);
+
+    Intl.defaultLocale = locale.languageCode;
+    
     notifyListeners();
   }
 }

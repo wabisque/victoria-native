@@ -5,38 +5,38 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'src/app.dart';
 import 'src/authentication/authentication_provider.dart';
 import 'src/authentication/authentication_service.dart';
+import 'src/constants.dart';
 import 'src/localization/i10n.dart';
 import 'src/localization/localization_provider.dart';
 import 'src/localization/localization_service.dart';
-import 'src/preferences.dart';
 import 'src/theme/theme_provider.dart';
 import 'src/theme/theme_service.dart';
 
 Future<void> _setup() async {
   WidgetsFlutterBinding.ensureInitialized();
   
-  Preferences.instance = await SharedPreferences.getInstance();
+  Constants.preferences = await SharedPreferences.getInstance();
 
-  // await Preferences.instance.clear();
+  // await Constants.preferences.clear();
 
-  final bool isSetup = Preferences.instance.getBool('isSetup') ?? false;
+  final bool isSetup = Constants.preferences.getBool('isSetup') ?? false;
 
   if(isSetup) return;
 
   await Future.wait<void>([
-    Preferences.instance.setString(
+    Constants.preferences.setString(
       'authentication:token',
       ''
     ),
-    Preferences.instance.setString(
+    Constants.preferences.setString(
       'localization:locale',
       I10n.en.locale.languageCode
     ),
-    Preferences.instance.setString(
+    Constants.preferences.setString(
       'theme:themeMode',
       'system'
     ),
-    Preferences.instance.setBool(
+    Constants.preferences.setBool(
       'isSetup',
       true
     )

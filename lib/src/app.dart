@@ -3,11 +3,43 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 
+import 'aspirants/aspirant_creation_requests_view.dart';
+import 'aspirants/aspirant_update_requests_view.dart';
+import 'aspirants/aspirants_view.dart';
+import 'aspirants/view_aspirant_creation_request_view.dart';
+import 'aspirants/view_aspirant_update_request_view.dart';
+import 'aspirants/view_aspirant_view.dart';
+import 'constants.dart';
+import 'constituencies/add_constituency_view.dart';
+import 'constituencies/constituencies_view.dart';
+import 'constituencies/edit_constituency_view.dart';
+import 'constituencies/view_constituency_view.dart';
 import 'dashboard/dashboard_view.dart';
 import 'localization/i10n.dart';
 import 'localization/localization_provider.dart';
 import 'authentication/login_view.dart';
 import 'authentication/register_view.dart';
+import 'models/aspirant_creation_request_model.dart';
+import 'models/aspirant_model.dart';
+import 'models/aspirant_update_request_model.dart';
+import 'models/constituency_model.dart';
+import 'models/party_model.dart';
+import 'models/position_model.dart';
+import 'models/region_model.dart';
+import 'parties/add_party_view.dart';
+import 'parties/edit_party_view.dart';
+import 'parties/parties_view.dart';
+import 'parties/view_party_view.dart';
+import 'positions/add_position_view.dart';
+import 'positions/edit_position_view.dart';
+import 'positions/positions_view.dart';
+import 'positions/view_position_view.dart';
+import 'posts/add_post_view.dart';
+import 'posts/posts_view.dart';
+import 'regions/add_region_view.dart';
+import 'regions/edit_region_view.dart';
+import 'regions/regions_view.dart';
+import 'regions/view_region_view.dart';
 import 'settings/settings_view.dart';
 import 'splash/splash_view.dart';
 import 'theme/theme_provider.dart';
@@ -64,53 +96,17 @@ class App extends StatelessWidget {
           // SettingsController to display the correct theme.
           theme: ThemeData(
             brightness: Brightness.light,
-            colorSchemeSeed: Colors.deepPurple,
-            useMaterial3: true,
             inputDecorationTheme: InputDecorationTheme(
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10.5)
-              )
-            ),
-            textTheme: const TextTheme(
-              bodyLarge: TextStyle(
-                fontSize: 14.0,
-                fontWeight: FontWeight.w500,
-                height: 1.5
-              ),
-              bodyMedium: TextStyle(
-                fontSize: 14.0,
-                height: 1.5
-              ),
-              titleLarge: TextStyle(
-                fontSize: 35.0,
-                fontWeight: FontWeight.bold,
-                height: 1.5
               )
             )
           ),
           darkTheme: ThemeData(
             brightness: Brightness.dark,
-            colorSchemeSeed: Colors.deepPurple,
-            useMaterial3: true,
             inputDecorationTheme: InputDecorationTheme(
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10.5)
-              )
-            ),
-            textTheme: const TextTheme(
-              bodyLarge: TextStyle(
-                fontSize: 14.0,
-                fontWeight: FontWeight.w500,
-                height: 1.5
-              ),
-              bodyMedium: TextStyle(
-                fontSize: 14.0,
-                height: 1.5
-              ),
-              titleLarge: TextStyle(
-                fontSize: 35.0,
-                fontWeight: FontWeight.bold,
-                height: 1.5
               )
             )
           ),
@@ -122,14 +118,63 @@ class App extends StatelessWidget {
             return MaterialPageRoute<void>(
               settings: routeSettings,
               builder: (BuildContext context) => switch (routeSettings.name) {
+                AddConstituencyView.routeName => const AddConstituencyView(),
+                AddPartyView.routeName => const AddPartyView(),
+                AddPositionView.routeName => const AddPositionView(),
+                AddPostView.routeName => const AddPostView(),
+                AddRegionView.routeName => const AddRegionView(),
+                AspirantCreationRequestsView.routeName => const AspirantCreationRequestsView(),
+                AspirantUpdateRequestsView.routeName => const AspirantUpdateRequestsView(),
+                AspirantsView.routeName => const AspirantsView(),
+                EditConstituencyView.routeName => EditConstituencyView(
+                  constituency: ConstituencyModel.fromJson(routeSettings.arguments as Map<String, dynamic>)
+                ),
+                EditPartyView.routeName => EditPartyView(
+                  party: PartyModel.fromJson(routeSettings.arguments as Map<String, dynamic>)
+                ),
+                EditPositionView.routeName => EditPositionView(
+                  position: PositionModel.fromJson(routeSettings.arguments as Map<String, dynamic>)
+                ),
+                EditRegionView.routeName => EditRegionView(
+                  region: RegionModel.fromJson(routeSettings.arguments as Map<String, dynamic>)
+                ),
+                ConstituenciesView.routeName => const ConstituenciesView(),
                 DashboardView.routeName => const DashboardView(),
                 LoginView.routeName => const LoginView(),
+                PartiesView.routeName => const PartiesView(),
+                PositionsView.routeName => const PositionsView(),
+                PostsView.routeName => const PostsView(),
+                RegionsView.routeName => const RegionsView(),
                 RegisterView.routeName => const RegisterView(),
                 SettingsView.routeName => const SettingsView(),
+                ViewAspirantCreationRequestView.routeName => ViewAspirantCreationRequestView(
+                  aspirantCreationRequests: AspirantCreationRequestModel.fromJson(routeSettings.arguments as Map<String, dynamic>)
+                ),
+                ViewAspirantUpdateRequestView.routeName => ViewAspirantUpdateRequestView(
+                  aspirantUpdateRequest: AspirantUpdateRequestModel.fromJson(routeSettings.arguments as Map<String, dynamic>)
+                ),
+                ViewAspirantView.routeName => ViewAspirantView(
+                  aspirant: AspirantModel.fromJson(routeSettings.arguments as Map<String, dynamic>)
+                ),
+                ViewConstituencyView.routeName => ViewConstituencyView(
+                  constituency: ConstituencyModel.fromJson(routeSettings.arguments as Map<String, dynamic>)
+                ),
+                ViewPartyView.routeName => ViewPartyView(
+                  party: PartyModel.fromJson(routeSettings.arguments as Map<String, dynamic>)
+                ),
+                ViewPositionView.routeName => ViewPositionView(
+                  position: PositionModel.fromJson(routeSettings.arguments as Map<String, dynamic>)
+                ),
+                ViewRegionView.routeName => ViewRegionView(
+                  region: RegionModel.fromJson(routeSettings.arguments as Map<String, dynamic>)
+                ),
                 _ => const SplashView()
               },
             );
           },
+          navigatorObservers: [
+            Constants.routeObserver
+          ],
         );
       },
     );
