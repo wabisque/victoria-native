@@ -9,6 +9,7 @@ import 'package:provider/provider.dart';
 import '../authentication/authentication_provider.dart';
 import '../constants.dart';
 import '../models/constituency_model.dart';
+import '../regions/view_region_view.dart';
 import 'edit_constituency_view.dart';
 
 class ViewConstituencyView extends StatefulWidget {
@@ -114,13 +115,25 @@ class _ViewConstituencyViewState extends State<ViewConstituencyView> with RouteA
         child: ListView(
           padding: const EdgeInsets.all(21.0),
           children: [
-            Text(
-              _constituency.name,
-              style: themeData.textTheme.titleLarge
-            ),
-            Text(
-              _constituency.region!.name,
-              style: themeData.textTheme.labelLarge
+            Row(
+              children: [
+                Text(
+                  _constituency.name,
+                  style: themeData.textTheme.titleLarge
+                ),
+                const SizedBox(
+                  width: 3.5
+                ),
+                TextButton(
+                  onPressed: () {
+                    navigatorState.restorablePushNamed(
+                      ViewRegionView.routeName,
+                      arguments: _constituency.region!.asJson
+                    );
+                  },
+                  child: Text(_constituency.region!.name)
+                )
+              ]
             ),
             const SizedBox(
               height: 21.0
