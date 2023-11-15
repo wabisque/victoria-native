@@ -133,4 +133,68 @@ class AuthenticationProvider extends Provider {
 
     return data;
   }
+
+  Future<Map<String, dynamic>?> updateDetails({
+    required String name,
+    required String email,
+    required String phoneNumber
+  }) async {
+    final http.Response response = await http.put(
+      Uri.parse('${Constants.apiHost}/api/authentication/update-details'),
+      body: jsonEncode({
+        'name': name,
+        'email': email,
+        'phone_number': phoneNumber
+      }),
+      headers: {
+        'Accept': 'application/json',
+        'Authorization': 'Bearer $token',
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest'
+      }
+    );
+    final Map<String, dynamic> data = jsonDecode(response.body);
+
+    if(response.statusCode == 200) {
+      _user = UserModel.fromJson(data['user']);
+
+      notifyListeners();
+
+      return null;
+    }
+
+    return data;
+  }
+
+  Future<Map<String, dynamic>?> updatePassword({
+    required String currentPassword,
+    required String password,
+    required String passwordConfirmation
+  }) async {
+    final http.Response response = await http.put(
+      Uri.parse('${Constants.apiHost}/api/authentication/update-details'),
+      body: jsonEncode({
+        'current_password': currentPassword,
+        'password': password,
+        'password_confirmation': passwordConfirmation
+      }),
+      headers: {
+        'Accept': 'application/json',
+        'Authorization': 'Bearer $token',
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest'
+      }
+    );
+    final Map<String, dynamic> data = jsonDecode(response.body);
+
+    if(response.statusCode == 200) {
+      _user = UserModel.fromJson(data['user']);
+
+      notifyListeners();
+
+      return null;
+    }
+
+    return data;
+  }
 }

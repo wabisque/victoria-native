@@ -219,6 +219,26 @@
   "@partiesViewTitle": {
     "description": "The title of the parties view."
   },
+  "passwordViewConfirmPasswordFieldLabel": "Confirm new password",
+  "@passwordViewConfirmPasswordFieldLabel": {
+    "description": "The label of the confirm password field on the password view."
+  },
+  "passwordViewCurrentPasswordFieldLabel": "Current password",
+  "@passwordViewCurrentPasswordFieldLabel": {
+    "description": "The label of the current password field on the password view."
+  },
+  "passwordViewPasswordFieldLabel": "New password",
+  "@passwordViewPasswordFieldLabel": {
+    "description": "The label of the password field on the password view."
+  },
+  "passwordViewSubmitActionText": "Save",
+  "@passwordViewSubmitActionText": {
+    "description": "The text of the submit action on the password view."
+  },
+  "passwordViewTitle": "Password",
+  "@passwordViewTitle": {
+    "description": "The title of the password view."
+  },
   "positionsViewEmptyText": "No positions to show!",
   "@positionsViewEmptyText": {
     "description": "The empty text of the positions view."
@@ -287,13 +307,21 @@
   "@settingsViewLogoutActionText": {
     "description": "The text of the logout action on the settings view."
   },
-  "settingsViewThemeModeActionText": "Theme mode",
+  "settingsViewPasswordActionText": "Password",
+  "@settingsViewPasswordActionText": {
+    "description": "The text of the password action on the settings view."
+  },
+  "settingsViewThemeModeActionText": "Theme Mode",
   "@settingsViewThemeModeActionText": {
     "description": "The text of the theme mode action on the settings view."
   },
   "settingsViewTitle": "Settings",
   "@settingsViewTitle": {
     "description": "The title of the settings view."
+  },
+  "settingsViewUserProfileActionText": "User Profile",
+  "@settingsViewUserProfileActionText": {
+    "description": "The text of the user profile action on the settings view."
   },
   "themeModeDark": "Dark",
   "@themeModeDark": {
@@ -310,6 +338,26 @@
   "title": "Victoria",
   "@title": {
     "description": "The title of the application."
+  },
+  "userProfileViewEmailFieldLabel": "Email address",
+  "@userProfileViewEmailFieldLabel": {
+    "description": "The label of the email field on the user profile view."
+  },
+  "userProfileViewNameFieldLabel": "Name",
+  "@userProfileViewNameFieldLabel": {
+    "description": "The label of the name field on the user profile view."
+  },
+  "userProfileViewPhoneFieldLabel": "Phone number",
+  "@userProfileViewPhoneFieldLabel": {
+    "description": "The label of the phone field on the user profile view."
+  },
+  "userProfileViewSubmitActionText": "Save",
+  "@userProfileViewSubmitActionText": {
+    "description": "The text of the submit action on the user profile view."
+  },
+  "userProfileViewTitle": "User Profile",
+  "@userProfileViewTitle": {
+    "description": "The title of the user profile view."
   },
   "viewAspirantCreationRequestViewConfirmModalAcceptActionText": "Accept",
   "@viewAspirantCreationRequestViewConfirmModalAcceptActionText": {

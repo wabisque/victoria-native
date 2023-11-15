@@ -40,7 +40,9 @@ import 'regions/add_region_view.dart';
 import 'regions/edit_region_view.dart';
 import 'regions/regions_view.dart';
 import 'regions/view_region_view.dart';
+import 'settings/password_view.dart';
 import 'settings/settings_view.dart';
+import 'settings/user_profile_view.dart';
 import 'splash/splash_view.dart';
 import 'theme/theme_provider.dart';
 
@@ -142,11 +144,13 @@ class App extends StatelessWidget {
                 DashboardView.routeName => const DashboardView(),
                 LoginView.routeName => const LoginView(),
                 PartiesView.routeName => const PartiesView(),
+                PasswordView.routeName => const PasswordView(),
                 PositionsView.routeName => const PositionsView(),
                 PostsView.routeName => const PostsView(),
                 RegionsView.routeName => const RegionsView(),
                 RegisterView.routeName => const RegisterView(),
                 SettingsView.routeName => const SettingsView(),
+                UserProfileView.routeName => const UserProfileView(),
                 ViewAspirantCreationRequestView.routeName => ViewAspirantCreationRequestView(
                   aspirantCreationRequests: AspirantCreationRequestModel.fromJson(routeSettings.arguments as Map<String, dynamic>)
                 ),

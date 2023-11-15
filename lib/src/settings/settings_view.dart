@@ -7,6 +7,8 @@ import '../authentication/login_view.dart';
 import '../localization/i10n.dart';
 import '../localization/localization_provider.dart';
 import '../theme/theme_provider.dart';
+import 'password_view.dart';
+import 'user_profile_view.dart';
 
 /// Displays the various settings that can be customized by the user.
 ///
@@ -37,6 +39,21 @@ class SettingsView extends StatelessWidget {
           vertical: 21.0
         ),
         children: [
+          ListTile(
+            leading: const Icon(Icons.person),
+            onTap: () {
+              navigatorState.restorablePushNamed(UserProfileView.routeName);
+            },
+            title: Text(appLocalizations.settingsViewUserProfileActionText),
+          ),
+          ListTile(
+            leading: const Icon(Icons.key),
+            onTap: () {
+              navigatorState.restorablePushNamed(PasswordView.routeName);
+            },
+            title: Text(appLocalizations.settingsViewPasswordActionText),
+          ),
+          const Divider(),
           ListTile(
             leading: const Icon(Icons.palette),
             onTap: () {

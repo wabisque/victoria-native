@@ -95,7 +95,7 @@ class _LoginViewState extends State<LoginView> {
                             if(error == null) navigatorState.restorablePushReplacementNamed(DashboardView.routeName);
 
                             setState(() {
-                              _formErrors = error?['errors']?.cast<String, List>();
+                              _formErrors = (error?['errors'] as Map<String, dynamic>?)?.cast<String, List>();
                             });
                           },
                           child: Text(appLocalizations.loginViewSubmitActionText)
