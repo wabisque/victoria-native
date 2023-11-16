@@ -64,21 +64,21 @@ class _ViewAspirantViewState extends State<ViewAspirantView> with RouteAware {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(appLocalizations.viewAspirantViewTitle),
+        title: Text(appLocalizations.viewAspirantTitle),
         actions: [
           IconButton(
             onPressed: () {
               showDialog(
                 context: context,
                 builder: (BuildContext context) => AlertDialog(
-                  content: Text(appLocalizations.viewAspirantViewDeleteModalText),
-                  title: Text(appLocalizations.viewAspirantViewDeleteModalTitle),
+                  content: Text(appLocalizations.deleteAspirantTitle),
+                  title: Text(appLocalizations.doYouWishToDeleteThisAspirantPrompt),
                   actions: [
                     TextButton(
                       onPressed: () {
                         navigatorState.pop();
                       },
-                      child: Text(appLocalizations.viewAspirantViewDeleteModalNoActionText)
+                      child: Text(appLocalizations.noAction)
                     ),
                     TextButton(
                       onPressed: () async {
@@ -100,7 +100,7 @@ class _ViewAspirantViewState extends State<ViewAspirantView> with RouteAware {
                           //
                         }
                       },
-                      child: Text(appLocalizations.viewAspirantViewDeleteModalYesActionText)
+                      child: Text(appLocalizations.yesAction)
                     ),
                   ],
                 )
@@ -132,7 +132,7 @@ class _ViewAspirantViewState extends State<ViewAspirantView> with RouteAware {
             ),
             Row(
               children: [
-                Text(appLocalizations.viewAspirantViewPositionLabel),
+                Text(appLocalizations.positionLabel),
                 const SizedBox(
                   height: 3.5
                 ),
@@ -149,7 +149,7 @@ class _ViewAspirantViewState extends State<ViewAspirantView> with RouteAware {
             ),
             Row(
               children: [
-                Text(appLocalizations.viewAspirantViewPartyLabel),
+                Text(appLocalizations.partyLabel),
                 const SizedBox(
                   height: 3.5
                 ),
@@ -166,7 +166,7 @@ class _ViewAspirantViewState extends State<ViewAspirantView> with RouteAware {
             ),
             Row(
               children: [
-                Text(appLocalizations.viewAspirantViewConstituencyLabel),
+                Text(appLocalizations.constituencyLabel),
                 const SizedBox(
                   height: 3.5
                 ),
@@ -184,8 +184,8 @@ class _ViewAspirantViewState extends State<ViewAspirantView> with RouteAware {
             const SizedBox(
               height: 21.0
             ),
-            Text('Created at → ${DateFormat.yMMMMd().add_jms().format(_aspirant.createdAt)}'),
-            Text('Last updated at → ${DateFormat.yMMMMd().add_jms().format(_aspirant.updatedAt)}')
+            Text('${appLocalizations.createdAtPrompt} → ${DateFormat.yMMMMd().add_jms().format(_aspirant.createdAt)}'),
+            Text('${appLocalizations.lastUpdatedAtPrompt} → ${DateFormat.yMMMMd().add_jms().format(_aspirant.updatedAt)}')
           ]
         )
       )

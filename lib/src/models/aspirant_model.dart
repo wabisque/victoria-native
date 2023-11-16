@@ -10,6 +10,7 @@ class AspirantModel extends Model {
   final Uri flyer;
   final DateTime createdAt;
   final DateTime updatedAt;
+  final bool isFollowed;
   final ConstituencyModel? constituency;
   final PartyModel? party;
   final PositionModel? position;
@@ -21,6 +22,7 @@ class AspirantModel extends Model {
     required this.flyer,
     required this.createdAt,
     required this.updatedAt,
+    required this.isFollowed,
     this.constituency,
     this.party,
     this.position,
@@ -33,6 +35,7 @@ class AspirantModel extends Model {
     flyer: Uri.parse(json['flyer']),
     createdAt: DateTime.parse(json['created_at']),
     updatedAt: DateTime.parse(json['updated_at']),
+    isFollowed: json['is_followed'],
     constituency: json['constituency'] != null ? ConstituencyModel.fromJson(json['constituency']) : null,
     party: json['party'] != null ? PartyModel.fromJson(json['party']) : null,
     position: json['position'] != null ? PositionModel.fromJson(json['position']) : null,
@@ -46,6 +49,7 @@ class AspirantModel extends Model {
     'flyer': flyer.toString(),
     'created_at': createdAt.toString(),
     'updated_at': updatedAt.toString(),
+    'is_followed': isFollowed,
     'constituency': constituency,
     'party': party,
     'position': position,

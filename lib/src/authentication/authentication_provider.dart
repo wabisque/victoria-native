@@ -44,7 +44,6 @@ class AuthenticationProvider extends Provider {
       );
       final Map<String, dynamic> data = jsonDecode(response.body);
 
-
       if(response.statusCode == 200) {
         await _authenticationService.setToken(data['token']);
 

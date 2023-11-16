@@ -46,10 +46,10 @@ class _RegisterViewState extends State<RegisterView> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      appLocalizations.registerViewTitle,
+                      appLocalizations.helloPrompt,
                       style: themeData.textTheme.titleLarge
                     ),
-                    Text(appLocalizations.registerViewText),
+                    Text(appLocalizations.registerToBeginYourJourneyPrompt),
                     const SizedBox(
                       height: 21.0
                     ),
@@ -62,7 +62,7 @@ class _RegisterViewState extends State<RegisterView> {
                             controller: _nameFieldController,
                             decoration: InputDecoration(
                               errorText: _formErrors?['name']?.first,
-                              labelText: appLocalizations.registerViewNameFieldLabel
+                              labelText: appLocalizations.nameLabel
                             )
                           ),
                           const SizedBox(
@@ -72,7 +72,7 @@ class _RegisterViewState extends State<RegisterView> {
                             controller: _emailFieldController,
                             decoration: InputDecoration(
                               errorText: _formErrors?['email']?.first,
-                              labelText: appLocalizations.registerViewEmailFieldLabel
+                              labelText: appLocalizations.emailLabel
                             )
                           ),
                           const SizedBox(
@@ -82,7 +82,7 @@ class _RegisterViewState extends State<RegisterView> {
                             controller: _phoneFieldController,
                             decoration: InputDecoration(
                               errorText: _formErrors?['phone_number']?.first,
-                              labelText: appLocalizations.registerViewPhoneFieldLabel
+                              labelText: appLocalizations.phoneLabel
                             )
                           ),
                           const SizedBox(
@@ -92,7 +92,7 @@ class _RegisterViewState extends State<RegisterView> {
                             controller: _passwordFieldController,
                             decoration: InputDecoration(
                               errorText: _formErrors?['password']?.first,
-                              labelText: appLocalizations.registerViewPasswordFieldLabel
+                              labelText: appLocalizations.passwordLabel
                             )
                           ),
                           const SizedBox(
@@ -101,7 +101,7 @@ class _RegisterViewState extends State<RegisterView> {
                           PasswordFieldWidget(
                             controller: _passwordConfirmFieldController,
                             decoration: InputDecoration(
-                              labelText: appLocalizations.registerViewPasswordConfirmFieldLabel
+                              labelText: appLocalizations.confirmPasswordLabel
                             )
                           )
                         ]
@@ -129,7 +129,7 @@ class _RegisterViewState extends State<RegisterView> {
                               _formErrors = (error?['errors'] as Map<String, dynamic>?)?.cast<String, List>();
                             });
                           },
-                          child: Text(appLocalizations.registerViewSubmitActionText)
+                          child: Text(appLocalizations.registerAction)
                         )
                       ]
                     ),
@@ -144,7 +144,7 @@ class _RegisterViewState extends State<RegisterView> {
                           )
                         ),
                         Text(
-                          appLocalizations.registerViewDividerText,
+                          appLocalizations.orPrompt,
                           style: TextStyle(
                             color: themeData.colorScheme.outline,
                             fontWeight: FontWeight.w300
@@ -165,7 +165,7 @@ class _RegisterViewState extends State<RegisterView> {
                         onPressed: () {
                           navigatorState.restorablePushReplacementNamed(LoginView.routeName);
                         },
-                        child: Text(appLocalizations.registerViewLoginActionText)
+                        child: Text(appLocalizations.alreadyHaveAnAccountAction)
                       )
                     )
                   ]

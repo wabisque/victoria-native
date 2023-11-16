@@ -34,26 +34,24 @@ class SettingsView extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(appLocalizations.settingsViewTitle)
+        title: Text(appLocalizations.settingsTitle)
       ),
       body: ListView(
-        padding: const EdgeInsets.symmetric(
-          vertical: 21.0
-        ),
+        padding: const EdgeInsets.all(21.0),
         children: [
           ListTile(
             leading: const Icon(Icons.person_outlined),
             onTap: () {
               navigatorState.restorablePushNamed(UserProfileView.routeName);
             },
-            title: Text(appLocalizations.settingsViewUserProfileActionText),
+            title: Text(appLocalizations.userProfileTitle),
           ),
           ListTile(
             leading: const Icon(Icons.key_outlined),
             onTap: () {
               navigatorState.restorablePushNamed(PasswordView.routeName);
             },
-            title: Text(appLocalizations.settingsViewPasswordActionText),
+            title: Text(appLocalizations.changePasswordTitle),
           ),
           if(authenticationProvider.user?.role?.name != 'Administrator') ...[
             const Divider(),
@@ -68,7 +66,7 @@ class SettingsView extends StatelessWidget {
                     navigatorState.restorablePushNamed(BecomeAnAspirantView.routeName);
                   }
                 },
-                title: Text(authenticationProvider.user?.role?.name == 'Aspirant' ? appLocalizations.settingsViewAspirantProfileActionText : appLocalizations.settingsViewBecomeAnAspirantActionText)
+                title: Text(authenticationProvider.user?.role?.name == 'Aspirant' ? appLocalizations.aspirantProfileTitle : appLocalizations.becomeAnAspirantTitle)
               )
             )
           ],
@@ -90,9 +88,9 @@ class SettingsView extends StatelessWidget {
                     selected: ThemeMode.values[index] == themeProvider.themeMode,
                     title: Text(
                       switch(ThemeMode.values[index]) {
-                        ThemeMode.dark => appLocalizations.themeModeDark,
-                        ThemeMode.system => appLocalizations.themeModeSystem,
-                        _ => appLocalizations.themeModeLight
+                        ThemeMode.dark => appLocalizations.darkPrompt,
+                        ThemeMode.system => appLocalizations.systemPrompt,
+                        _ => appLocalizations.lightPromt
                       }
                     )
                   ),
@@ -100,7 +98,7 @@ class SettingsView extends StatelessWidget {
                 )
               );
             },
-            title: Text(appLocalizations.settingsViewThemeModeActionText),
+            title: Text(appLocalizations.themeModeAction),
           ),
           ListTile(
             leading: const Icon(Icons.translate_outlined),
@@ -123,7 +121,7 @@ class SettingsView extends StatelessWidget {
                 )
               );
             },
-            title: Text(appLocalizations.settingsViewLanguageActionText),
+            title: Text(appLocalizations.languageAction),
           ),
           const Divider(),
           ListTile(
@@ -140,52 +138,10 @@ class SettingsView extends StatelessWidget {
             },
             splashColor: themeData.colorScheme.error.withOpacity(0.15),
             textColor: themeData.colorScheme.error,
-            title: Text(appLocalizations.settingsViewLogoutActionText)
+            title: Text(appLocalizations.logoutAction)
           )
         ],
       )
     );
-
-    // Padding(
-    //     padding: const EdgeInsets.all(16),
-    //     // Glue the SettingsController to the theme selection DropdownButton.
-    //     //
-    //     // When a user selects a theme from the dropdown list, the
-    //     // SettingsController is updated, which rebuilds the MaterialApp.
-    //     child: Column(
-    //       children: [
-    //         DropdownButton<ThemeMode>(
-    //           // Read the selected themeMode from the controller
-    //           value: themeProvider.themeMode,
-    //           // Call the updateThemeMode method any time the user selects a theme.
-    //           onChanged: themeProvider.updateThemeMode,
-    //           items: ThemeMode.values.map(
-    //             (ThemeMode themeMode) => DropdownMenuItem(
-    //               value: themeMode,
-    //               child: Text(
-    //                 switch(themeMode) {
-    //                   ThemeMode.system => 'System',
-    //                   ThemeMode.dark => 'Dark',
-    //                   _ => 'Light'
-    //                 }
-    //               ),
-    //             )
-    //           ).toList(),
-    //         ),
-    //         DropdownButton<Locale>(
-    //           // Read the selected themeMode from the controller
-    //           value: localizationProvider.locale,
-    //           // Call the updateThemeMode method any time the user selects a theme.
-    //           onChanged: localizationProvider.updateLocale,
-    //           items: I10n.values.map(
-    //             (I10n i10n) => DropdownMenuItem(
-    //               value: i10n.locale,
-    //               child: Text(i10n.name),
-    //             )
-    //           ).toList(),
-    //         )
-    //       ]
-    //     ),
-    //   )
   }
 }

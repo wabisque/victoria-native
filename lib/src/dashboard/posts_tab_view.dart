@@ -10,6 +10,8 @@ import '../authentication/authentication_provider.dart';
 import '../constants.dart';
 import '../localization/localization_provider.dart';
 import '../models/post_model.dart';
+import '../posts/add_post_view.dart';
+import '../posts/view_post_view.dart';
 
 class PostsTabView extends StatefulWidget {
   const PostsTabView({
@@ -51,29 +53,46 @@ class _PostsTabViewState extends State<PostsTabView> with RouteAware {
   @override
   Widget build(BuildContext context) {
     final AppLocalizations appLocalizations = AppLocalizations.of(context)!;
+    final NavigatorState navigatorState = Navigator.of(context);
+    final AuthenticationProvider authenticationProvider = context.watch<AuthenticationProvider>();
     final LocalizationProvider localizationProvider = context.watch<LocalizationProvider>();
 
     return RefreshIndicator(
       onRefresh: _getPosts,
-      child: _posts.isNotEmpty ? ListView.builder(
-        padding: const EdgeInsets.symmetric(
-          vertical: 21.0
-        ),
-        itemBuilder: (BuildContext context, int index) => ListTile(
-          title: Text('${_posts[index].title} → ${_posts[index].aspirant!.user!.name}, ${timeago.format(
-            _posts[index].createdAt,
-            locale: localizationProvider.locale.languageCode
-          )}'),
-          subtitle: Text(_posts[index].body),
-        ),
-        itemCount: _posts.length,
-      ) : Stack(
-        children: [
-          Center(
-            child: Text(appLocalizations.dashboardPostsTabViewEmptyText)
+      child: Scaffold(
+        body: _posts.isNotEmpty ? ListView.builder(
+          padding: const EdgeInsets.all(21.0),
+          itemBuilder: (BuildContext context, int index) => Badge(
+            isLabelVisible: _posts[index].aspirant!.user!.id == authenticationProvider.user?.id,
+            child: ListTile(
+              onTap: () {
+                navigatorState.restorablePushNamed(
+                  ViewPostView.routeName,
+                  arguments: _posts[index].asJson
+                );
+              },
+              title: Text(_posts[index].title),
+              subtitle: Text('${_posts[index].body}\n[ ${_posts[index].aspirant!.user!.name}, ${timeago.format(
+                _posts[index].createdAt,
+                locale: localizationProvider.locale.languageCode
+              )} ]'),
+            )
           ),
-          ListView()
-        ]
+          itemCount: _posts.length,
+        ) : Stack(
+          children: [
+            Center(
+              child: Text(appLocalizations.noPostsToShowPrompt)
+            ),
+            ListView()
+          ]
+        ),
+        floatingActionButton: authenticationProvider.user?.role?.name == 'Aspirant' ? FloatingActionButton(
+          onPressed: () {
+            navigatorState.restorablePushNamed(AddPostView.routeName);
+          },
+          child: const Icon(Icons.add_outlined)
+        ) : null
       )
     );
   }

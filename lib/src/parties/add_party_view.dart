@@ -32,7 +32,7 @@ class _AddPartyViewState extends State<AddPartyView> with RouteAware {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(appLocalizations.addPartyViewTitle)
+        title: Text(appLocalizations.addPartyTitle)
       ),
       body: CustomScrollView(
         slivers: [
@@ -49,7 +49,7 @@ class _AddPartyViewState extends State<AddPartyView> with RouteAware {
                       controller: _nameFieldController,
                       decoration: InputDecoration(
                         errorText: _formErrors?['name']?.first,
-                        labelText: appLocalizations.addPartyViewNameFieldLabel
+                        labelText: appLocalizations.nameLabel
                       )
                     ),
                     const SizedBox(
@@ -86,7 +86,7 @@ class _AddPartyViewState extends State<AddPartyView> with RouteAware {
                               //
                             }
                           },
-                          child: Text(appLocalizations.addPartyViewSubmitActionText)
+                          child: Text(appLocalizations.addAction)
                         )
                       ]
                     )

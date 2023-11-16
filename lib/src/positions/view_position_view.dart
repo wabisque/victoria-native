@@ -77,14 +77,14 @@ class _ViewPositionViewState extends State<ViewPositionView> with RouteAware {
               showDialog(
                 context: context,
                 builder: (BuildContext context) => AlertDialog(
-                  content: Text(appLocalizations.viewPositionViewDeleteModalText),
-                  title: Text(appLocalizations.viewPositionViewDeleteModalTitle),
+                  content: Text(appLocalizations.deletePositionTitle),
+                  title: Text(appLocalizations.doYouWishToDeleteThisPositionPrompt),
                   actions: [
                     TextButton(
                       onPressed: () {
                         navigatorState.pop();
                       },
-                      child: Text(appLocalizations.viewPositionViewDeleteModalNoActionText)
+                      child: Text(appLocalizations.noAction)
                     ),
                     TextButton(
                       onPressed: () async {
@@ -106,7 +106,7 @@ class _ViewPositionViewState extends State<ViewPositionView> with RouteAware {
                           //
                         }
                       },
-                      child: Text(appLocalizations.viewPositionViewDeleteModalYesActionText)
+                      child: Text(appLocalizations.yesAction)
                     ),
                   ],
                 )
@@ -115,7 +115,7 @@ class _ViewPositionViewState extends State<ViewPositionView> with RouteAware {
             icon: const Icon(Icons.delete_outlined)
           )
         ],
-        title: Text(appLocalizations.viewPositionViewTitle)
+        title: Text(appLocalizations.viewPositionTitle)
       ),
       body: RefreshIndicator(
         onRefresh: _getPosition,
@@ -129,8 +129,8 @@ class _ViewPositionViewState extends State<ViewPositionView> with RouteAware {
             const SizedBox(
               height: 21.0
             ),
-            Text('Created at → ${DateFormat.yMMMMd().add_jms().format(_position.createdAt)}'),
-            Text('Last updated at → ${DateFormat.yMMMMd().add_jms().format(_position.updatedAt)}')
+            Text('${appLocalizations.createdAtPrompt} → ${DateFormat.yMMMMd().add_jms().format(_position.createdAt)}'),
+            Text('${appLocalizations.lastUpdatedAtPrompt} → ${DateFormat.yMMMMd().add_jms().format(_position.updatedAt)}')
           ]
         )
       )

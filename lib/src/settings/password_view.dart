@@ -32,7 +32,7 @@ class _PasswordViewState extends State<PasswordView> with RouteAware {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(appLocalizations.passwordViewTitle)
+        title: Text(appLocalizations.changePasswordTitle)
       ),
       body: CustomScrollView(
         slivers: [
@@ -49,7 +49,7 @@ class _PasswordViewState extends State<PasswordView> with RouteAware {
                       controller: _currentPasswordFieldController,
                       decoration: InputDecoration(
                         errorText: _formErrors?['current_password']?.first,
-                        labelText: appLocalizations.passwordViewCurrentPasswordFieldLabel
+                        labelText: appLocalizations.currentPasswordLabel
                       )
                     ),
                     const SizedBox(
@@ -59,7 +59,7 @@ class _PasswordViewState extends State<PasswordView> with RouteAware {
                       controller: _passwordFieldController,
                       decoration: InputDecoration(
                         errorText: _formErrors?['password']?.first,
-                        labelText: appLocalizations.passwordViewPasswordFieldLabel
+                        labelText: appLocalizations.newPasswordLabel
                       )
                     ),
                     const SizedBox(
@@ -68,7 +68,7 @@ class _PasswordViewState extends State<PasswordView> with RouteAware {
                     PasswordFieldWidget(
                       controller: _confirmPasswordFieldController,
                       decoration: InputDecoration(
-                        labelText: appLocalizations.passwordViewConfirmPasswordFieldLabel
+                        labelText: appLocalizations.confirmNewPasswordLabel
                       )
                     ),
                     const SizedBox(
@@ -91,7 +91,7 @@ class _PasswordViewState extends State<PasswordView> with RouteAware {
                               _formErrors = (error?['errors'] as Map<String, dynamic>?)?.cast<String, List>();
                             });
                           },
-                          child: Text(appLocalizations.passwordViewSubmitActionText)
+                          child: Text(appLocalizations.saveAction)
                         )
                       ]
                     )

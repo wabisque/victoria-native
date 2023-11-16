@@ -65,7 +65,7 @@ class _EditConstituencyViewState extends State<EditConstituencyView> with RouteA
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(appLocalizations.editConstituencyViewTitle)
+        title: Text(appLocalizations.editConstituencyTitle)
       ),
       body: CustomScrollView(
         slivers: [
@@ -93,7 +93,7 @@ class _EditConstituencyViewState extends State<EditConstituencyView> with RouteA
                       controller: _nameFieldController,
                       decoration: InputDecoration(
                         errorText: _formErrors?['name']?.first,
-                        label: Text(appLocalizations.editConstituencyViewNameFieldLabel)
+                        label: Text(appLocalizations.nameLabel)
                       )
                     ),
                     const SizedBox(
@@ -102,7 +102,7 @@ class _EditConstituencyViewState extends State<EditConstituencyView> with RouteA
                     DropdownButtonFormField<RegionModel>(
                       decoration: InputDecoration(
                         errorText: _formErrors?['region']?.first,
-                        labelText: appLocalizations.editConstituencyViewRegionFieldLabel,
+                        labelText: appLocalizations.regionLabel,
                       ),
                       items: _regions.map((region) => DropdownMenuItem<RegionModel>(
                         value: region,
@@ -150,7 +150,7 @@ class _EditConstituencyViewState extends State<EditConstituencyView> with RouteA
                               //
                             }
                           },
-                          child: Text(appLocalizations.editConstituencyViewSubmitActionText)
+                          child: Text(appLocalizations.saveAction)
                         )
                       ]
                     )

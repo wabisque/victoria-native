@@ -57,14 +57,12 @@ class _PositionsViewState extends State<PositionsView> with RouteAware {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(appLocalizations.positionsViewTitle)
+        title: Text(appLocalizations.positionsTitle)
       ),
       body: RefreshIndicator(
         onRefresh: _getPositions,
         child: _positions.isNotEmpty ? ListView.builder(
-          padding: const EdgeInsets.symmetric(
-            vertical: 21.0
-          ),
+          padding: const EdgeInsets.all(21.0),
           itemBuilder: (BuildContext context, int index) => ListTile(
             onTap: () {
               navigatorState.restorablePushNamed(
@@ -78,7 +76,7 @@ class _PositionsViewState extends State<PositionsView> with RouteAware {
         ) : Stack(
           children: [
             Center(
-              child: Text(appLocalizations.positionsViewEmptyText)
+              child: Text(appLocalizations.noPositionsToShowPrompt)
             ),
             ListView()
           ]

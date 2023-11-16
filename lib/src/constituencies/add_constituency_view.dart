@@ -60,7 +60,7 @@ class _AddConstituencyViewState extends State<AddConstituencyView> with RouteAwa
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(appLocalizations.addConstituencyViewTitle)
+        title: Text(appLocalizations.addConstituencyTitle)
       ),
       body: RefreshIndicator(
         onRefresh: _getRegions,
@@ -79,7 +79,7 @@ class _AddConstituencyViewState extends State<AddConstituencyView> with RouteAwa
                         controller: _nameFieldController,
                         decoration: InputDecoration(
                           errorText: _formErrors?['name']?.first,
-                          label: Text(appLocalizations.addConstituencyViewNameFieldLabel)
+                          label: Text(appLocalizations.nameLabel)
                         )
                       ),
                       const SizedBox(
@@ -88,7 +88,7 @@ class _AddConstituencyViewState extends State<AddConstituencyView> with RouteAwa
                       DropdownButtonFormField<RegionModel>(
                         decoration: InputDecoration(
                           errorText: _formErrors?['region']?.first,
-                          labelText: appLocalizations.addConstituencyViewRegionFieldLabel,
+                          labelText: appLocalizations.regionLabel,
                         ),
                         items: _regions.map((region) => DropdownMenuItem<RegionModel>(
                           value: region,
@@ -136,7 +136,7 @@ class _AddConstituencyViewState extends State<AddConstituencyView> with RouteAwa
                                 //
                               }
                             },
-                            child: Text(appLocalizations.addConstituencyViewSubmitActionText)
+                            child: Text(appLocalizations.addAction)
                           )
                         ]
                       )

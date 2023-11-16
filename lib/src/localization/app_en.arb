@@ -1,610 +1,107 @@
 {
-  "addConstituencyViewNameFieldLabel": "Name",
-  "@addConstituencyViewNameFieldLabel": {
-    "description": "The label of the name field on the add constituency view."
-  },
-  "addConstituencyViewRegionFieldLabel": "Region",
-  "@addConstituencyViewRegionFieldLabel": {
-    "description": "The label of the region field on the add constituency view."
-  },
-  "addConstituencyViewSubmitActionText": "Add",
-  "@addConstituencyViewSubmitActionText": {
-    "description": "The label of the region field on the add constituency view."
-  },
-  "addConstituencyViewTitle": "Add Constituency",
-  "@addConstituencyViewTitle": {
-    "description": "The title of the add constituency view."
-  },
-  "addPartyViewNameFieldLabel": "Name",
-  "@addPartyViewNameFieldLabel": {
-    "description": "The label of the name field on the add party view."
-  },
-  "addPartyViewSubmitActionText": "Add",
-  "@addPartyViewSubmitActionText": {
-    "description": "The text of the submit action on the add party view."
-  },
-  "addPartyViewTitle": "Add Party",
-  "@addPartyViewTitle": {
-    "description": "The title of the add party view."
-  },
-  "addPositionViewNameFieldLabel": "Name",
-  "@addPositionViewNameFieldLabel": {
-    "description": "The label of the name field on the add position view."
-  },
-  "addPositionViewSubmitActionText": "Add",
-  "@addPositionViewSubmitActionText": {
-    "description": "The text of the submit action on the add position view."
-  },
-  "addPositionViewTitle": "Add Position",
-  "@addPositionViewTitle": {
-    "description": "The title of the add position view."
-  },
-  "addRegionViewNameFieldLabel": "Name",
-  "@addRegionViewNameFieldLabel": {
-    "description": "The label of the name field on the add region view."
-  },
-  "addRegionViewSubmitActionText": "Add",
-  "@addRegionViewSubmitActionText": {
-    "description": "The text of the submit action on the add region view."
-  },
-  "addRegionViewTitle": "Add Region",
-  "@addRegionViewTitle": {
-    "description": "The title of the add region view."
-  },
-  "aspirantCreationRequestsViewEmptyText": "No aspirant creation requests to show!",
-  "@aspirantCreationRequestsViewEmptyText": {
-    "description": "The empty text of the aspirant creation requests view."
-  },
-  "aspirantCreationRequestsViewTitle": "Aspirant Creation Requests",
-  "@aspirantCreationRequestsViewTitle": {
-    "description": "The title of the aspirant creation requests view."
-  },
-  "aspirantProfileViewAddressFieldLabel": "Address",
-  "@aspirantProfileViewAddressFieldLabel": {
-    "description": "The label of the address field on the aspirant profile view."
-  },
-  "aspirantProfileViewConstituencyFieldLabel": "Constituency",
-  "@aspirantProfileViewConstituencyFieldLabel": {
-    "description": "The label of the constituency field on the aspirant profile view."
-  },
-  "aspirantProfileViewFlyerFieldLabel": "Flyer",
-  "@aspirantProfileViewFlyerFieldLabel": {
-    "description": "The label of the flyer field on the aspirant profile view."
-  },
-  "aspirantProfileViewPartyFieldLabel": "Party",
-  "@aspirantProfileViewPartyFieldLabel": {
-    "description": "The label of the party field on the aspirant profile view."
-  },
-  "aspirantProfileViewPositionFieldLabel": "Position",
-  "@aspirantProfileViewPositionFieldLabel": {
-    "description": "The label of the position field on the aspirant profile view."
-  },
-  "aspirantProfileViewSubmitActionText": "Apply",
-  "@aspirantProfileViewSubmitActionText": {
-    "description": "The text of the submit action on the aspirant profile view."
-  },
-  "aspirantProfileViewTitle": "Aspirant Profile",
-  "@aspirantProfileViewTitle": {
-    "description": "The title of the aspirant profile view."
-  },
-  "aspirantUpdateRequestsViewEmptyText": "No aspirant update requests to show!",
-  "@aspirantUpdateRequestsViewEmptyText": {
-    "description": "The empty text of the aspirant update requests view."
-  },
-  "aspirantUpdateRequestsViewTitle": "Aspirant Update Requests",
-  "@aspirantUpdateRequestsViewTitle": {
-    "description": "The title of the aspirant update requests view."
-  },
-  "aspirantsViewEmptyText": "No aspirants to show!",
-  "@aspirantsViewEmptyText": {
-    "description": "The empty text of the aspirants view."
-  },
-  "aspirantsViewTitle": "Aspirants",
-  "@aspirantsViewTitle": {
-    "description": "The title of the aspirants view."
-  },
-  "becomeAnAspirantViewAddressFieldLabel": "Address",
-  "@becomeAnAspirantViewAddressFieldLabel": {
-    "description": "The label of the address field on the become an aspirant view."
-  },
-  "becomeAnAspirantViewConstituencyFieldLabel": "Constituency",
-  "@becomeAnAspirantViewConstituencyFieldLabel": {
-    "description": "The label of the constituency field on the become an aspirant view."
-  },
-  "becomeAnAspirantViewFlyerFieldLabel": "Flyer",
-  "@becomeAnAspirantViewFlyerFieldLabel": {
-    "description": "The label of the flyer field on the become an aspirant view."
-  },
-  "becomeAnAspirantViewPartyFieldLabel": "Party",
-  "@becomeAnAspirantViewPartyFieldLabel": {
-    "description": "The label of the party field on the become an aspirant view."
-  },
-  "becomeAnAspirantViewPositionFieldLabel": "Position",
-  "@becomeAnAspirantViewPositionFieldLabel": {
-    "description": "The label of the position field on the become an aspirant view."
-  },
-  "becomeAnAspirantViewSubmitActionText": "Apply",
-  "@becomeAnAspirantViewSubmitActionText": {
-    "description": "The text of the submit action on the become an aspirant view."
-  },
-  "becomeAnAspirantViewTitle": "Become An Aspirant",
-  "@becomeAnAspirantViewTitle": {
-    "description": "The title of the become an aspirant view."
-  },
-  "constituenciesViewEmptyText": "No constituencies to show!",
-  "@constituenciesViewEmptyText": {
-    "description": "The empty text of the constituencies view."
-  },
-  "constituenciesViewTitle": "Constituencies",
-  "@constituenciesViewTitle": {
-    "description": "The title of the constituencies view."
-  },
-  "dashboardViewTitle": "Dashboard",
-  "@dashboardViewTitle": {
-    "description": "The title of the dashboard view."
-  },
-  "dashboardActionsTabViewAspirantsActionText": "Aspirants",
-  "@dashboardActionsTabViewAspirantsActionText": {
-    "description": "The text of the dashboard aspirants action of the actions tab view."
-  },
-  "dashboardActionsTabViewAspirantCreationRequestsActionText": "Aspirant Creation Requests",
-  "@dashboardActionsTabViewAspirantCreationRequestsActionText": {
-    "description": "The text of the dashboard aspirant creation requests action of the actions tab view."
-  },
-  "dashboardActionsTabViewAspirantUpdateRequestsActionText": "Aspirant Update Requests",
-  "@dashboardActionsTabViewAspirantUpdateRequestsActionText": {
-    "description": "The text of the dashboard aspirant update requests action of the actions tab view."
-  },
-  "dashboardActionsTabViewConstituenciesActionText": "Constituencies",
-  "@dashboardActionsTabViewConstituenciesActionText": {
-    "description": "The text of the dashboard constituencies action of the actions tab view."
-  },
-  "dashboardActionsTabViewPartiesActionText": "Parties",
-  "@dashboardActionsTabViewPartiesActionText": {
-    "description": "The text of the dashboard parties action of the actions tab view."
-  },
-  "dashboardActionsTabViewPositionsActionText": "Positions",
-  "@dashboardActionsTabViewPositionsActionText": {
-    "description": "The text of the dashboard positions action of the actions tab view."
-  },
-  "dashboardActionsTabViewPostsActionText": "Posts",
-  "@dashboardActionsTabViewPostsActionText": {
-    "description": "The text of the dashboard posts action of the actions tab view."
-  },
-  "dashboardActionsTabViewRegionsActionText": "Regions",
-  "@dashboardActionsTabViewRegionsActionText": {
-    "description": "The text of the dashboard regions action of the actions tab view."
-  },
-  "dashboardAspirantsTabViewEmptyText": "No aspirants to show!",
-  "@dashboardAspirantsTabViewEmptyText": {
-    "description": "The empty text of dashboard aspirants tab view."
-  },
-  "dashboardPostsTabViewEmptyText": "No posts to show!",
-  "@dashboardPostsTabViewEmptyText": {
-    "description": "The empty text of dashboard posts tab view."
-  },
-  "editConstituencyViewNameFieldLabel": "Name",
-  "@editConstituencyViewNameFieldLabel": {
-    "description": "The label of the name field on the edit constituency view."
-  },
-  "editConstituencyViewRegionFieldLabel": "Region",
-  "@editConstituencyViewRegionFieldLabel": {
-    "description": "The label of the region field on the edit constituency view."
-  },
-  "editConstituencyViewSubmitActionText": "Save",
-  "@editConstituencyViewSubmitActionText": {
-    "description": "The label of the region field on the edit constituency view."
-  },
-  "editConstituencyViewTitle": "Edit Constituency",
-  "@editConstituencyViewTitle": {
-    "description": "The title of the edit constituency view."
-  },
-  "editPartyViewNameFieldLabel": "Name",
-  "@editPartyViewNameFieldLabel": {
-    "description": "The label of the name field on the edit party view."
-  },
-  "editPartyViewSubmitActionText": "Save",
-  "@editPartyViewSubmitActionText": {
-    "description": "The label of the region field on the edit party view."
-  },
-  "editPartyViewTitle": "Edit Party",
-  "@editPartyViewTitle": {
-    "description": "The title of the edit party view."
-  },
-  "editPositionViewNameFieldLabel": "Name",
-  "@editPositionViewNameFieldLabel": {
-    "description": "The label of the name field on the edit position view."
-  },
-  "editPositionViewSubmitActionText": "Save",
-  "@editPositionViewSubmitActionText": {
-    "description": "The label of the region field on the edit position view."
-  },
-  "editPositionViewTitle": "Edit Position",
-  "@editPositionViewTitle": {
-    "description": "The title of the edit position view."
-  },
-  "editRegionViewNameFieldLabel": "Name",
-  "@editRegionViewNameFieldLabel": {
-    "description": "The label of the name field on the edit region view."
-  },
-  "editRegionViewSubmitActionText": "Save",
-  "@editRegionViewSubmitActionText": {
-    "description": "The label of the region field on the edit region view."
-  },
-  "editRegionViewTitle": "Edit Region",
-  "@editRegionViewTitle": {
-    "description": "The title of the edit region view."
-  },
-  "loginViewDividerText": "OR",
-  "@loginViewDividerText": {
-    "description": "The label of the divider on the login view."
-  },
-  "loginViewIdFieldLabel": "Email address or phone number",
-  "@loginViewIdFieldLabel": {
-    "description": "The label of the id field on the login view."
-  },
-  "loginViewForgotPasswordActionText": "Forgot password?",
-  "@loginViewForgotPasswordActionText": {
-    "description": "The label of the forgot password action on the login view."
-  },
-  "loginViewPasswordFieldLabel": "Password",
-  "@loginViewPasswordFieldLabel": {
-    "description": "The label of the password field on the login view."
-  },
-  "loginViewRegisterActionText": "Don't have an account?",
-  "@loginViewRegisterActionText": {
-    "description": "The label of the register action on the login view."
-  },
-  "loginViewSubmitActionText": "Login",
-  "@loginViewSubmitActionText": {
-    "description": "The label of the submit action on the login view."
-  },
-  "loginViewText": "Login to continue your work.",
-  "@loginViewText": {
-    "description": "The text underneath the title of the login view."
-  },
-  "loginViewTitle": "Welcome Back!",
-  "@loginViewTitle": {
-    "description": "The title of the login view."
-  },
-  "partiesViewEmptyText": "No parties to show!",
-  "@partiesViewEmptyText": {
-    "description": "The empty text of the parties view."
-  },
-  "partiesViewTitle": "Parties",
-  "@partiesViewTitle": {
-    "description": "The title of the parties view."
-  },
-  "passwordViewConfirmPasswordFieldLabel": "Confirm new password",
-  "@passwordViewConfirmPasswordFieldLabel": {
-    "description": "The label of the confirm password field on the password view."
-  },
-  "passwordViewCurrentPasswordFieldLabel": "Current password",
-  "@passwordViewCurrentPasswordFieldLabel": {
-    "description": "The label of the current password field on the password view."
-  },
-  "passwordViewPasswordFieldLabel": "New password",
-  "@passwordViewPasswordFieldLabel": {
-    "description": "The label of the password field on the password view."
-  },
-  "passwordViewSubmitActionText": "Save",
-  "@passwordViewSubmitActionText": {
-    "description": "The text of the submit action on the password view."
-  },
-  "passwordViewTitle": "Password",
-  "@passwordViewTitle": {
-    "description": "The title of the password view."
-  },
-  "positionsViewEmptyText": "No positions to show!",
-  "@positionsViewEmptyText": {
-    "description": "The empty text of the positions view."
-  },
-  "positionsViewTitle": "Positions",
-  "@positionsViewTitle": {
-    "description": "The title of the positions view."
-  },
-  "postsViewTitle": "Posts",
-  "@postsViewTitle": {
-    "description": "The title of the posts view."
-  },
-  "regionsViewEmptyText": "No regions to show!",
-  "@regionsViewEmptyText": {
-    "description": "The empty text of the regions view."
-  },
-  "regionsViewTitle": "Regions",
-  "@regionsViewTitle": {
-    "description": "The title of the regions view."
-  },
-  "registerViewDividerText": "OR",
-  "@registerViewDividerText": {
-    "description": "The text of the divider on the register view."
-  },
-  "registerViewEmailFieldLabel": "Email address",
-  "@registerViewEmailFieldLabel": {
-    "description": "The label of the email field on the register view."
-  },
-  "registerViewLoginActionText": "Already have an account?",
-  "@registerViewLoginActionText": {
-    "description": "The text of the login action on the register view."
-  },
-  "registerViewNameFieldLabel": "Name",
-  "@registerViewNameFieldLabel": {
-    "description": "The label of the name field on the register view."
-  },
-  "registerViewPasswordConfirmFieldLabel": "Confirm password",
-  "@registerViewPasswordConfirmFieldLabel": {
-    "description": "The label of the password confirm field on the register view."
-  },
-  "registerViewPasswordFieldLabel": "Password",
-  "@registerViewPasswordFieldLabel": {
-    "description": "The label of the password field on the register view."
-  },
-  "registerViewPhoneFieldLabel": "Phone number",
-  "@registerViewPhoneFieldLabel": {
-    "description": "The label of the phone field on the register view."
-  },
-  "registerViewSubmitActionText": "Register",
-  "@registerViewSubmitActionText": {
-    "description": "The text of the submit action on the register view."
-  },
-  "registerViewText": "Register to begin your journey.",
-  "@registerViewText": {
-    "description": "The text underneath the title of the register view."
-  },
-  "registerViewTitle": "Hello!",
-  "@registerViewTitle": {
-    "description": "The title of the register view."
-  },
-  "settingsViewAspirantProfileActionText": "Aspirant Profile",
-  "@settingsViewAspirantProfileActionText": {
-    "description": "The text of the aspirant profile action on the settings view."
-  },
-  "settingsViewBecomeAnAspirantActionText": "Become An Aspirant",
-  "@settingsViewBecomeAnAspirantActionText": {
-    "description": "The text of the become an aspirant action on the settings view."
-  },
-  "settingsViewLanguageActionText": "Language",
-  "@settingsViewLanguageActionText": {
-    "description": "The text of the language action on the settings view."
-  },
-  "settingsViewLogoutActionText": "Logout",
-  "@settingsViewLogoutActionText": {
-    "description": "The text of the logout action on the settings view."
-  },
-  "settingsViewPasswordActionText": "Password",
-  "@settingsViewPasswordActionText": {
-    "description": "The text of the password action on the settings view."
-  },
-  "settingsViewThemeModeActionText": "Theme Mode",
-  "@settingsViewThemeModeActionText": {
-    "description": "The text of the theme mode action on the settings view."
-  },
-  "settingsViewTitle": "Settings",
-  "@settingsViewTitle": {
-    "description": "The title of the settings view."
-  },
-  "settingsViewUserProfileActionText": "User Profile",
-  "@settingsViewUserProfileActionText": {
-    "description": "The text of the user profile action on the settings view."
-  },
-  "themeModeDark": "Dark",
-  "@themeModeDark": {
-    "description": "The text for dark theme mode."
-  },
-  "themeModeLight": "Light",
-  "@themeModeLight": {
-    "description": "The text for light theme mode."
-  },
-  "themeModeSystem": "System",
-  "@themeModeSystem": {
-    "description": "The text for system theme mode."
-  },
   "title": "Victoria",
-  "@title": {
-    "description": "The title of the application."
-  },
-  "userProfileViewEmailFieldLabel": "Email address",
-  "@userProfileViewEmailFieldLabel": {
-    "description": "The label of the email field on the user profile view."
-  },
-  "userProfileViewNameFieldLabel": "Name",
-  "@userProfileViewNameFieldLabel": {
-    "description": "The label of the name field on the user profile view."
-  },
-  "userProfileViewPhoneFieldLabel": "Phone number",
-  "@userProfileViewPhoneFieldLabel": {
-    "description": "The label of the phone field on the user profile view."
-  },
-  "userProfileViewSubmitActionText": "Save",
-  "@userProfileViewSubmitActionText": {
-    "description": "The text of the submit action on the user profile view."
-  },
-  "userProfileViewTitle": "User Profile",
-  "@userProfileViewTitle": {
-    "description": "The title of the user profile view."
-  },
-  "viewAspirantCreationRequestViewConfirmModalAcceptActionText": "Accept",
-  "@viewAspirantCreationRequestViewConfirmModalAcceptActionText": {
-    "description": "The title of the accept action on the confirm modal on the view aspirant creation request view."
-  },
-  "viewAspirantCreationRequestViewConfirmModalCancelActionText": "Cancel",
-  "@viewAspirantCreationRequestViewConfirmModalCancelActionText": {
-    "description": "The title of the no action on the confirm modal on the view aspirant creation request view."
-  },
-  "viewAspirantCreationRequestViewConfirmModalDeclineActionText": "Decline",
-  "@viewAspirantCreationRequestViewConfirmModalDeclineActionText": {
-    "description": "The title of the decline action on the confirm modal on the view aspirant creation request view."
-  },
-  "viewAspirantCreationRequestViewConfirmModalText": "Do you wish to accept or decline this aspirant creation request?",
-  "@viewAspirantCreationRequestViewConfirmModalText": {
-    "description": "The text of the confirm modal on the view aspirant creation request view."
-  },
-  "viewAspirantCreationRequestViewConfirmModalTitle": "Confirm Aspirant Creation Request",
-  "@viewAspirantCreationRequestViewConfirmModalTitle": {
-    "description": "The title of the confirm modal on the view aspirant creation request view."
-  },
-  "viewAspirantCreationRequestViewConstituencyLabel": "Constituency",
-  "@viewAspirantCreationRequestViewConstituencyLabel": {
-    "description": "The constituency label of the view aspirant creation request view."
-  },
-  "viewAspirantCreationRequestViewPartyLabel": "Party",
-  "@viewAspirantCreationRequestViewPartyLabel": {
-    "description": "The party label of the view aspirant creation request view."
-  },
-  "viewAspirantCreationRequestViewPositionLabel": "Position",
-  "@viewAspirantCreationRequestViewPositionLabel": {
-    "description": "The position label of the view aspirant creation request view."
-  },
-  "viewAspirantCreationRequestViewTitle": "View Aspirant Creation Request",
-  "@viewAspirantCreationRequestViewTitle": {
-    "description": "The title of the view aspirant creation request view."
-  },
-  "viewAspirantUpdateRequestViewConfirmModalAcceptActionText": "Accept",
-  "@viewAspirantUpdateRequestViewConfirmModalAcceptActionText": {
-    "description": "The title of the accept action on the confirm modal on the view aspirant update request view."
-  },
-  "viewAspirantUpdateRequestViewConfirmModalCancelActionText": "Cancel",
-  "@viewAspirantUpdateRequestViewConfirmModalCancelActionText": {
-    "description": "The title of the no action on the confirm modal on the view aspirant update request view."
-  },
-  "viewAspirantUpdateRequestViewConfirmModalDeclineActionText": "Decline",
-  "@viewAspirantUpdateRequestViewConfirmModalDeclineActionText": {
-    "description": "The title of the decline action on the confirm modal on the view aspirant update request view."
-  },
-  "viewAspirantUpdateRequestViewConfirmModalText": "Do you wish to accept or decline this aspirant update request?",
-  "@viewAspirantUpdateRequestViewConfirmModalText": {
-    "description": "The text of the confirm modal on the view aspirant update request view."
-  },
-  "viewAspirantUpdateRequestViewConfirmModalTitle": "Confirm Aspirant Update Request",
-  "@viewAspirantUpdateRequestViewConfirmModalTitle": {
-    "description": "The title of the confirm modal on the view aspirant update request view."
-  },
-  "viewAspirantUpdateRequestViewConstituencyLabel": "Constituency",
-  "@viewAspirantUpdateRequestViewConstituencyLabel": {
-    "description": "The constituency label of the view aspirant update request view."
-  },
-  "viewAspirantUpdateRequestViewPartyLabel": "Party",
-  "@viewAspirantUpdateRequestViewPartyLabel": {
-    "description": "The party label of the view aspirant update request view."
-  },
-  "viewAspirantUpdateRequestViewPositionLabel": "Position",
-  "@viewAspirantUpdateRequestViewPositionLabel": {
-    "description": "The position label of the view aspirant update request view."
-  },
-  "viewAspirantUpdateRequestViewTitle": "View Aspirant Update Request",
-  "@viewAspirantUpdateRequestViewTitle": {
-    "description": "The title of the view aspirant update request view."
-  },
-  "viewAspirantViewConstituencyLabel": "Constituency",
-  "@viewAspirantViewConstituencyLabel": {
-    "description": "The constituency label of the view aspirant view."
-  },
-  "viewAspirantViewDeleteModalNoActionText": "No",
-  "@viewAspirantViewDeleteModalNoActionText": {
-    "description": "The title of the no action on the delete modal on the view aspirant view."
-  },
-  "viewAspirantViewDeleteModalText": "Delete you wish to delete this aspirant?",
-  "@viewAspirantViewDeleteModalText": {
-    "description": "The text of the delete modal on the view aspirant view."
-  },
-  "viewAspirantViewDeleteModalTitle": "Delete Aspirant",
-  "@viewAspirantViewDeleteModalTitle": {
-    "description": "The title of the delete modal on the view aspirant view."
-  },
-  "viewAspirantViewDeleteModalYesActionText": "Yes",
-  "@viewAspirantViewDeleteModalYesActionText": {
-    "description": "The title of the yes action on the delete modal on the view aspirant view."
-  },
-  "viewAspirantViewPartyLabel": "Party",
-  "@viewAspirantViewPartyLabel": {
-    "description": "The party label of the view aspirant view."
-  },
-  "viewAspirantViewPositionLabel": "Position",
-  "@viewAspirantViewPositionLabel": {
-    "description": "The position label of the view aspirant view."
-  },
-  "viewAspirantViewTitle": "View Aspirant",
-  "@viewAspirantViewTitle": {
-    "description": "The title of the view aspirant view."
-  },
-  "viewConstituencyViewDeleteModalNoActionText": "No",
-  "@viewConstituencyViewDeleteModalNoActionText": {
-    "description": "The title of the no action on the delete modal on the view constituency view."
-  },
-  "viewConstituencyViewDeleteModalText": "Delete you wish to delete this constituency?",
-  "@viewConstituencyViewDeleteModalText": {
-    "description": "The text of the delete modal on the view constituency view."
-  },
-  "viewConstituencyViewDeleteModalTitle": "Delete Constituency",
-  "@viewConstituencyViewDeleteModalTitle": {
-    "description": "The title of the delete modal on the view constituency view."
-  },
-  "viewConstituencyViewDeleteModalYesActionText": "Yes",
-  "@viewConstituencyViewDeleteModalYesActionText": {
-    "description": "The title of the yes action on the delete modal on the view constituency view."
-  },
-  "viewConstituencyViewTitle": "View Constituency",
-  "@viewConstituencyViewTitle": {
-    "description": "The title of the view constituency view."
-  },
-  "viewPartyViewDeleteModalNoActionText": "No",
-  "@viewPartyViewDeleteModalNoActionText": {
-    "description": "The title of the no action on the delete modal on the view party view."
-  },
-  "viewPartyViewDeleteModalText": "Delete you wish to delete this party?",
-  "@viewPartyViewDeleteModalText": {
-    "description": "The text of the delete modal on the view party view."
-  },
-  "viewPartyViewDeleteModalTitle": "Delete Party",
-  "@viewPartyViewDeleteModalTitle": {
-    "description": "The title of the delete modal on the view party view."
-  },
-  "viewPartyViewDeleteModalYesActionText": "Yes",
-  "@viewPartyViewDeleteModalYesActionText": {
-    "description": "The title of the yes action on the delete modal on the view party view."
-  },
-  "viewPartyViewTitle": "View Party",
-  "@viewPartyViewTitle": {
-    "description": "The title of the view party view."
-  },
-  "viewPositionViewDeleteModalNoActionText": "No",
-  "@viewPositionViewDeleteModalNoActionText": {
-    "description": "The title of the no action on the delete modal on the view position view."
-  },
-  "viewPositionViewDeleteModalText": "Delete you wish to delete this position?",
-  "@viewPositionViewDeleteModalText": {
-    "description": "The text of the delete modal on the view position view."
-  },
-  "viewPositionViewDeleteModalTitle": "Delete Position",
-  "@viewPositionViewDeleteModalTitle": {
-    "description": "The title of the delete modal on the view position view."
-  },
-  "viewPositionViewDeleteModalYesActionText": "Yes",
-  "@viewPositionViewDeleteModalYesActionText": {
-    "description": "The title of the yes action on the delete modal on the view position view."
-  },
-  "viewPositionViewTitle": "View Position",
-  "@viewPositionViewTitle": {
-    "description": "The title of the view position view."
-  },
-  "viewRegionViewDeleteModalNoActionText": "No",
-  "@viewRegionViewDeleteModalNoActionText": {
-    "description": "The title of the no action on the delete modal on the view region view."
-  },
-  "viewRegionViewDeleteModalText": "Delete you wish to delete this region?",
-  "@viewRegionViewDeleteModalText": {
-    "description": "The text of the delete modal on the view region view."
-  },
-  "viewRegionViewDeleteModalTitle": "Delete Region",
-  "@viewRegionViewDeleteModalTitle": {
-    "description": "The title of the delete modal on the view region view."
-  },
-  "viewRegionViewDeleteModalYesActionText": "Yes",
-  "@viewRegionViewDeleteModalYesActionText": {
-    "description": "The title of the yes action on the delete modal on the view region view."
-  },
-  "viewRegionViewTitle": "View Region",
-  "@viewRegionViewTitle": {
-    "description": "The title of the view region view."
-  }
+
+  "acceptAction": "Accept",
+  "addAction": "Add",
+  "applyAction": "Apply",
+  "alreadyHaveAnAccountAction": "Already have an account?",
+  "cancelAction": "Cancel",
+  "declineAction": "Decline",
+  "dontHaveAnAccountAction": "Don't have an account?",
+  "forgotPasswordAction": "Forgot password?",
+  "languageAction": "Language",
+  "loginAction": "Login",
+  "logoutAction": "Logout",
+  "noAction": "No",
+  "registerAction": "Register",
+  "saveAction": "Save",
+  "themeModeAction": "Theme Mode",
+  "yesAction": "Yes",
+
+  "addressLabel": "Address",
+  "bodyLabel": "Body",
+  "confirmNewPasswordLabel": "Confirm new password",
+  "confirmPasswordLabel": "Confirm password",
+  "constituencyLabel": "Constituency",
+  "currentPasswordLabel": "Current password",
+  "emailLabel": "Email address",
+  "emailOrPhoneLabel": "Email address or phone number",
+  "flyerLabel": "Flyer",
+  "nameLabel": "Name",
+  "newPasswordLabel": "New password",
+  "partyLabel": "Party",
+  "passwordLabel": "Password",
+  "phoneLabel": "Phone number",
+  "positionLabel": "Position",
+  "regionLabel": "Region",
+  "titleLabel": "Title",
+
+  "createdAtPrompt": "Created at",
+  "createdByPrompt": "Created by",
+  "darkPrompt": "Dark",
+  "doYouWishToAcceptOrDeclineThisAspirantCreationRequestPrompt": "Do you wish to accept or decline this aspirant creation request?",
+  "doYouWishToAcceptOrDeclineThisAspirantUpdateRequestPrompt": "Do you wish to accept or decline this aspirant update request?",
+  "doYouWishToDeleteThisAspirantPrompt": "Do you wish to delete this aspirant?",
+  "doYouWishToDeleteThisConstituencyPrompt": "Do you wish to delete this constituency?",
+  "doYouWishToDeleteThisPartyPrompt": "Do you wish to delete this party?",
+  "doYouWishToDeleteThisPositionPrompt": "Do you wish to delete this position?",
+  "doYouWishToDeleteThisPostPrompt": "Do you wish to delete this post?",
+  "doYouWishToDeleteThisRegionPrompt": "Do you wish to delete this region?",
+  "helloPrompt": "Hello!",
+  "lastUpdatedAtPrompt": "Last updated at",
+  "lightPromt": "Light",
+  "loginToContinueYourWorkPrompt": "Login to continue your work.",
+  "noAspirantCreationRequestsToShowPrompt": "No aspirant creation requests to show!",
+  "noAspirantsToShowPrompt": "No aspirants to show!",
+  "noAspirantUpdateRequestsToShowPrompt": "No aspirant update requests to show!",
+  "noConstituenciesToShowPrompt": "No constituencies to show!",
+  "noPartiesToShowPrompt": "No parties to show!",
+  "noPositionsToShowPrompt": "No positions to show!",
+  "noPostsToShowPrompt": "No posts to show!",
+  "noRegionsToShowPrompt": "No regions to show!",
+  "orPrompt": "OR",
+  "registerToBeginYourJourneyPrompt": "Register to begin your journey.",
+  "systemPrompt": "System",
+  "welcomeBackPrompt": "Welcome Back!",
+
+  "addConstituencyTitle": "Add Constituency",
+  "addPartyTitle": "Add Party",
+  "addPositionTitle": "Add Position",
+  "addPostTitle": "Add Post",
+  "addRegionTitle": "Add Region",
+  "aspirantCreationRequestsTitle": "Aspirant Creation Requests",
+  "aspirantProfileTitle": "Aspirant Profile",
+  "aspirantsTitle": "Aspirants",
+  "aspirantUpdateRequestsTitle": "Aspirant Update Requests",
+  "becomeAnAspirantTitle": "Become An Aspirant",
+  "changePasswordTitle": "Change Password",
+  "confirmAspirantCreationRequestTitle": "Confirm Aspirant Creation Request",
+  "confirmAspirantUpdateRequestTitle": "Confirm Aspirant Update Request",
+  "constituenciesTitle": "Constituencies",
+  "dashboardTitle": "Dashboard",
+  "deleteAspirantTitle": "Delete Aspirant",
+  "deleteConstituencyTitle": "Delete Constituency",
+  "deletePartyTitle": "Delete Party",
+  "deletePositionTitle": "Delete Position",
+  "deletePostTitle": "Delete Post",
+  "deleteRegionTitle": "Delete Region",
+  "editConstituencyTitle": "Edit Constituency",
+  "editPartyTitle": "Edit Party",
+  "editPositionTitle": "Edit Position",
+  "editPostTitle": "Edit Post",
+  "editRegionTitle": "Edit Region",
+  "partiesTitle": "Parties",
+  "positionsTitle": "Positions",
+  "postsTitle": "Posts",
+  "regionsTitle": "Regions",
+  "settingsTitle": "Settings",
+  "userProfileTitle": "User Profile",
+  "viewAspirantCreationRequestTitle": "View Aspirant Creation Request",
+  "viewAspirantTitle": "View Aspirant",
+  "viewAspirantUpdateRequestTitle": "View Aspirant Update Request",
+  "viewConstituencyTitle": "View Constituency",
+  "viewPartyTitle": "View Party",
+  "viewPositionTitle": "View Position",
+  "viewPostTitle": "View Post",
+  "viewRegionTitle": "View Region"
 }

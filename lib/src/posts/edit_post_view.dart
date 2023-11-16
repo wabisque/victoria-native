@@ -7,37 +7,37 @@ import 'package:provider/provider.dart';
 
 import '../authentication/authentication_provider.dart';
 import '../constants.dart';
-import '../models/party_model.dart';
+import '../models/post_model.dart';
 
-class EditPartyView extends StatefulWidget {
-  static const String routeName = '/parties/edit';
+class EditPostView extends StatefulWidget {
+  static const String routeName = '/posts/edit';
 
-  final PartyModel party;
+  final PostModel post;
 
-  const EditPartyView({
+  const EditPostView({
     super.key,
-    required this.party
+    required this.post
   });
 
   @override
-  State<EditPartyView> createState() => _EditPartyViewState();
+  State<EditPostView> createState() => _EditPostViewState();
 }
 
-class _EditPartyViewState extends State<EditPartyView> with RouteAware {
+class _EditPostViewState extends State<EditPostView> with RouteAware {
   Map<String, List>? _formErrors;
   late GlobalKey _formKey;
-  late TextEditingController _nameFieldController;
+  late TextEditingController _bodyFieldController;
+  late TextEditingController _titleFieldController;
 
   @override
   Widget build(BuildContext context) {
     final AppLocalizations appLocalizations = AppLocalizations.of(context)!;
     final NavigatorState navigatorState = Navigator.of(context);
-    final ThemeData themeData = Theme.of(context);
     final AuthenticationProvider authenticationProvider = context.watch<AuthenticationProvider>();
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(appLocalizations.editPartyTitle)
+        title: Text(appLocalizations.editPostTitle)
       ),
       body: CustomScrollView(
         slivers: [
@@ -50,19 +50,23 @@ class _EditPartyViewState extends State<EditPartyView> with RouteAware {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      widget.party.name,
-                      style: themeData.textTheme.titleLarge
+                    TextFormField(
+                      controller: _titleFieldController,
+                      decoration: InputDecoration(
+                        errorText: _formErrors?['title']?.first,
+                        labelText: appLocalizations.titleLabel
+                      )
                     ),
                     const SizedBox(
-                      height: 21.0
+                      height: 7.0
                     ),
                     TextFormField(
-                      controller: _nameFieldController,
+                      controller: _bodyFieldController,
                       decoration: InputDecoration(
-                        errorText: _formErrors?['name']?.first,
-                        label: Text(appLocalizations.nameLabel)
-                      )
+                        errorText: _formErrors?['body']?.first,
+                        labelText: appLocalizations.bodyLabel
+                      ),
+                      maxLines: 4,
                     ),
                     const SizedBox(
                       height: 21.0
@@ -74,9 +78,10 @@ class _EditPartyViewState extends State<EditPartyView> with RouteAware {
                           onPressed: () async {
                             try {
                               final http.Response response = await http.put(
-                                Uri.parse('${Constants.apiHost}/api/parties/${widget.party.id}'),
+                                Uri.parse('${Constants.apiHost}/api/posts/${widget.post.id}'),
                                 body: jsonEncode({
-                                  'name': _nameFieldController.text
+                                  'body': _bodyFieldController.text,
+                                  'title': _titleFieldController.text
                                 }),
                                 headers: {
                                   'Accept': 'application/json',
@@ -86,6 +91,8 @@ class _EditPartyViewState extends State<EditPartyView> with RouteAware {
                                 }
                               );
                               final Map<String, dynamic> data = jsonDecode(response.body);
+
+                              print(response.body);
 
                               if(response.statusCode == 200) {
                                 navigatorState.pop();
@@ -131,7 +138,8 @@ class _EditPartyViewState extends State<EditPartyView> with RouteAware {
 
   @override
   void dispose() {
-    _nameFieldController.dispose();
+    _bodyFieldController.dispose();
+    _titleFieldController.dispose();
     Constants.routeObserver.unsubscribe(this);
 
     super.dispose();
@@ -142,8 +150,11 @@ class _EditPartyViewState extends State<EditPartyView> with RouteAware {
     super.initState();
 
     _formKey = GlobalKey();
-    _nameFieldController = TextEditingController(
-      text: widget.party.name
+    _bodyFieldController = TextEditingController(
+      text: widget.post.body
+    );
+    _titleFieldController = TextEditingController(
+      text: widget.post.title
     );
   }
 }

@@ -57,7 +57,7 @@ class _PartiesViewState extends State<PartiesView> with RouteAware {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(appLocalizations.partiesViewTitle)
+        title: Text(appLocalizations.partiesTitle)
       ),
       body: RefreshIndicator(
         onRefresh: _getParties,
@@ -75,7 +75,7 @@ class _PartiesViewState extends State<PartiesView> with RouteAware {
         ) : Stack(
           children: [
             Center(
-              child: Text(appLocalizations.partiesViewEmptyText)
+              child: Text(appLocalizations.noPartiesToShowPrompt)
             ),
             ListView()
           ]

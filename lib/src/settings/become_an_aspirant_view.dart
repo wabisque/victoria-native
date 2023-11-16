@@ -122,7 +122,7 @@ class _BecomeAnAspirantViewState extends State<BecomeAnAspirantView> with RouteA
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(appLocalizations.becomeAnAspirantViewTitle)
+        title: Text(appLocalizations.becomeAnAspirantTitle)
       ),
       body: RefreshIndicator(
         onRefresh: () async {
@@ -146,7 +146,7 @@ class _BecomeAnAspirantViewState extends State<BecomeAnAspirantView> with RouteA
                       DropdownButtonFormField<PositionModel>(
                         decoration: InputDecoration(
                           errorText: _formErrors?['position']?.first,
-                          labelText: appLocalizations.becomeAnAspirantViewPositionFieldLabel,
+                          labelText: appLocalizations.positionLabel,
                         ),
                         items: _positions.map((position) => DropdownMenuItem<PositionModel>(
                           value: position,
@@ -165,7 +165,7 @@ class _BecomeAnAspirantViewState extends State<BecomeAnAspirantView> with RouteA
                       DropdownButtonFormField<PartyModel>(
                         decoration: InputDecoration(
                           errorText: _formErrors?['party']?.first,
-                          labelText: appLocalizations.becomeAnAspirantViewPartyFieldLabel,
+                          labelText: appLocalizations.partyLabel,
                         ),
                         items: _parties.map((party) => DropdownMenuItem<PartyModel>(
                           value: party,
@@ -184,7 +184,7 @@ class _BecomeAnAspirantViewState extends State<BecomeAnAspirantView> with RouteA
                       DropdownButtonFormField<ConstituencyModel>(
                         decoration: InputDecoration(
                           errorText: _formErrors?['constituency']?.first,
-                          labelText: appLocalizations.becomeAnAspirantViewConstituencyFieldLabel,
+                          labelText: appLocalizations.constituencyLabel,
                         ),
                         items: _constituencies.map((constituency) => DropdownMenuItem<ConstituencyModel>(
                           value: constituency,
@@ -204,14 +204,14 @@ class _BecomeAnAspirantViewState extends State<BecomeAnAspirantView> with RouteA
                         controller: _addressFieldController,
                         decoration: InputDecoration(
                           errorText: _formErrors?['address']?.first,
-                          labelText: appLocalizations.becomeAnAspirantViewAddressFieldLabel
+                          labelText: appLocalizations.addressLabel
                         )
                       ),
                       const SizedBox(
                         height: 7.0
                       ),
                       Text(
-                        appLocalizations.becomeAnAspirantViewFlyerFieldLabel,
+                        appLocalizations.flyerLabel,
                         style: themeData.textTheme.labelLarge?.copyWith(
                           color: _formErrors?['flyer']?.first != null ? themeData.colorScheme.error : themeData.colorScheme.onBackground
                         )
@@ -298,7 +298,7 @@ class _BecomeAnAspirantViewState extends State<BecomeAnAspirantView> with RouteA
                                   //
                                 }
                               },
-                              child: Text(appLocalizations.becomeAnAspirantViewSubmitActionText)
+                              child: Text(appLocalizations.applyAction)
                             )
                           )
                         ]

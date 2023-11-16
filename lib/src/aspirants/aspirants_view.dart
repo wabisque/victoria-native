@@ -56,29 +56,30 @@ class _AspirantsViewState extends State<AspirantsView> with RouteAware {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(appLocalizations.aspirantsViewTitle)
+        title: Text(appLocalizations.aspirantsTitle)
       ),
       body: RefreshIndicator(
         onRefresh: _getAspirants,
         child: _aspirants.isNotEmpty ? ListView.builder(
-          padding: const EdgeInsets.symmetric(
-            vertical: 21.0
-          ),
-          itemBuilder: (BuildContext context, int index) => ListTile(
-            onTap: () {
-              navigatorState.restorablePushNamed(
-                ViewAspirantView.routeName,
-                arguments: _aspirants[index].asJson
-              );
-            },
-            title: Text(_aspirants[index].user!.name),
-            subtitle: Text('${_aspirants[index].position!.name} | ${_aspirants[index].party!.name} | ${_aspirants[index].constituency!.name} (${_aspirants[index].constituency!.region!.name})'),
+          padding: const EdgeInsets.all(21.0),
+          itemBuilder: (BuildContext context, int index) => Badge(
+            isLabelVisible: _aspirants[index].isFollowed,
+            child: ListTile(
+              onTap: () {
+                navigatorState.restorablePushNamed(
+                  ViewAspirantView.routeName,
+                  arguments: _aspirants[index].asJson
+                );
+              },
+              title: Text(_aspirants[index].user!.name),
+              subtitle: Text('${_aspirants[index].position!.name} | ${_aspirants[index].party!.name} | ${_aspirants[index].constituency!.name} (${_aspirants[index].constituency!.region!.name})'),
+            )
           ),
           itemCount: _aspirants.length,
         ) : Stack(
           children: [
             Center(
-              child: Text(appLocalizations.aspirantsViewEmptyText)
+              child: Text(appLocalizations.noAspirantsToShowPrompt)
             ),
             ListView()
           ]

@@ -86,21 +86,21 @@ class _ViewAspirantUpdateRequestViewState extends State<ViewAspirantUpdateReques
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(appLocalizations.viewAspirantUpdateRequestViewTitle),
+        title: Text(appLocalizations.viewAspirantUpdateRequestTitle),
         actions: [
           IconButton(
             onPressed: () {
               showDialog(
                 context: context,
                 builder: (BuildContext context) => AlertDialog(
-                  content: Text(appLocalizations.viewAspirantUpdateRequestViewConfirmModalText),
-                  title: Text(appLocalizations.viewAspirantUpdateRequestViewConfirmModalTitle),
+                  content: Text(appLocalizations.confirmAspirantUpdateRequestTitle),
+                  title: Text(appLocalizations.doYouWishToAcceptOrDeclineThisAspirantUpdateRequestPrompt),
                   actions: [
                     TextButton(
                       onPressed: () {
                         navigatorState.pop();
                       },
-                      child: Text(appLocalizations.viewAspirantUpdateRequestViewConfirmModalCancelActionText)
+                      child: Text(appLocalizations.cancelAction)
                     ),
                     TextButton(
                       onPressed: () async {
@@ -109,7 +109,7 @@ class _ViewAspirantUpdateRequestViewState extends State<ViewAspirantUpdateReques
                           navigatorState.pop();
                         }
                       },
-                      child: Text(appLocalizations.viewAspirantUpdateRequestViewConfirmModalDeclineActionText)
+                      child: Text(appLocalizations.acceptAction)
                     ),
                     TextButton(
                       onPressed: () async {
@@ -118,7 +118,7 @@ class _ViewAspirantUpdateRequestViewState extends State<ViewAspirantUpdateReques
                           navigatorState.pop();
                         }
                       },
-                      child: Text(appLocalizations.viewAspirantUpdateRequestViewConfirmModalAcceptActionText)
+                      child: Text(appLocalizations.declineAction)
                     ),
                   ],
                 )
@@ -148,7 +148,7 @@ class _ViewAspirantUpdateRequestViewState extends State<ViewAspirantUpdateReques
             const SizedBox(
               height: 21.0
             ),
-            Text(appLocalizations.viewAspirantViewPositionLabel),
+            Text(appLocalizations.positionLabel),
             const SizedBox(
               height: 3.5
             ),
@@ -175,7 +175,7 @@ class _ViewAspirantUpdateRequestViewState extends State<ViewAspirantUpdateReques
                 )
               ],
             ),
-            Text(appLocalizations.viewAspirantViewPartyLabel),
+            Text(appLocalizations.partyLabel),
             const SizedBox(
               height: 3.5
             ),
@@ -202,7 +202,7 @@ class _ViewAspirantUpdateRequestViewState extends State<ViewAspirantUpdateReques
                 )
               ]
             ),
-            Text(appLocalizations.viewAspirantViewConstituencyLabel),
+            Text(appLocalizations.constituencyLabel),
             const SizedBox(
               height: 3.5
             ),
@@ -232,8 +232,8 @@ class _ViewAspirantUpdateRequestViewState extends State<ViewAspirantUpdateReques
             const SizedBox(
               height: 21.0
             ),
-            Text('Created at → ${DateFormat.yMMMMd().add_jms().format(_aspirantUpdateRequest.createdAt)}'),
-            Text('Last updated at → ${DateFormat.yMMMMd().add_jms().format(_aspirantUpdateRequest.updatedAt)}')
+            Text('${appLocalizations.createdAtPrompt} → ${DateFormat.yMMMMd().add_jms().format(_aspirantUpdateRequest.createdAt)}'),
+            Text('${appLocalizations.lastUpdatedAtPrompt} → ${DateFormat.yMMMMd().add_jms().format(_aspirantUpdateRequest.updatedAt)}')
           ]
         )
       )

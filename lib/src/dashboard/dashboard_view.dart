@@ -48,13 +48,13 @@ class _DashboardViewState extends State<DashboardView> {
               )
             ],
           ),
-          title: Text(appLocalizations.dashboardViewTitle),
+          title: Text(appLocalizations.dashboardTitle),
         ),
         body: TabBarView(
           children: [
             switch(authenticationProvider.user?.role?.name) {
-              'Follower' => const AspirantsTabView(),
-              _ => const ActionsTabView()
+              'Administrator' => const ActionsTabView(),
+              _ => const AspirantsTabView()
             },
             const PostsTabView()
           ],

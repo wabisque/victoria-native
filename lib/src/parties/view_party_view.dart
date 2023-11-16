@@ -77,14 +77,14 @@ class _ViewPartyViewState extends State<ViewPartyView> with RouteAware {
               showDialog(
                 context: context,
                 builder: (BuildContext context) => AlertDialog(
-                  content: Text(appLocalizations.viewPartyViewDeleteModalText),
-                  title: Text(appLocalizations.viewPartyViewDeleteModalTitle),
+                  content: Text(appLocalizations.deletePartyTitle),
+                  title: Text(appLocalizations.doYouWishToDeleteThisPartyPrompt),
                   actions: [
                     TextButton(
                       onPressed: () {
                         navigatorState.pop();
                       },
-                      child: Text(appLocalizations.viewPartyViewDeleteModalNoActionText)
+                      child: Text(appLocalizations.noAction)
                     ),
                     TextButton(
                       onPressed: () async {
@@ -106,7 +106,7 @@ class _ViewPartyViewState extends State<ViewPartyView> with RouteAware {
                           //
                         }
                       },
-                      child: Text(appLocalizations.viewPartyViewDeleteModalYesActionText)
+                      child: Text(appLocalizations.yesAction)
                     ),
                   ],
                 )
@@ -115,7 +115,7 @@ class _ViewPartyViewState extends State<ViewPartyView> with RouteAware {
             icon: const Icon(Icons.delete_outline)
           )
         ],
-        title: Text(appLocalizations.viewPartyViewTitle)
+        title: Text(appLocalizations.viewPartyTitle)
       ),
       body: RefreshIndicator(
         onRefresh: _getParty,
@@ -129,8 +129,8 @@ class _ViewPartyViewState extends State<ViewPartyView> with RouteAware {
             const SizedBox(
               height: 21.0
             ),
-            Text('Created at → ${DateFormat.yMMMMd().add_jms().format(_party.createdAt)}'),
-            Text('Last updated at → ${DateFormat.yMMMMd().add_jms().format(_party.updatedAt)}')
+            Text('${appLocalizations.createdAtPrompt} → ${DateFormat.yMMMMd().add_jms().format(_party.createdAt)}'),
+            Text('${appLocalizations.lastUpdatedAtPrompt} → ${DateFormat.yMMMMd().add_jms().format(_party.updatedAt)}')
           ]
         )
       )

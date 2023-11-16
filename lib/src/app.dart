@@ -25,6 +25,7 @@ import 'models/aspirant_update_request_model.dart';
 import 'models/constituency_model.dart';
 import 'models/party_model.dart';
 import 'models/position_model.dart';
+import 'models/post_model.dart';
 import 'models/region_model.dart';
 import 'parties/add_party_view.dart';
 import 'parties/edit_party_view.dart';
@@ -35,7 +36,8 @@ import 'positions/edit_position_view.dart';
 import 'positions/positions_view.dart';
 import 'positions/view_position_view.dart';
 import 'posts/add_post_view.dart';
-import 'posts/posts_view.dart';
+import 'posts/edit_post_view.dart';
+import 'posts/view_post_view.dart';
 import 'regions/add_region_view.dart';
 import 'regions/edit_region_view.dart';
 import 'regions/regions_view.dart';
@@ -141,6 +143,9 @@ class App extends StatelessWidget {
                 EditPositionView.routeName => EditPositionView(
                   position: PositionModel.fromJson(routeSettings.arguments as Map<String, dynamic>)
                 ),
+                EditPostView.routeName => EditPostView(
+                  post: PostModel.fromJson(routeSettings.arguments as Map<String, dynamic>)
+                ),
                 EditRegionView.routeName => EditRegionView(
                   region: RegionModel.fromJson(routeSettings.arguments as Map<String, dynamic>)
                 ),
@@ -150,7 +155,6 @@ class App extends StatelessWidget {
                 PartiesView.routeName => const PartiesView(),
                 PasswordView.routeName => const PasswordView(),
                 PositionsView.routeName => const PositionsView(),
-                PostsView.routeName => const PostsView(),
                 RegionsView.routeName => const RegionsView(),
                 RegisterView.routeName => const RegisterView(),
                 SettingsView.routeName => const SettingsView(),
@@ -172,6 +176,9 @@ class App extends StatelessWidget {
                 ),
                 ViewPositionView.routeName => ViewPositionView(
                   position: PositionModel.fromJson(routeSettings.arguments as Map<String, dynamic>)
+                ),
+                ViewPostView.routeName => ViewPostView(
+                  post: PostModel.fromJson(routeSettings.arguments as Map<String, dynamic>)
                 ),
                 ViewRegionView.routeName => ViewRegionView(
                   region: RegionModel.fromJson(routeSettings.arguments as Map<String, dynamic>)

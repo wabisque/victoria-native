@@ -77,14 +77,14 @@ class _ViewRegionViewState extends State<ViewRegionView> with RouteAware {
               showDialog(
                 context: context,
                 builder: (BuildContext context) => AlertDialog(
-                  content: Text(appLocalizations.viewRegionViewDeleteModalText),
-                  title: Text(appLocalizations.viewRegionViewDeleteModalTitle),
+                  content: Text(appLocalizations.deleteRegionTitle),
+                  title: Text(appLocalizations.doYouWishToDeleteThisRegionPrompt),
                   actions: [
                     TextButton(
                       onPressed: () {
                         navigatorState.pop();
                       },
-                      child: Text(appLocalizations.viewRegionViewDeleteModalNoActionText)
+                      child: Text(appLocalizations.noAction)
                     ),
                     TextButton(
                       onPressed: () async {
@@ -106,7 +106,7 @@ class _ViewRegionViewState extends State<ViewRegionView> with RouteAware {
                           //
                         }
                       },
-                      child: Text(appLocalizations.viewRegionViewDeleteModalYesActionText)
+                      child: Text(appLocalizations.yesAction)
                     ),
                   ],
                 )
@@ -115,7 +115,7 @@ class _ViewRegionViewState extends State<ViewRegionView> with RouteAware {
             icon: const Icon(Icons.delete_outlined)
           )
         ],
-        title: Text(appLocalizations.viewRegionViewTitle)
+        title: Text(appLocalizations.viewRegionTitle)
       ),
       body: RefreshIndicator(
         onRefresh: _getRegion,
@@ -129,8 +129,8 @@ class _ViewRegionViewState extends State<ViewRegionView> with RouteAware {
             const SizedBox(
               height: 21.0
             ),
-            Text('Created at → ${DateFormat.yMMMMd().add_jms().format(_region.createdAt)}'),
-            Text('Last updated at → ${DateFormat.yMMMMd().add_jms().format(_region.updatedAt)}')
+            Text('${appLocalizations.createdAtPrompt} → ${DateFormat.yMMMMd().add_jms().format(_region.createdAt)}'),
+            Text('${appLocalizations.lastUpdatedAtPrompt} → ${DateFormat.yMMMMd().add_jms().format(_region.updatedAt)}')
           ]
         )
       )

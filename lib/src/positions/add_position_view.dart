@@ -32,7 +32,7 @@ class _AddPositionViewState extends State<AddPositionView> with RouteAware {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(appLocalizations.addPositionViewTitle)
+        title: Text(appLocalizations.addPositionTitle)
       ),
       body: CustomScrollView(
         slivers: [
@@ -49,7 +49,7 @@ class _AddPositionViewState extends State<AddPositionView> with RouteAware {
                       controller: _nameFieldController,
                       decoration: InputDecoration(
                         errorText: _formErrors?['name']?.first,
-                        labelText: appLocalizations.addPositionViewNameFieldLabel
+                        labelText: appLocalizations.nameLabel
                       )
                     ),
                     const SizedBox(
@@ -86,7 +86,7 @@ class _AddPositionViewState extends State<AddPositionView> with RouteAware {
                               //
                             }
                           },
-                          child: Text(appLocalizations.addPositionViewSubmitActionText)
+                          child: Text(appLocalizations.addAction)
                         )
                       ]
                     )

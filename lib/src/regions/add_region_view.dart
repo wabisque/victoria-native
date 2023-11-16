@@ -32,7 +32,7 @@ class _AddRegionViewState extends State<AddRegionView> with RouteAware {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(appLocalizations.addRegionViewTitle)
+        title: Text(appLocalizations.addRegionTitle)
       ),
       body: CustomScrollView(
         slivers: [
@@ -49,7 +49,7 @@ class _AddRegionViewState extends State<AddRegionView> with RouteAware {
                       controller: _nameFieldController,
                       decoration: InputDecoration(
                         errorText: _formErrors?['name']?.first,
-                        labelText: appLocalizations.addRegionViewNameFieldLabel
+                        labelText: appLocalizations.nameLabel
                       )
                     ),
                     const SizedBox(
@@ -86,7 +86,7 @@ class _AddRegionViewState extends State<AddRegionView> with RouteAware {
                               //
                             }
                           },
-                          child: Text(appLocalizations.addRegionViewSubmitActionText)
+                          child: Text(appLocalizations.addAction)
                         )
                       ]
                     )

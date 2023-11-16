@@ -78,14 +78,14 @@ class _ViewConstituencyViewState extends State<ViewConstituencyView> with RouteA
               showDialog(
                 context: context,
                 builder: (BuildContext context) => AlertDialog(
-                  content: Text(appLocalizations.viewConstituencyViewDeleteModalText),
-                  title: Text(appLocalizations.viewConstituencyViewDeleteModalTitle),
+                  content: Text(appLocalizations.deleteConstituencyTitle),
+                  title: Text(appLocalizations.doYouWishToDeleteThisConstituencyPrompt),
                   actions: [
                     TextButton(
                       onPressed: () {
                         navigatorState.pop();
                       },
-                      child: Text(appLocalizations.viewConstituencyViewDeleteModalNoActionText)
+                      child: Text(appLocalizations.noAction)
                     ),
                     TextButton(
                       onPressed: () async {
@@ -107,7 +107,7 @@ class _ViewConstituencyViewState extends State<ViewConstituencyView> with RouteA
                           //
                         }
                       },
-                      child: Text(appLocalizations.viewConstituencyViewDeleteModalYesActionText)
+                      child: Text(appLocalizations.yesAction)
                     ),
                   ],
                 )
@@ -116,7 +116,7 @@ class _ViewConstituencyViewState extends State<ViewConstituencyView> with RouteA
             icon: const Icon(Icons.delete_outlined)
           )
         ],
-        title: Text(appLocalizations.viewConstituencyViewTitle)
+        title: Text(appLocalizations.viewConstituencyTitle)
       ),
       body: RefreshIndicator(
         onRefresh: _getConstituency,
@@ -146,8 +146,8 @@ class _ViewConstituencyViewState extends State<ViewConstituencyView> with RouteA
             const SizedBox(
               height: 21.0
             ),
-            Text('Created at → ${DateFormat.yMMMMd().add_jms().format(_constituency.createdAt)}'),
-            Text('Last updated at → ${DateFormat.yMMMMd().add_jms().format(_constituency.updatedAt)}')
+            Text('${appLocalizations.createdAtPrompt} → ${DateFormat.yMMMMd().add_jms().format(_constituency.createdAt)}'),
+            Text('${appLocalizations.lastUpdatedAtPrompt} → ${DateFormat.yMMMMd().add_jms().format(_constituency.updatedAt)}')
           ]
         )
       )

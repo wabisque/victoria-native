@@ -57,14 +57,12 @@ class _RegionsViewState extends State<RegionsView> with RouteAware {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(appLocalizations.regionsViewTitle)
+        title: Text(appLocalizations.regionsTitle)
       ),
       body: RefreshIndicator(
         onRefresh: _getRegions,
         child: _regions.isNotEmpty ? ListView.builder(
-          padding: const EdgeInsets.symmetric(
-            vertical: 21.0
-          ),
+          padding: const EdgeInsets.all(21.0),
           itemBuilder: (BuildContext context, int index) => ListTile(
             onTap: () {
               navigatorState.restorablePushNamed(
@@ -78,7 +76,7 @@ class _RegionsViewState extends State<RegionsView> with RouteAware {
         ) : Stack(
           children: [
             Center(
-              child: Text(appLocalizations.regionsViewEmptyText)
+              child: Text(appLocalizations.noRegionsToShowPrompt)
             ),
             ListView()
           ]
@@ -89,7 +87,7 @@ class _RegionsViewState extends State<RegionsView> with RouteAware {
           navigatorState.restorablePushNamed(AddRegionView.routeName);
         },
         child: const Icon(Icons.add_outlined)
-      ),
+      )
     );
   }
 

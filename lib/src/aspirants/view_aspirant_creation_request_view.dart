@@ -86,21 +86,21 @@ class _ViewAspirantCreationRequestViewState extends State<ViewAspirantCreationRe
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(appLocalizations.viewAspirantCreationRequestViewTitle),
+        title: Text(appLocalizations.viewAspirantCreationRequestTitle),
         actions: [
           IconButton(
             onPressed: () {
               showDialog(
                 context: context,
                 builder: (BuildContext context) => AlertDialog(
-                  content: Text(appLocalizations.viewAspirantCreationRequestViewConfirmModalText),
-                  title: Text(appLocalizations.viewAspirantCreationRequestViewConfirmModalTitle),
+                  content: Text(appLocalizations.confirmAspirantCreationRequestTitle),
+                  title: Text(appLocalizations.doYouWishToAcceptOrDeclineThisAspirantCreationRequestPrompt),
                   actions: [
                     TextButton(
                       onPressed: () {
                         navigatorState.pop();
                       },
-                      child: Text(appLocalizations.viewAspirantCreationRequestViewConfirmModalCancelActionText)
+                      child: Text(appLocalizations.cancelAction)
                     ),
                     TextButton(
                       onPressed: () async {
@@ -109,7 +109,7 @@ class _ViewAspirantCreationRequestViewState extends State<ViewAspirantCreationRe
                           navigatorState.pop();
                         }
                       },
-                      child: Text(appLocalizations.viewAspirantCreationRequestViewConfirmModalDeclineActionText)
+                      child: Text(appLocalizations.declineAction)
                     ),
                     TextButton(
                       onPressed: () async {
@@ -118,7 +118,7 @@ class _ViewAspirantCreationRequestViewState extends State<ViewAspirantCreationRe
                           navigatorState.pop();
                         }
                       },
-                      child: Text(appLocalizations.viewAspirantCreationRequestViewConfirmModalAcceptActionText)
+                      child: Text(appLocalizations.acceptAction)
                     ),
                   ],
                 )
@@ -150,7 +150,7 @@ class _ViewAspirantCreationRequestViewState extends State<ViewAspirantCreationRe
             ),
             Row(
               children: [
-                Text(appLocalizations.viewAspirantViewPositionLabel),
+                Text(appLocalizations.positionLabel),
                 const SizedBox(
                   height: 3.5
                 ),
@@ -167,7 +167,7 @@ class _ViewAspirantCreationRequestViewState extends State<ViewAspirantCreationRe
             ),
             Row(
               children: [
-                Text(appLocalizations.viewAspirantViewPartyLabel),
+                Text(appLocalizations.partyLabel),
                 const SizedBox(
                   height: 3.5
                 ),
@@ -184,7 +184,7 @@ class _ViewAspirantCreationRequestViewState extends State<ViewAspirantCreationRe
             ),
             Row(
               children: [
-                Text(appLocalizations.viewAspirantViewConstituencyLabel),
+                Text(appLocalizations.constituencyLabel),
                 const SizedBox(
                   height: 3.5
                 ),
@@ -202,8 +202,8 @@ class _ViewAspirantCreationRequestViewState extends State<ViewAspirantCreationRe
             const SizedBox(
               height: 21.0
             ),
-            Text('Created at → ${DateFormat.yMMMMd().add_jms().format(_aspirantCreationRequest.createdAt)}'),
-            Text('Last updated at → ${DateFormat.yMMMMd().add_jms().format(_aspirantCreationRequest.updatedAt)}')
+            Text('${appLocalizations.createdAtPrompt} → ${DateFormat.yMMMMd().add_jms().format(_aspirantCreationRequest.createdAt)}'),
+            Text('${appLocalizations.lastUpdatedAtPrompt} → ${DateFormat.yMMMMd().add_jms().format(_aspirantCreationRequest.updatedAt)}')
           ]
         )
       )

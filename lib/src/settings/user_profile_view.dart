@@ -31,7 +31,7 @@ class _UserProfileViewState extends State<UserProfileView> with RouteAware {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(appLocalizations.userProfileViewTitle)
+        title: Text(appLocalizations.userProfileTitle)
       ),
       body: CustomScrollView(
         slivers: [
@@ -48,7 +48,7 @@ class _UserProfileViewState extends State<UserProfileView> with RouteAware {
                       controller: _nameFieldController,
                       decoration: InputDecoration(
                         errorText: _formErrors?['name']?.first,
-                        labelText: appLocalizations.userProfileViewNameFieldLabel
+                        labelText: appLocalizations.nameLabel
                       )
                     ),
                     const SizedBox(
@@ -58,7 +58,7 @@ class _UserProfileViewState extends State<UserProfileView> with RouteAware {
                       controller: _emailFieldController,
                       decoration: InputDecoration(
                         errorText: _formErrors?['email']?.first,
-                        labelText: appLocalizations.userProfileViewEmailFieldLabel
+                        labelText: appLocalizations.emailLabel
                       )
                     ),
                     const SizedBox(
@@ -68,7 +68,7 @@ class _UserProfileViewState extends State<UserProfileView> with RouteAware {
                       controller: _phoneFieldController,
                       decoration: InputDecoration(
                         errorText: _formErrors?['phone_number']?.first,
-                        labelText: appLocalizations.userProfileViewPhoneFieldLabel
+                        labelText: appLocalizations.phoneLabel
                       )
                     ),
                     const SizedBox(
@@ -91,7 +91,7 @@ class _UserProfileViewState extends State<UserProfileView> with RouteAware {
                               _formErrors = (error?['errors'] as Map<String, dynamic>?)?.cast<String, List>();
                             });
                           },
-                          child: Text(appLocalizations.userProfileViewSubmitActionText)
+                          child: Text(appLocalizations.saveAction)
                         )
                       ]
                     )

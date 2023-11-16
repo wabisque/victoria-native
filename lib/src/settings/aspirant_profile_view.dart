@@ -122,7 +122,7 @@ class _AspirantProfileViewState extends State<AspirantProfileView> with RouteAwa
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(appLocalizations.aspirantProfileViewTitle)
+        title: Text(appLocalizations.aspirantProfileTitle)
       ),
       body: RefreshIndicator(
         onRefresh: () async {
@@ -146,7 +146,7 @@ class _AspirantProfileViewState extends State<AspirantProfileView> with RouteAwa
                       DropdownButtonFormField<PositionModel>(
                         decoration: InputDecoration(
                           errorText: _formErrors?['position']?.first,
-                          labelText: appLocalizations.aspirantProfileViewPositionFieldLabel,
+                          labelText: appLocalizations.positionLabel,
                         ),
                         items: _positions.map((position) => DropdownMenuItem<PositionModel>(
                           value: position,
@@ -165,7 +165,7 @@ class _AspirantProfileViewState extends State<AspirantProfileView> with RouteAwa
                       DropdownButtonFormField<PartyModel>(
                         decoration: InputDecoration(
                           errorText: _formErrors?['party']?.first,
-                          labelText: appLocalizations.aspirantProfileViewPartyFieldLabel,
+                          labelText: appLocalizations.partyLabel,
                         ),
                         items: _parties.map((party) => DropdownMenuItem<PartyModel>(
                           value: party,
@@ -184,7 +184,7 @@ class _AspirantProfileViewState extends State<AspirantProfileView> with RouteAwa
                       DropdownButtonFormField<ConstituencyModel>(
                         decoration: InputDecoration(
                           errorText: _formErrors?['constituency']?.first,
-                          labelText: appLocalizations.aspirantProfileViewConstituencyFieldLabel,
+                          labelText: appLocalizations.constituencyLabel,
                         ),
                         items: _constituencies.map((constituency) => DropdownMenuItem<ConstituencyModel>(
                           value: constituency,
@@ -204,14 +204,14 @@ class _AspirantProfileViewState extends State<AspirantProfileView> with RouteAwa
                         controller: _addressFieldController,
                         decoration: InputDecoration(
                           errorText: _formErrors?['address']?.first,
-                          labelText: appLocalizations.aspirantProfileViewAddressFieldLabel
+                          labelText: appLocalizations.addressLabel
                         )
                       ),
                       const SizedBox(
                         height: 7.0
                       ),
                       Text(
-                        appLocalizations.aspirantProfileViewFlyerFieldLabel,
+                        appLocalizations.flyerLabel,
                         style: themeData.textTheme.labelLarge?.copyWith(
                           color: _formErrors?['flyer']?.first != null ? themeData.colorScheme.error : themeData.colorScheme.onBackground
                         )
@@ -299,7 +299,7 @@ class _AspirantProfileViewState extends State<AspirantProfileView> with RouteAwa
                                   //
                                 }
                               },
-                              child: Text(appLocalizations.aspirantProfileViewSubmitActionText)
+                              child: Text(appLocalizations.saveAction)
                             )
                           )
                         ]

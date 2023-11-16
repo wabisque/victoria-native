@@ -22,7 +22,8 @@ class AddPostView extends StatefulWidget {
 class _AddPostViewState extends State<AddPostView> with RouteAware {
   Map<String, List>? _formErrors;
   late GlobalKey _formKey;
-  late TextEditingController _nameFieldController;
+  late TextEditingController _bodyFieldController;
+  late TextEditingController _titleFieldController;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +33,7 @@ class _AddPostViewState extends State<AddPostView> with RouteAware {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(appLocalizations.addPositionViewTitle)
+        title: Text(appLocalizations.addPostTitle)
       ),
       body: CustomScrollView(
         slivers: [
@@ -46,11 +47,22 @@ class _AddPostViewState extends State<AddPostView> with RouteAware {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     TextFormField(
-                      controller: _nameFieldController,
+                      controller: _titleFieldController,
                       decoration: InputDecoration(
-                        errorText: _formErrors?['name']?.first,
-                        labelText: appLocalizations.addPositionViewNameFieldLabel
+                        errorText: _formErrors?['title']?.first,
+                        labelText: appLocalizations.titleLabel
                       )
+                    ),
+                    const SizedBox(
+                      height: 7.0
+                    ),
+                    TextFormField(
+                      controller: _bodyFieldController,
+                      decoration: InputDecoration(
+                        errorText: _formErrors?['body']?.first,
+                        labelText: appLocalizations.bodyLabel
+                      ),
+                      maxLines: 4,
                     ),
                     const SizedBox(
                       height: 21.0
@@ -62,9 +74,10 @@ class _AddPostViewState extends State<AddPostView> with RouteAware {
                           onPressed: () async {
                             try {
                               final http.Response response = await http.post(
-                                Uri.parse('${Constants.apiHost}/api/positions'),
+                                Uri.parse('${Constants.apiHost}/api/posts'),
                                 body: jsonEncode({
-                                  'name': _nameFieldController.text
+                                  'body': _bodyFieldController.text,
+                                  'title': _titleFieldController.text
                                 }),
                                 headers: {
                                   'Accept': 'application/json',
@@ -86,7 +99,7 @@ class _AddPostViewState extends State<AddPostView> with RouteAware {
                               //
                             }
                           },
-                          child: Text(appLocalizations.addPositionViewSubmitActionText)
+                          child: Text(appLocalizations.addAction)
                         )
                       ]
                     )
@@ -113,8 +126,14 @@ class _AddPostViewState extends State<AddPostView> with RouteAware {
   }
 
   @override
+  void didPopNext() {
+    //
+  }
+
+  @override
   void dispose() {
-    _nameFieldController.dispose();
+    _bodyFieldController.dispose();
+    _titleFieldController.dispose();
     Constants.routeObserver.unsubscribe(this);
 
     super.dispose();
@@ -125,6 +144,7 @@ class _AddPostViewState extends State<AddPostView> with RouteAware {
     super.initState();
 
     _formKey = GlobalKey();
-    _nameFieldController = TextEditingController();
+    _bodyFieldController = TextEditingController();
+    _titleFieldController = TextEditingController();
   }
 }

@@ -53,9 +53,7 @@ class _AspirantsTabViewState extends State<AspirantsTabView> {
     return RefreshIndicator(
       onRefresh: _getAspirants,
       child: _aspirants.isNotEmpty ? ListView.builder(
-        padding: const EdgeInsets.symmetric(
-          vertical: 21.0
-        ),
+        padding: const EdgeInsets.all(21.0),
         itemBuilder: (BuildContext context, int index) => ListTile(
           title: Text(_aspirants[index].user!.name),
           subtitle: Text('${_aspirants[index].position!.name} | ${_aspirants[index].party!.name} | ${_aspirants[index].constituency!.name} (${_aspirants[index].constituency!.region!.name})'),
@@ -64,7 +62,7 @@ class _AspirantsTabViewState extends State<AspirantsTabView> {
       ) : Stack(
         children: [
           Center(
-            child: Text(appLocalizations.dashboardAspirantsTabViewEmptyText)
+            child: Text(appLocalizations.noAspirantsToShowPrompt)
           ),
           ListView()
         ]

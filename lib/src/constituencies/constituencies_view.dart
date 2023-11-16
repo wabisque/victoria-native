@@ -57,14 +57,12 @@ class _ConstituenciesViewState extends State<ConstituenciesView> with RouteAware
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(appLocalizations.constituenciesViewTitle)
+        title: Text(appLocalizations.constituenciesTitle)
       ),
       body: RefreshIndicator(
         onRefresh: _getConstituencies,
         child: _constituencies.isNotEmpty ? ListView.builder(
-          padding: const EdgeInsets.symmetric(
-            vertical: 21.0
-          ),
+          padding: const EdgeInsets.all(21.0),
           itemBuilder: (BuildContext context, int index) => ListTile(
             onTap: () {
               navigatorState.restorablePushNamed(
@@ -79,7 +77,7 @@ class _ConstituenciesViewState extends State<ConstituenciesView> with RouteAware
         ) : Stack(
           children: [
             Center(
-              child: Text(appLocalizations.constituenciesViewEmptyText)
+              child: Text(appLocalizations.noConstituenciesToShowPrompt)
             ),
             ListView()
           ]

@@ -43,10 +43,10 @@ class _LoginViewState extends State<LoginView> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      appLocalizations.loginViewTitle,
+                      appLocalizations.welcomeBackPrompt,
                       style: themeData.textTheme.titleLarge
                     ),
-                    Text(appLocalizations.loginViewText),
+                    Text(appLocalizations.loginToContinueYourWorkPrompt),
                     const SizedBox(
                       height: 21.0
                     ),
@@ -59,7 +59,7 @@ class _LoginViewState extends State<LoginView> {
                             controller: _idFieldController,
                             decoration: InputDecoration(
                               errorText: _formErrors?['id']?.first,
-                              labelText: appLocalizations.loginViewIdFieldLabel
+                              labelText: appLocalizations.emailOrPhoneLabel
                             ),
                           ),
                           const SizedBox(
@@ -69,7 +69,7 @@ class _LoginViewState extends State<LoginView> {
                             controller: _passwordFieldController,
                             decoration: InputDecoration(
                               errorText: _formErrors?['password']?.first,
-                              labelText: appLocalizations.loginViewPasswordFieldLabel
+                              labelText: appLocalizations.passwordLabel
                             ),
                           )
                         ]
@@ -83,7 +83,7 @@ class _LoginViewState extends State<LoginView> {
                       children: [
                         TextButton(
                           onPressed: () {},
-                          child: Text(appLocalizations.loginViewForgotPasswordActionText)
+                          child: Text(appLocalizations.forgotPasswordAction)
                         ),
                         FilledButton(
                           onPressed: () async {
@@ -98,7 +98,7 @@ class _LoginViewState extends State<LoginView> {
                               _formErrors = (error?['errors'] as Map<String, dynamic>?)?.cast<String, List>();
                             });
                           },
-                          child: Text(appLocalizations.loginViewSubmitActionText)
+                          child: Text(appLocalizations.loginAction)
                         )
                       ]
                     ),
@@ -113,7 +113,7 @@ class _LoginViewState extends State<LoginView> {
                           )
                         ),
                         Text(
-                          appLocalizations.loginViewDividerText,
+                          appLocalizations.orPrompt,
                           style: TextStyle(
                             color: themeData.colorScheme.outline,
                             fontWeight: FontWeight.w300
@@ -134,7 +134,7 @@ class _LoginViewState extends State<LoginView> {
                         onPressed: () {
                           navigatorState.restorablePushReplacementNamed(RegisterView.routeName);
                         },
-                        child: Text(appLocalizations.loginViewRegisterActionText)
+                        child: Text(appLocalizations.dontHaveAnAccountAction)
                       )
                     )
                   ]

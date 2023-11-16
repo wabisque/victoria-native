@@ -37,7 +37,7 @@ class _EditRegionViewState extends State<EditRegionView> with RouteAware {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(appLocalizations.editRegionViewTitle)
+        title: Text(appLocalizations.editRegionTitle)
       ),
       body: CustomScrollView(
         slivers: [
@@ -61,7 +61,7 @@ class _EditRegionViewState extends State<EditRegionView> with RouteAware {
                       controller: _nameFieldController,
                       decoration: InputDecoration(
                         errorText: _formErrors?['name']?.first,
-                        label: Text(appLocalizations.editRegionViewNameFieldLabel)
+                        label: Text(appLocalizations.nameLabel)
                       )
                     ),
                     const SizedBox(
@@ -98,7 +98,7 @@ class _EditRegionViewState extends State<EditRegionView> with RouteAware {
                               //
                             }
                           },
-                          child: Text(appLocalizations.editRegionViewSubmitActionText)
+                          child: Text(appLocalizations.saveAction)
                         )
                       ]
                     )

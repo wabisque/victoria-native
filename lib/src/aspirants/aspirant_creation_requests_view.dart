@@ -56,14 +56,12 @@ class _AspirantCreationRequestsViewState extends State<AspirantCreationRequestsV
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(appLocalizations.aspirantCreationRequestsViewTitle)
+        title: Text(appLocalizations.aspirantCreationRequestsTitle)
       ),
       body: RefreshIndicator(
         onRefresh: _getAspirantCreationRequests,
         child: _aspirantCreationRequests.isNotEmpty ? ListView.builder(
-          padding: const EdgeInsets.symmetric(
-            vertical: 21.0
-          ),
+          padding: const EdgeInsets.all(21.0),
           itemBuilder: (BuildContext context, int index) => ListTile(
             onTap: () {
               navigatorState.restorablePushNamed(
@@ -78,7 +76,7 @@ class _AspirantCreationRequestsViewState extends State<AspirantCreationRequestsV
         ) : Stack(
           children: [
             Center(
-              child: Text(appLocalizations.aspirantCreationRequestsViewEmptyText)
+              child: Text(appLocalizations.noAspirantCreationRequestsToShowPrompt)
             ),
             ListView()
           ]

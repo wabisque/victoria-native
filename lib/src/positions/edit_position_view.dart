@@ -37,7 +37,7 @@ class _EditPositionViewState extends State<EditPositionView> with RouteAware {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(appLocalizations.editPositionViewTitle)
+        title: Text(appLocalizations.editPositionTitle)
       ),
       body: CustomScrollView(
         slivers: [
@@ -61,7 +61,7 @@ class _EditPositionViewState extends State<EditPositionView> with RouteAware {
                       controller: _nameFieldController,
                       decoration: InputDecoration(
                         errorText: _formErrors?['name']?.first,
-                        label: Text(appLocalizations.editPositionViewNameFieldLabel)
+                        label: Text(appLocalizations.nameLabel)
                       )
                     ),
                     const SizedBox(
@@ -98,7 +98,7 @@ class _EditPositionViewState extends State<EditPositionView> with RouteAware {
                               //
                             }
                           },
-                          child: Text(appLocalizations.editPositionViewSubmitActionText)
+                          child: Text(appLocalizations.saveAction)
                         )
                       ]
                     )
