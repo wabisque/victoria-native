@@ -34,21 +34,25 @@ class _EditConstituencyViewState extends State<EditConstituencyView> with RouteA
   Future<void> _getRegions() async {
     final AuthenticationProvider authenticationProvider = context.read<AuthenticationProvider>();
 
-    final http.Response response = await http.get(
-      Uri.parse('${Constants.apiHost}/api/regions'),
-      headers: {
-        'Accept': 'application/json',
-        'Authorization': 'Bearer ${authenticationProvider.token}',
-        'X-Requested-With': 'XMLHttpRequest'
-      }
-    );
-    
-    if(response.statusCode == 200) {
-      final Map<String, dynamic> data = jsonDecode(response.body);
+    try {
+      final http.Response response = await http.get(
+        Uri.parse('${Constants.apiHost}/api/regions'),
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ${authenticationProvider.token}',
+          'X-Requested-With': 'XMLHttpRequest'
+        }
+      );
+      
+      if(response.statusCode == 200) {
+        final Map<String, dynamic> data = jsonDecode(response.body);
 
-      setState(() {
-        _regions = (data['regions']! as List).map((region) => RegionModel.fromJson(region)).toList();
-      });
+        setState(() {
+          _regions = (data['regions']! as List).map((region) => RegionModel.fromJson(region)).toList();
+        });
+      }
+    } catch(error) {
+      //
     }
   }
 
@@ -119,27 +123,31 @@ class _EditConstituencyViewState extends State<EditConstituencyView> with RouteA
                       children: [
                         FilledButton(
                           onPressed: () async {
-                            final http.Response response = await http.put(
-                              Uri.parse('${Constants.apiHost}/api/constituencies/${widget.constituency.id}'),
-                              body: jsonEncode({
-                                'name': _nameFieldController.text,
-                                'region': _regionId
-                              }),
-                              headers: {
-                                'Accept': 'application/json',
-                                'Authorization': 'Bearer ${authenticationProvider.token}',
-                                'Content-Type': 'application/json',
-                                'X-Requested-With': 'XMLHttpRequest'
-                              }
-                            );
-                            final Map<String, dynamic> data = jsonDecode(response.body);
+                            try {
+                              final http.Response response = await http.put(
+                                Uri.parse('${Constants.apiHost}/api/constituencies/${widget.constituency.id}'),
+                                body: jsonEncode({
+                                  'name': _nameFieldController.text,
+                                  'region': _regionId
+                                }),
+                                headers: {
+                                  'Accept': 'application/json',
+                                  'Authorization': 'Bearer ${authenticationProvider.token}',
+                                  'Content-Type': 'application/json',
+                                  'X-Requested-With': 'XMLHttpRequest'
+                                }
+                              );
+                              final Map<String, dynamic> data = jsonDecode(response.body);
 
-                            if(response.statusCode == 200) {
-                              navigatorState.pop();
-                            } else {
-                              setState(() {
-                                _formErrors = data['errors']?.cast<String, List>();
-                              });
+                              if(response.statusCode == 200) {
+                                navigatorState.pop();
+                              } else {
+                                setState(() {
+                                  _formErrors = (data['errors'] as Map<String, dynamic>?)?.cast<String, List>();
+                                });
+                              }
+                            } catch(error) {
+                              //
                             }
                           },
                           child: Text(appLocalizations.editConstituencyViewSubmitActionText)

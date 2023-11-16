@@ -33,21 +33,25 @@ class _ViewAspirantViewState extends State<ViewAspirantView> with RouteAware {
   Future<void> _getAspirant() async {
     final AuthenticationProvider authenticationProvider = context.read<AuthenticationProvider>();
 
-    final http.Response response = await http.get(
-      Uri.parse('${Constants.apiHost}/api/aspirants/${widget.aspirant.id}'),
-      headers: {
-        'Accept': 'application/json',
-        'Authorization': 'Bearer ${authenticationProvider.token}',
-        'X-Requested-With': 'XMLHttpRequest'
+    try {
+      final http.Response response = await http.get(
+        Uri.parse('${Constants.apiHost}/api/aspirants/${widget.aspirant.id}'),
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ${authenticationProvider.token}',
+          'X-Requested-With': 'XMLHttpRequest'
+        }
+      );
+
+      if(response.statusCode == 200) {
+        final Map<String, dynamic> data = jsonDecode(response.body);
+
+        setState(() {
+          _aspirant = AspirantModel.fromJson(data['aspirant']);
+        });
       }
-    );
-
-    if(response.statusCode == 200) {
-      final Map<String, dynamic> data = jsonDecode(response.body);
-
-      setState(() {
-        _aspirant = AspirantModel.fromJson(data['aspirant']);
-      });
+    } catch(error) {
+      //
     }
   }
 
@@ -78,18 +82,22 @@ class _ViewAspirantViewState extends State<ViewAspirantView> with RouteAware {
                     ),
                     TextButton(
                       onPressed: () async {
-                        final http.Response response = await http.delete(
-                          Uri.parse('${Constants.apiHost}/api/aspirants/${_aspirant.id}'),
-                          headers: {
-                            'Accept': 'application/json',
-                            'Authorization': 'Bearer ${authenticationProvider.token}',
-                            'X-Requested-With': 'XMLHttpRequest'
-                          }
-                        );
+                        try {
+                          final http.Response response = await http.delete(
+                            Uri.parse('${Constants.apiHost}/api/aspirants/${_aspirant.id}'),
+                            headers: {
+                              'Accept': 'application/json',
+                              'Authorization': 'Bearer ${authenticationProvider.token}',
+                              'X-Requested-With': 'XMLHttpRequest'
+                            }
+                          );
 
-                        if(response.statusCode == 200) {
-                          navigatorState.pop();
-                          navigatorState.pop();
+                          if(response.statusCode == 200) {
+                            navigatorState.pop();
+                            navigatorState.pop();
+                          }
+                        } catch(error) {
+                          //
                         }
                       },
                       child: Text(appLocalizations.viewAspirantViewDeleteModalYesActionText)
@@ -98,7 +106,7 @@ class _ViewAspirantViewState extends State<ViewAspirantView> with RouteAware {
                 )
               );
             },
-            icon: const Icon(Icons.delete)
+            icon: const Icon(Icons.delete_outlined)
           )
         ]
       ),
@@ -123,60 +131,53 @@ class _ViewAspirantViewState extends State<ViewAspirantView> with RouteAware {
               height: 21.0
             ),
             Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Column(
-                  children: [
-                    Text(appLocalizations.viewAspirantViewPositionLabel),
-                    const SizedBox(
-                      height: 3.5
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        navigatorState.restorablePushNamed(
-                          ViewPositionView.routeName,
-                          arguments: _aspirant.position!.asJson
-                        );
-                      },
-                      child: Text(_aspirant.position!.name)
-                    )
-                  ]
+                Text(appLocalizations.viewAspirantViewPositionLabel),
+                const SizedBox(
+                  height: 3.5
                 ),
-                const Divider(),
-                Column(
-                  children: [
-                    Text(appLocalizations.viewAspirantViewPartyLabel),
-                    const SizedBox(
-                      height: 3.5
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        navigatorState.restorablePushNamed(
-                          ViewPartyView.routeName,
-                          arguments: _aspirant.party!.asJson
-                        );
-                      },
-                      child: Text(_aspirant.party!.name)
-                    )
-                  ]
+                TextButton(
+                  onPressed: () {
+                    navigatorState.restorablePushNamed(
+                      ViewPositionView.routeName,
+                      arguments: _aspirant.position!.asJson
+                    );
+                  },
+                  child: Text(_aspirant.position!.name)
+                )
+              ]
+            ),
+            Row(
+              children: [
+                Text(appLocalizations.viewAspirantViewPartyLabel),
+                const SizedBox(
+                  height: 3.5
                 ),
-                const Divider(),
-                Column(
-                  children: [
-                    Text(appLocalizations.viewAspirantViewConstituencyLabel),
-                    const SizedBox(
-                      height: 3.5
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        navigatorState.restorablePushNamed(
-                          ViewConstituencyView.routeName,
-                          arguments: _aspirant.constituency!.asJson
-                        );
-                      },
-                      child: Text('${_aspirant.constituency!.name} (${_aspirant.constituency!.region!.name})')
-                    )
-                  ]
+                TextButton(
+                  onPressed: () {
+                    navigatorState.restorablePushNamed(
+                      ViewPartyView.routeName,
+                      arguments: _aspirant.party!.asJson
+                    );
+                  },
+                  child: Text(_aspirant.party!.name)
+                )
+              ]
+            ),
+            Row(
+              children: [
+                Text(appLocalizations.viewAspirantViewConstituencyLabel),
+                const SizedBox(
+                  height: 3.5
+                ),
+                TextButton(
+                  onPressed: () {
+                    navigatorState.restorablePushNamed(
+                      ViewConstituencyView.routeName,
+                      arguments: _aspirant.constituency!.asJson
+                    );
+                  },
+                  child: Text('${_aspirant.constituency!.name} (${_aspirant.constituency!.region!.name})')
                 )
               ]
             ),

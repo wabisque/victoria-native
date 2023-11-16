@@ -28,21 +28,25 @@ class _PartiesViewState extends State<PartiesView> with RouteAware {
   Future<void> _getParties() async {
     final AuthenticationProvider authenticationProvider = context.read<AuthenticationProvider>();
 
-    final http.Response response = await http.get(
-      Uri.parse('${Constants.apiHost}/api/parties'),
-      headers: {
-        'Accept': 'application/json',
-        'Authorization': 'Bearer ${authenticationProvider.token}',
-        'X-Requested-With': 'XMLHttpRequest'
-      }
-    );
-    
-    if(response.statusCode == 200) {
-      final Map<String, dynamic> data = jsonDecode(response.body);
+    try {
+      final http.Response response = await http.get(
+        Uri.parse('${Constants.apiHost}/api/parties'),
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ${authenticationProvider.token}',
+          'X-Requested-With': 'XMLHttpRequest'
+        }
+      );
+      
+      if(response.statusCode == 200) {
+        final Map<String, dynamic> data = jsonDecode(response.body);
 
-      setState(() {
-        _parties = (data['parties']! as List).map((party) => PartyModel.fromJson(party)).toList();
-      });
+        setState(() {
+          _parties = (data['parties']! as List).map((party) => PartyModel.fromJson(party)).toList();
+        });
+      }
+    } catch(error) {
+      //
     }
   }
 
@@ -68,15 +72,20 @@ class _PartiesViewState extends State<PartiesView> with RouteAware {
             title: Text(_parties[index].name)
           ),
           itemCount: _parties.length,
-        ) : Center(
-          child: Text(appLocalizations.partiesViewEmptyText)
+        ) : Stack(
+          children: [
+            Center(
+              child: Text(appLocalizations.partiesViewEmptyText)
+            ),
+            ListView()
+          ]
         )
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           navigatorState.restorablePushNamed(AddPartyView.routeName);
         },
-        child: const Icon(Icons.add)
+        child: const Icon(Icons.add_outlined)
       ),
     );
   }

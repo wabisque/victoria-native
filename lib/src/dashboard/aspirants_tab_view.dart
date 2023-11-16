@@ -23,21 +23,26 @@ class _AspirantsTabViewState extends State<AspirantsTabView> {
 
   Future<void> _getAspirants() async {
     final AuthenticationProvider authenticationProvider = context.read<AuthenticationProvider>();
-    final http.Response response = await http.get(
-      Uri.parse('${Constants.apiHost}/api/posts'),
-      headers: {
-        'Accept': 'application/json',
-        'Authorization': 'Bearer ${authenticationProvider.token}',
-        'X-Requested-With': 'XMLHttpRequest'
+
+    try {
+      final http.Response response = await http.get(
+        Uri.parse('${Constants.apiHost}/api/posts'),
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ${authenticationProvider.token}',
+          'X-Requested-With': 'XMLHttpRequest'
+        }
+      );
+
+      if(response.statusCode == 200) {
+        final Map<String, dynamic> data = jsonDecode(response.body);
+
+        setState(() {
+          _aspirants = (data['aspirants']! as List).map((aspirant) => AspirantModel.fromJson(aspirant)).toList();
+        });
       }
-    );
-
-    if(response.statusCode == 200) {
-      final Map<String, dynamic> data = jsonDecode(response.body);
-
-      setState(() {
-        _aspirants = (data['aspirants']! as List).map((aspirant) => AspirantModel.fromJson(aspirant)).toList();
-      });
+    } catch(error) {
+      //
     }
   }
 
@@ -56,8 +61,13 @@ class _AspirantsTabViewState extends State<AspirantsTabView> {
           subtitle: Text('${_aspirants[index].position!.name} | ${_aspirants[index].party!.name} | ${_aspirants[index].constituency!.name} (${_aspirants[index].constituency!.region!.name})'),
         ),
         itemCount: _aspirants.length,
-      ) : Center(
-        child: Text(appLocalizations.dashboardAspirantsTabViewEmptyText)
+      ) : Stack(
+        children: [
+          Center(
+            child: Text(appLocalizations.dashboardAspirantsTabViewEmptyText)
+          ),
+          ListView()
+        ]
       )
     );
   }

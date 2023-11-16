@@ -27,21 +27,25 @@ class _AspirantUpdateRequestsViewState extends State<AspirantUpdateRequestsView>
   Future<void> _getAspirantUpdateRequests() async {
     final AuthenticationProvider authenticationProvider = context.read<AuthenticationProvider>();
 
-    final http.Response response = await http.get(
-      Uri.parse('${Constants.apiHost}/api/aspirants/update-requests'),
-      headers: {
-        'Accept': 'application/json',
-        'Authorization': 'Bearer ${authenticationProvider.token}',
-        'X-Requested-With': 'XMLHttpRequest'
-      }
-    );
-    
-    if(response.statusCode == 200) {
-      final Map<String, dynamic> data = jsonDecode(response.body);
+    try {
+      final http.Response response = await http.get(
+        Uri.parse('${Constants.apiHost}/api/aspirants/update-requests'),
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ${authenticationProvider.token}',
+          'X-Requested-With': 'XMLHttpRequest'
+        }
+      );
+      
+      if(response.statusCode == 200) {
+        final Map<String, dynamic> data = jsonDecode(response.body);
 
-      setState(() {
-        _aspirantUpdateRequests = (data['aspirant_update_requests']! as List).map((aspirantUpdateRequest) => AspirantUpdateRequestModel.fromJson(aspirantUpdateRequest)).toList();
-      });
+        setState(() {
+          _aspirantUpdateRequests = (data['aspirant_update_requests']! as List).map((aspirantUpdateRequest) => AspirantUpdateRequestModel.fromJson(aspirantUpdateRequest)).toList();
+        });
+      }
+    } catch(error) {
+      //
     }
   }
 
@@ -71,8 +75,13 @@ class _AspirantUpdateRequestsViewState extends State<AspirantUpdateRequestsView>
             subtitle: Text('${_aspirantUpdateRequests[index].aspirant!.position!.name} → ${_aspirantUpdateRequests[index].position!.name} | ${_aspirantUpdateRequests[index].aspirant!.party!.name} → ${_aspirantUpdateRequests[index].party!.name} | ${_aspirantUpdateRequests[index].aspirant!.constituency!.name} (${_aspirantUpdateRequests[index].aspirant!.constituency!.region!.name}) → ${_aspirantUpdateRequests[index].constituency!.name} (${_aspirantUpdateRequests[index].constituency!.region!.name})'),
           ),
           itemCount: _aspirantUpdateRequests.length,
-        ) : Center(
-          child: Text(appLocalizations.aspirantUpdateRequestsViewEmptyText)
+        ) : Stack(
+          children: [
+            Center(
+              child: Text(appLocalizations.aspirantUpdateRequestsViewEmptyText)
+            ),
+            ListView()
+          ]
         )
       )
     );

@@ -40,6 +40,8 @@ import 'regions/add_region_view.dart';
 import 'regions/edit_region_view.dart';
 import 'regions/regions_view.dart';
 import 'regions/view_region_view.dart';
+import 'settings/aspirant_profile_view.dart';
+import 'settings/become_an_aspirant_view.dart';
 import 'settings/password_view.dart';
 import 'settings/settings_view.dart';
 import 'settings/user_profile_view.dart';
@@ -126,8 +128,10 @@ class App extends StatelessWidget {
                 AddPostView.routeName => const AddPostView(),
                 AddRegionView.routeName => const AddRegionView(),
                 AspirantCreationRequestsView.routeName => const AspirantCreationRequestsView(),
+                AspirantProfileView.routeName => const AspirantProfileView(),
                 AspirantUpdateRequestsView.routeName => const AspirantUpdateRequestsView(),
                 AspirantsView.routeName => const AspirantsView(),
+                BecomeAnAspirantView.routeName => const BecomeAnAspirantView(),
                 EditConstituencyView.routeName => EditConstituencyView(
                   constituency: ConstituencyModel.fromJson(routeSettings.arguments as Map<String, dynamic>)
                 ),

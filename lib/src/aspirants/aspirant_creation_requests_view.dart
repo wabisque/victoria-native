@@ -27,21 +27,25 @@ class _AspirantCreationRequestsViewState extends State<AspirantCreationRequestsV
   Future<void> _getAspirantCreationRequests() async {
     final AuthenticationProvider authenticationProvider = context.read<AuthenticationProvider>();
 
-    final http.Response response = await http.get(
-      Uri.parse('${Constants.apiHost}/api/aspirants/creation-requests'),
-      headers: {
-        'Accept': 'application/json',
-        'Authorization': 'Bearer ${authenticationProvider.token}',
-        'X-Requested-With': 'XMLHttpRequest'
-      }
-    );
-    
-    if(response.statusCode == 200) {
-      final Map<String, dynamic> data = jsonDecode(response.body);
+    try {
+      final http.Response response = await http.get(
+        Uri.parse('${Constants.apiHost}/api/aspirants/creation-requests'),
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ${authenticationProvider.token}',
+          'X-Requested-With': 'XMLHttpRequest'
+        }
+      );
+      
+      if(response.statusCode == 200) {
+        final Map<String, dynamic> data = jsonDecode(response.body);
 
-      setState(() {
-        _aspirantCreationRequests = (data['aspirant_creation_requests']! as List).map((aspirantCreationRequest) => AspirantCreationRequestModel.fromJson(aspirantCreationRequest)).toList();
-      });
+        setState(() {
+          _aspirantCreationRequests = (data['aspirant_creation_requests']! as List).map((aspirantCreationRequest) => AspirantCreationRequestModel.fromJson(aspirantCreationRequest)).toList();
+        });
+      }
+    } catch(error) {
+      //
     }
   }
 
@@ -71,8 +75,13 @@ class _AspirantCreationRequestsViewState extends State<AspirantCreationRequestsV
             subtitle: Text('${_aspirantCreationRequests[index].position!.name} | ${_aspirantCreationRequests[index].party!.name} | ${_aspirantCreationRequests[index].constituency!.name} (${_aspirantCreationRequests[index].constituency!.region!.name})'),
           ),
           itemCount: _aspirantCreationRequests.length,
-        ) : Center(
-          child: Text(appLocalizations.aspirantCreationRequestsViewEmptyText)
+        ) : Stack(
+          children: [
+            Center(
+              child: Text(appLocalizations.aspirantCreationRequestsViewEmptyText)
+            ),
+            ListView()
+          ]
         )
       )
     );

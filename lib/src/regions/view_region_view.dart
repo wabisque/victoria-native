@@ -31,21 +31,25 @@ class _ViewRegionViewState extends State<ViewRegionView> with RouteAware {
   Future<void> _getRegion() async {
     final AuthenticationProvider authenticationProvider = context.read<AuthenticationProvider>();
 
-    final http.Response response = await http.get(
-      Uri.parse('${Constants.apiHost}/api/regions/${widget.region.id}'),
-      headers: {
-        'Accept': 'application/json',
-        'Authorization': 'Bearer ${authenticationProvider.token}',
-        'X-Requested-With': 'XMLHttpRequest'
+    try {
+      final http.Response response = await http.get(
+        Uri.parse('${Constants.apiHost}/api/regions/${widget.region.id}'),
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ${authenticationProvider.token}',
+          'X-Requested-With': 'XMLHttpRequest'
+        }
+      );
+
+      if(response.statusCode == 200) {
+        final Map<String, dynamic> data = jsonDecode(response.body);
+
+        setState(() {
+          _region = RegionModel.fromJson(data['region']);
+        });
       }
-    );
-
-    if(response.statusCode == 200) {
-      final Map<String, dynamic> data = jsonDecode(response.body);
-
-      setState(() {
-        _region = RegionModel.fromJson(data['region']);
-      });
+    } catch(error) {
+      //
     }
   }
 
@@ -66,7 +70,7 @@ class _ViewRegionViewState extends State<ViewRegionView> with RouteAware {
                 arguments: _region.asJson
               );
             },
-            icon: const Icon(Icons.edit)
+            icon: const Icon(Icons.edit_outlined)
           ),
           IconButton(
             onPressed: () {
@@ -84,18 +88,22 @@ class _ViewRegionViewState extends State<ViewRegionView> with RouteAware {
                     ),
                     TextButton(
                       onPressed: () async {
-                        final http.Response response = await http.delete(
-                          Uri.parse('${Constants.apiHost}/api/regions/${_region.id}'),
-                          headers: {
-                            'Accept': 'application/json',
-                            'Authorization': 'Bearer ${authenticationProvider.token}',
-                            'X-Requested-With': 'XMLHttpRequest'
-                          }
-                        );
+                        try {
+                          final http.Response response = await http.delete(
+                            Uri.parse('${Constants.apiHost}/api/regions/${_region.id}'),
+                            headers: {
+                              'Accept': 'application/json',
+                              'Authorization': 'Bearer ${authenticationProvider.token}',
+                              'X-Requested-With': 'XMLHttpRequest'
+                            }
+                          );
 
-                        if(response.statusCode == 200) {
-                          navigatorState.pop();
-                          navigatorState.pop();
+                          if(response.statusCode == 200) {
+                            navigatorState.pop();
+                            navigatorState.pop();
+                          }
+                        } catch(error) {
+                          //
                         }
                       },
                       child: Text(appLocalizations.viewRegionViewDeleteModalYesActionText)
@@ -104,7 +112,7 @@ class _ViewRegionViewState extends State<ViewRegionView> with RouteAware {
                 )
               );
             },
-            icon: const Icon(Icons.delete)
+            icon: const Icon(Icons.delete_outlined)
           )
         ],
         title: Text(appLocalizations.viewRegionViewTitle)

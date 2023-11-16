@@ -33,40 +33,48 @@ class _ViewAspirantUpdateRequestViewState extends State<ViewAspirantUpdateReques
   Future<int> _confirmAspirantUpdateRequest(String status) async {
     final AuthenticationProvider authenticationProvider = context.read<AuthenticationProvider>();
 
-    final http.Response response = await http.put(
-      Uri.parse('${Constants.apiHost}/api/aspirants/update-requests/${_aspirantUpdateRequest.id}'),
-      body: jsonEncode({
-        'status': status
-      }),
-      headers: {
-        'Accept': 'application/json',
-        'Authorization': 'Bearer ${authenticationProvider.token}',
-        'Content-Type': 'application/json',
-        'X-Requested-With': 'XMLHttpRequest'
-      }
-    );
+    try {
+      final http.Response response = await http.put(
+        Uri.parse('${Constants.apiHost}/api/aspirants/update-requests/${_aspirantUpdateRequest.id}'),
+        body: jsonEncode({
+          'status': status
+        }),
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ${authenticationProvider.token}',
+          'Content-Type': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest'
+        }
+      );
 
-    return response.statusCode;
+      return response.statusCode;
+    } catch(error) {
+      return 400;
+    }
   }
 
   Future<void> _getAspirantUpdateRequest() async {
     final AuthenticationProvider authenticationProvider = context.read<AuthenticationProvider>();
 
-    final http.Response response = await http.get(
-      Uri.parse('${Constants.apiHost}/api/aspirants/update-requests/${widget.aspirantUpdateRequest.id}'),
-      headers: {
-        'Accept': 'application/json',
-        'Authorization': 'Bearer ${authenticationProvider.token}',
-        'X-Requested-With': 'XMLHttpRequest'
+    try {
+      final http.Response response = await http.get(
+        Uri.parse('${Constants.apiHost}/api/aspirants/update-requests/${widget.aspirantUpdateRequest.id}'),
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ${authenticationProvider.token}',
+          'X-Requested-With': 'XMLHttpRequest'
+        }
+      );
+
+      if(response.statusCode == 200) {
+        final Map<String, dynamic> data = jsonDecode(response.body);
+
+        setState(() {
+          _aspirantUpdateRequest = AspirantUpdateRequestModel.fromJson(data['aspirant_update_request']);
+        });
       }
-    );
-
-    if(response.statusCode == 200) {
-      final Map<String, dynamic> data = jsonDecode(response.body);
-
-      setState(() {
-        _aspirantUpdateRequest = AspirantUpdateRequestModel.fromJson(data['aspirant_update_request']);
-      });
+    } catch(error) {
+      //
     }
   }
 
@@ -116,7 +124,7 @@ class _ViewAspirantUpdateRequestViewState extends State<ViewAspirantUpdateReques
                 )
               );
             },
-            icon: const Icon(Icons.task_alt)
+            icon: const Icon(Icons.task_alt_outlined)
           )
         ]
       ),
@@ -140,103 +148,84 @@ class _ViewAspirantUpdateRequestViewState extends State<ViewAspirantUpdateReques
             const SizedBox(
               height: 21.0
             ),
+            Text(appLocalizations.viewAspirantViewPositionLabel),
+            const SizedBox(
+              height: 3.5
+            ),
             Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Column(
-                  children: [
-                    Text(appLocalizations.viewAspirantViewPositionLabel),
-                    const SizedBox(
-                      height: 3.5
-                    ),
-                    Row(
-                      children: [
-                        TextButton(
-                          onPressed: () {
-                            navigatorState.restorablePushNamed(
-                              ViewPositionView.routeName,
-                              arguments: _aspirantUpdateRequest.aspirant!.position!.asJson
-                            );
-                          },
-                          child: Text(_aspirantUpdateRequest.aspirant!.position!.name)
-                        ),
-                        const Text(' → '),
-                        TextButton(
-                          onPressed: () {
-                            navigatorState.restorablePushNamed(
-                              ViewPositionView.routeName,
-                              arguments: _aspirantUpdateRequest.position!.asJson
-                            );
-                          },
-                          child: Text(_aspirantUpdateRequest.position!.name)
-                        )
-                      ],
-                    )
-                  ]
+                TextButton(
+                  onPressed: () {
+                    navigatorState.restorablePushNamed(
+                      ViewPositionView.routeName,
+                      arguments: _aspirantUpdateRequest.aspirant!.position!.asJson
+                    );
+                  },
+                  child: Text(_aspirantUpdateRequest.aspirant!.position!.name)
                 ),
-                const Divider(),
-                Column(
-                  children: [
-                    Text(appLocalizations.viewAspirantViewPartyLabel),
-                    const SizedBox(
-                      height: 3.5
-                    ),
-                    Row(
-                      children: [
-                        TextButton(
-                          onPressed: () {
-                            navigatorState.restorablePushNamed(
-                              ViewPartyView.routeName,
-                              arguments: _aspirantUpdateRequest.aspirant!.party!.asJson
-                            );
-                          },
-                          child: Text(_aspirantUpdateRequest.party!.name)
-                        ),
-                        const Text(' → '),
-                        TextButton(
-                          onPressed: () {
-                            navigatorState.restorablePushNamed(
-                              ViewPartyView.routeName,
-                              arguments: _aspirantUpdateRequest.party!.asJson
-                            );
-                          },
-                          child: Text(_aspirantUpdateRequest.party!.name)
-                        )
-                      ]
-                    )
-                  ]
+                const Text(' → '),
+                TextButton(
+                  onPressed: () {
+                    navigatorState.restorablePushNamed(
+                      ViewPositionView.routeName,
+                      arguments: _aspirantUpdateRequest.position!.asJson
+                    );
+                  },
+                  child: Text(_aspirantUpdateRequest.position!.name)
+                )
+              ],
+            ),
+            Text(appLocalizations.viewAspirantViewPartyLabel),
+            const SizedBox(
+              height: 3.5
+            ),
+            Row(
+              children: [
+                TextButton(
+                  onPressed: () {
+                    navigatorState.restorablePushNamed(
+                      ViewPartyView.routeName,
+                      arguments: _aspirantUpdateRequest.aspirant!.party!.asJson
+                    );
+                  },
+                  child: Text(_aspirantUpdateRequest.party!.name)
                 ),
-                const Divider(),
-                Column(
-                  children: [
-                    Text(appLocalizations.viewAspirantViewConstituencyLabel),
-                    const SizedBox(
-                      height: 3.5
-                    ),
-                    Row(
-                      children: [
-                        TextButton(
-                          onPressed: () {
-                            navigatorState.restorablePushNamed(
-                              ViewConstituencyView.routeName,
-                              arguments: _aspirantUpdateRequest.aspirant!.constituency!.asJson
-                            );
-                          },
-                          child: Text('${_aspirantUpdateRequest.constituency!.name} (${_aspirantUpdateRequest.constituency!.region!.name})')
-                        ),
-                        const Text(' → '),
-                        TextButton(
-                          onPressed: () {
-                            navigatorState.restorablePushNamed(
-                              ViewConstituencyView.routeName,
-                              arguments: _aspirantUpdateRequest.constituency!.asJson
-                            );
-                          },
-                          child: Text('${_aspirantUpdateRequest.constituency!.name} (${_aspirantUpdateRequest.constituency!.region!.name})')
-                        )
-                      ]
-                    )
-                  ]
+                const Text(' → '),
+                TextButton(
+                  onPressed: () {
+                    navigatorState.restorablePushNamed(
+                      ViewPartyView.routeName,
+                      arguments: _aspirantUpdateRequest.party!.asJson
+                    );
+                  },
+                  child: Text(_aspirantUpdateRequest.party!.name)
+                )
+              ]
+            ),
+            Text(appLocalizations.viewAspirantViewConstituencyLabel),
+            const SizedBox(
+              height: 3.5
+            ),
+            Row(
+              children: [
+                TextButton(
+                  onPressed: () {
+                    navigatorState.restorablePushNamed(
+                      ViewConstituencyView.routeName,
+                      arguments: _aspirantUpdateRequest.aspirant!.constituency!.asJson
+                    );
+                  },
+                  child: Text('${_aspirantUpdateRequest.constituency!.name} (${_aspirantUpdateRequest.constituency!.region!.name})')
+                ),
+                const Text(' → '),
+                TextButton(
+                  onPressed: () {
+                    navigatorState.restorablePushNamed(
+                      ViewConstituencyView.routeName,
+                      arguments: _aspirantUpdateRequest.constituency!.asJson
+                    );
+                  },
+                  child: Text('${_aspirantUpdateRequest.constituency!.name} (${_aspirantUpdateRequest.constituency!.region!.name})')
                 )
               ]
             ),

@@ -27,7 +27,7 @@ class _PasswordFieldWidgetState extends State<PasswordFieldWidget> {
             _isVisible = !_isVisible;
           }
         ),
-        child: Icon(_isVisible ? Icons.visibility : Icons.visibility_off)
+        child: Icon(_isVisible ? Icons.visibility_outlined : Icons.visibility_off_outlined)
       )
     ),
     key: widget.key,

@@ -32,21 +32,25 @@ class _ViewConstituencyViewState extends State<ViewConstituencyView> with RouteA
   Future<void> _getConstituency() async {
     final AuthenticationProvider authenticationProvider = context.read<AuthenticationProvider>();
 
-    final http.Response response = await http.get(
-      Uri.parse('${Constants.apiHost}/api/constituencies/${widget.constituency.id}'),
-      headers: {
-        'Accept': 'application/json',
-        'Authorization': 'Bearer ${authenticationProvider.token}',
-        'X-Requested-With': 'XMLHttpRequest'
+    try {
+      final http.Response response = await http.get(
+        Uri.parse('${Constants.apiHost}/api/constituencies/${widget.constituency.id}'),
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ${authenticationProvider.token}',
+          'X-Requested-With': 'XMLHttpRequest'
+        }
+      );
+
+      if(response.statusCode == 200) {
+        final Map<String, dynamic> data = jsonDecode(response.body);
+
+        setState(() {
+          _constituency = ConstituencyModel.fromJson(data['constituency']);
+        });
       }
-    );
-
-    if(response.statusCode == 200) {
-      final Map<String, dynamic> data = jsonDecode(response.body);
-
-      setState(() {
-        _constituency = ConstituencyModel.fromJson(data['constituency']);
-      });
+    } catch(error) {
+      //
     }
   }
 
@@ -67,7 +71,7 @@ class _ViewConstituencyViewState extends State<ViewConstituencyView> with RouteA
                 arguments: _constituency.asJson
               );
             },
-            icon: const Icon(Icons.edit)
+            icon: const Icon(Icons.edit_outlined)
           ),
           IconButton(
             onPressed: () {
@@ -85,18 +89,22 @@ class _ViewConstituencyViewState extends State<ViewConstituencyView> with RouteA
                     ),
                     TextButton(
                       onPressed: () async {
-                        final http.Response response = await http.delete(
-                          Uri.parse('${Constants.apiHost}/api/constituencies/${_constituency.id}'),
-                          headers: {
-                            'Accept': 'application/json',
-                            'Authorization': 'Bearer ${authenticationProvider.token}',
-                            'X-Requested-With': 'XMLHttpRequest'
-                          }
-                        );
+                        try {
+                          final http.Response response = await http.delete(
+                            Uri.parse('${Constants.apiHost}/api/constituencies/${_constituency.id}'),
+                            headers: {
+                              'Accept': 'application/json',
+                              'Authorization': 'Bearer ${authenticationProvider.token}',
+                              'X-Requested-With': 'XMLHttpRequest'
+                            }
+                          );
 
-                        if(response.statusCode == 200) {
-                          navigatorState.pop();
-                          navigatorState.pop();
+                          if(response.statusCode == 200) {
+                            navigatorState.pop();
+                            navigatorState.pop();
+                          }
+                        } catch(error) {
+                          //
                         }
                       },
                       child: Text(appLocalizations.viewConstituencyViewDeleteModalYesActionText)
@@ -105,7 +113,7 @@ class _ViewConstituencyViewState extends State<ViewConstituencyView> with RouteA
                 )
               );
             },
-            icon: const Icon(Icons.delete)
+            icon: const Icon(Icons.delete_outlined)
           )
         ],
         title: Text(appLocalizations.viewConstituencyViewTitle)

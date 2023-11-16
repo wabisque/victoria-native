@@ -28,21 +28,25 @@ class _ConstituenciesViewState extends State<ConstituenciesView> with RouteAware
   Future<void> _getConstituencies() async {
     final AuthenticationProvider authenticationProvider = context.read<AuthenticationProvider>();
 
-    final http.Response response = await http.get(
-      Uri.parse('${Constants.apiHost}/api/constituencies'),
-      headers: {
-        'Accept': 'application/json',
-        'Authorization': 'Bearer ${authenticationProvider.token}',
-        'X-Requested-With': 'XMLHttpRequest'
-      }
-    );
-    
-    if(response.statusCode == 200) {
-      final Map<String, dynamic> data = jsonDecode(response.body);
+    try {
+      final http.Response response = await http.get(
+        Uri.parse('${Constants.apiHost}/api/constituencies'),
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ${authenticationProvider.token}',
+          'X-Requested-With': 'XMLHttpRequest'
+        }
+      );
+      
+      if(response.statusCode == 200) {
+        final Map<String, dynamic> data = jsonDecode(response.body);
 
-      setState(() {
-        _constituencies = (data['constituencies']! as List).map((constituency) => ConstituencyModel.fromJson(constituency)).toList();
-      });
+        setState(() {
+          _constituencies = (data['constituencies']! as List).map((constituency) => ConstituencyModel.fromJson(constituency)).toList();
+        });
+      }
+    } catch(error) {
+      //
     }
   }
 
@@ -72,15 +76,20 @@ class _ConstituenciesViewState extends State<ConstituenciesView> with RouteAware
             title: Text(_constituencies[index].name),
           ),
           itemCount: _constituencies.length,
-        ) : Center(
-          child: Text(appLocalizations.constituenciesViewEmptyText)
+        ) : Stack(
+          children: [
+            Center(
+              child: Text(appLocalizations.constituenciesViewEmptyText)
+            ),
+            ListView()
+          ]
         )
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           navigatorState.restorablePushNamed(AddConstituencyView.routeName);
         },
-        child: const Icon(Icons.add)
+        child: const Icon(Icons.add_outlined)
       ),
     );
   }

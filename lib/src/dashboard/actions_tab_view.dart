@@ -32,7 +32,7 @@ class _ActionsTabViewState extends State<ActionsTabView> {
         vertical: 21.0
       ),
       children: [
-        if(authenticationProvider.user!.role!.name == 'Administrator') ...[
+        if(authenticationProvider.user?.role?.name == 'Administrator') ...[
           ListTile(
             onTap: () {
               navigatorState.restorablePushNamed(AspirantsView.routeName);

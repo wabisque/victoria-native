@@ -27,21 +27,25 @@ class _AspirantsViewState extends State<AspirantsView> with RouteAware {
   Future<void> _getAspirants() async {
     final AuthenticationProvider authenticationProvider = context.read<AuthenticationProvider>();
 
-    final http.Response response = await http.get(
-      Uri.parse('${Constants.apiHost}/api/aspirants'),
-      headers: {
-        'Accept': 'application/json',
-        'Authorization': 'Bearer ${authenticationProvider.token}',
-        'X-Requested-With': 'XMLHttpRequest'
-      }
-    );
-    
-    if(response.statusCode == 200) {
-      final Map<String, dynamic> data = jsonDecode(response.body);
+    try {
+      final http.Response response = await http.get(
+        Uri.parse('${Constants.apiHost}/api/aspirants'),
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ${authenticationProvider.token}',
+          'X-Requested-With': 'XMLHttpRequest'
+        }
+      );
+      
+      if(response.statusCode == 200) {
+        final Map<String, dynamic> data = jsonDecode(response.body);
 
-      setState(() {
-        _aspirants = (data['aspirants']! as List).map((aspirant) => AspirantModel.fromJson(aspirant)).toList();
-      });
+        setState(() {
+          _aspirants = (data['aspirants']! as List).map((aspirant) => AspirantModel.fromJson(aspirant)).toList();
+        });
+      }
+    } catch(error) {
+      //
     }
   }
 
@@ -71,8 +75,13 @@ class _AspirantsViewState extends State<AspirantsView> with RouteAware {
             subtitle: Text('${_aspirants[index].position!.name} | ${_aspirants[index].party!.name} | ${_aspirants[index].constituency!.name} (${_aspirants[index].constituency!.region!.name})'),
           ),
           itemCount: _aspirants.length,
-        ) : Center(
-          child: Text(appLocalizations.aspirantsViewEmptyText)
+        ) : Stack(
+          children: [
+            Center(
+              child: Text(appLocalizations.aspirantsViewEmptyText)
+            ),
+            ListView()
+          ]
         )
       )
     );

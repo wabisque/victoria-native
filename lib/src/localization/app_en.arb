@@ -59,6 +59,34 @@
   "@aspirantCreationRequestsViewTitle": {
     "description": "The title of the aspirant creation requests view."
   },
+  "aspirantProfileViewAddressFieldLabel": "Address",
+  "@aspirantProfileViewAddressFieldLabel": {
+    "description": "The label of the address field on the aspirant profile view."
+  },
+  "aspirantProfileViewConstituencyFieldLabel": "Constituency",
+  "@aspirantProfileViewConstituencyFieldLabel": {
+    "description": "The label of the constituency field on the aspirant profile view."
+  },
+  "aspirantProfileViewFlyerFieldLabel": "Flyer",
+  "@aspirantProfileViewFlyerFieldLabel": {
+    "description": "The label of the flyer field on the aspirant profile view."
+  },
+  "aspirantProfileViewPartyFieldLabel": "Party",
+  "@aspirantProfileViewPartyFieldLabel": {
+    "description": "The label of the party field on the aspirant profile view."
+  },
+  "aspirantProfileViewPositionFieldLabel": "Position",
+  "@aspirantProfileViewPositionFieldLabel": {
+    "description": "The label of the position field on the aspirant profile view."
+  },
+  "aspirantProfileViewSubmitActionText": "Apply",
+  "@aspirantProfileViewSubmitActionText": {
+    "description": "The text of the submit action on the aspirant profile view."
+  },
+  "aspirantProfileViewTitle": "Aspirant Profile",
+  "@aspirantProfileViewTitle": {
+    "description": "The title of the aspirant profile view."
+  },
   "aspirantUpdateRequestsViewEmptyText": "No aspirant update requests to show!",
   "@aspirantUpdateRequestsViewEmptyText": {
     "description": "The empty text of the aspirant update requests view."
@@ -74,6 +102,34 @@
   "aspirantsViewTitle": "Aspirants",
   "@aspirantsViewTitle": {
     "description": "The title of the aspirants view."
+  },
+  "becomeAnAspirantViewAddressFieldLabel": "Address",
+  "@becomeAnAspirantViewAddressFieldLabel": {
+    "description": "The label of the address field on the become an aspirant view."
+  },
+  "becomeAnAspirantViewConstituencyFieldLabel": "Constituency",
+  "@becomeAnAspirantViewConstituencyFieldLabel": {
+    "description": "The label of the constituency field on the become an aspirant view."
+  },
+  "becomeAnAspirantViewFlyerFieldLabel": "Flyer",
+  "@becomeAnAspirantViewFlyerFieldLabel": {
+    "description": "The label of the flyer field on the become an aspirant view."
+  },
+  "becomeAnAspirantViewPartyFieldLabel": "Party",
+  "@becomeAnAspirantViewPartyFieldLabel": {
+    "description": "The label of the party field on the become an aspirant view."
+  },
+  "becomeAnAspirantViewPositionFieldLabel": "Position",
+  "@becomeAnAspirantViewPositionFieldLabel": {
+    "description": "The label of the position field on the become an aspirant view."
+  },
+  "becomeAnAspirantViewSubmitActionText": "Apply",
+  "@becomeAnAspirantViewSubmitActionText": {
+    "description": "The text of the submit action on the become an aspirant view."
+  },
+  "becomeAnAspirantViewTitle": "Become An Aspirant",
+  "@becomeAnAspirantViewTitle": {
+    "description": "The title of the become an aspirant view."
   },
   "constituenciesViewEmptyText": "No constituencies to show!",
   "@constituenciesViewEmptyText": {
@@ -298,6 +354,14 @@
   "registerViewTitle": "Hello!",
   "@registerViewTitle": {
     "description": "The title of the register view."
+  },
+  "settingsViewAspirantProfileActionText": "Aspirant Profile",
+  "@settingsViewAspirantProfileActionText": {
+    "description": "The text of the aspirant profile action on the settings view."
+  },
+  "settingsViewBecomeAnAspirantActionText": "Become An Aspirant",
+  "@settingsViewBecomeAnAspirantActionText": {
+    "description": "The text of the become an aspirant action on the settings view."
   },
   "settingsViewLanguageActionText": "Language",
   "@settingsViewLanguageActionText": {

@@ -31,21 +31,25 @@ class _ViewPartyViewState extends State<ViewPartyView> with RouteAware {
   Future<void> _getParty() async {
     final AuthenticationProvider authenticationProvider = context.read<AuthenticationProvider>();
 
-    final http.Response response = await http.get(
-      Uri.parse('${Constants.apiHost}/api/parties/${widget.party.id}'),
-      headers: {
-        'Accept': 'application/json',
-        'Authorization': 'Bearer ${authenticationProvider.token}',
-        'X-Requested-With': 'XMLHttpRequest'
+    try {
+      final http.Response response = await http.get(
+        Uri.parse('${Constants.apiHost}/api/parties/${widget.party.id}'),
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ${authenticationProvider.token}',
+          'X-Requested-With': 'XMLHttpRequest'
+        }
+      );
+
+      if(response.statusCode == 200) {
+        final Map<String, dynamic> data = jsonDecode(response.body);
+
+        setState(() {
+          _party = PartyModel.fromJson(data['party']);
+        });
       }
-    );
-
-    if(response.statusCode == 200) {
-      final Map<String, dynamic> data = jsonDecode(response.body);
-
-      setState(() {
-        _party = PartyModel.fromJson(data['party']);
-      });
+    } catch(error) {
+      //
     }
   }
 
@@ -66,7 +70,7 @@ class _ViewPartyViewState extends State<ViewPartyView> with RouteAware {
                 arguments: _party.asJson
               );
             },
-            icon: const Icon(Icons.edit)
+            icon: const Icon(Icons.edit_outlined)
           ),
           IconButton(
             onPressed: () {
@@ -84,18 +88,22 @@ class _ViewPartyViewState extends State<ViewPartyView> with RouteAware {
                     ),
                     TextButton(
                       onPressed: () async {
-                        final http.Response response = await http.delete(
-                          Uri.parse('${Constants.apiHost}/api/parties/${_party.id}'),
-                          headers: {
-                            'Accept': 'application/json',
-                            'Authorization': 'Bearer ${authenticationProvider.token}',
-                            'X-Requested-With': 'XMLHttpRequest'
-                          }
-                        );
+                        try {
+                          final http.Response response = await http.delete(
+                            Uri.parse('${Constants.apiHost}/api/parties/${_party.id}'),
+                            headers: {
+                              'Accept': 'application/json',
+                              'Authorization': 'Bearer ${authenticationProvider.token}',
+                              'X-Requested-With': 'XMLHttpRequest'
+                            }
+                          );
 
-                        if(response.statusCode == 200) {
-                          navigatorState.pop();
-                          navigatorState.pop();
+                          if(response.statusCode == 200) {
+                            navigatorState.pop();
+                            navigatorState.pop();
+                          }
+                        } catch(error) {
+                          //
                         }
                       },
                       child: Text(appLocalizations.viewPartyViewDeleteModalYesActionText)
@@ -104,7 +112,7 @@ class _ViewPartyViewState extends State<ViewPartyView> with RouteAware {
                 )
               );
             },
-            icon: const Icon(Icons.delete)
+            icon: const Icon(Icons.delete_outline)
           )
         ],
         title: Text(appLocalizations.viewPartyViewTitle)

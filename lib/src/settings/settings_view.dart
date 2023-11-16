@@ -7,6 +7,8 @@ import '../authentication/login_view.dart';
 import '../localization/i10n.dart';
 import '../localization/localization_provider.dart';
 import '../theme/theme_provider.dart';
+import 'aspirant_profile_view.dart';
+import 'become_an_aspirant_view.dart';
 import 'password_view.dart';
 import 'user_profile_view.dart';
 
@@ -40,22 +42,39 @@ class SettingsView extends StatelessWidget {
         ),
         children: [
           ListTile(
-            leading: const Icon(Icons.person),
+            leading: const Icon(Icons.person_outlined),
             onTap: () {
               navigatorState.restorablePushNamed(UserProfileView.routeName);
             },
             title: Text(appLocalizations.settingsViewUserProfileActionText),
           ),
           ListTile(
-            leading: const Icon(Icons.key),
+            leading: const Icon(Icons.key_outlined),
             onTap: () {
               navigatorState.restorablePushNamed(PasswordView.routeName);
             },
             title: Text(appLocalizations.settingsViewPasswordActionText),
           ),
+          if(authenticationProvider.user?.role?.name != 'Administrator') ...[
+            const Divider(),
+            Badge(
+              isLabelVisible: (authenticationProvider.user?.hasAspirantCreationRequest ?? false) || (authenticationProvider.user?.hasAspirantUpdateRequest ?? false),
+              child: ListTile(
+                leading: const Icon(Icons.supervised_user_circle_outlined),
+                onTap: () {
+                  if(authenticationProvider.user?.role?.name == 'Aspirant') {
+                    navigatorState.restorablePushNamed(AspirantProfileView.routeName);
+                  } else {
+                    navigatorState.restorablePushNamed(BecomeAnAspirantView.routeName);
+                  }
+                },
+                title: Text(authenticationProvider.user?.role?.name == 'Aspirant' ? appLocalizations.settingsViewAspirantProfileActionText : appLocalizations.settingsViewBecomeAnAspirantActionText)
+              )
+            )
+          ],
           const Divider(),
           ListTile(
-            leading: const Icon(Icons.palette),
+            leading: const Icon(Icons.palette_outlined),
             onTap: () {
               showModalBottomSheet(
                 context: context,
@@ -84,7 +103,7 @@ class SettingsView extends StatelessWidget {
             title: Text(appLocalizations.settingsViewThemeModeActionText),
           ),
           ListTile(
-            leading: const Icon(Icons.translate),
+            leading: const Icon(Icons.translate_outlined),
             onTap: () {
               showModalBottomSheet(
                 context: context,
@@ -110,7 +129,7 @@ class SettingsView extends StatelessWidget {
           ListTile(
             hoverColor: themeData.colorScheme.error.withOpacity(0.075),
             iconColor: themeData.colorScheme.error,
-            leading: const Icon(Icons.logout),
+            leading: const Icon(Icons.logout_outlined),
             onTap: () async {
               if(await authenticationProvider.logout() == null) {
                 navigatorState.restorablePushNamedAndRemoveUntil(

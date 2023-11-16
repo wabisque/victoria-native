@@ -25,21 +25,26 @@ class _PostsTabViewState extends State<PostsTabView> with RouteAware {
 
   Future<void> _getPosts() async {
     final AuthenticationProvider authenticationProvider = context.read<AuthenticationProvider>();
-    final http.Response response = await http.get(
-      Uri.parse('${Constants.apiHost}/api/posts'),
-      headers: {
-        'Accept': 'application/json',
-        'Authorization': 'Bearer ${authenticationProvider.token}',
-        'X-Requested-With': 'XMLHttpRequest'
+
+    try {
+      final http.Response response = await http.get(
+        Uri.parse('${Constants.apiHost}/api/posts'),
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ${authenticationProvider.token}',
+          'X-Requested-With': 'XMLHttpRequest'
+        }
+      );
+
+      if(response.statusCode == 200) {
+        final Map<String, dynamic> data = jsonDecode(response.body);
+
+        setState(() {
+          _posts = (data['posts']! as List).map((post) => PostModel.fromJson(post)).toList();
+        });
       }
-    );
-
-    if(response.statusCode == 200) {
-      final Map<String, dynamic> data = jsonDecode(response.body);
-
-      setState(() {
-        _posts = (data['posts']! as List).map((post) => PostModel.fromJson(post)).toList();
-      });
+    } catch(error) {
+      //
     }
   }
 
@@ -62,8 +67,13 @@ class _PostsTabViewState extends State<PostsTabView> with RouteAware {
           subtitle: Text(_posts[index].body),
         ),
         itemCount: _posts.length,
-      ) : Center(
-        child: Text(appLocalizations.dashboardPostsTabViewEmptyText)
+      ) : Stack(
+        children: [
+          Center(
+            child: Text(appLocalizations.dashboardPostsTabViewEmptyText)
+          ),
+          ListView()
+        ]
       )
     );
   }

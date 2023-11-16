@@ -28,21 +28,25 @@ class _PositionsViewState extends State<PositionsView> with RouteAware {
   Future<void> _getPositions() async {
     final AuthenticationProvider authenticationProvider = context.read<AuthenticationProvider>();
 
-    final http.Response response = await http.get(
-      Uri.parse('${Constants.apiHost}/api/positions'),
-      headers: {
-        'Accept': 'application/json',
-        'Authorization': 'Bearer ${authenticationProvider.token}',
-        'X-Requested-With': 'XMLHttpRequest'
-      }
-    );
-    
-    if(response.statusCode == 200) {
-      final Map<String, dynamic> data = jsonDecode(response.body);
+    try {
+      final http.Response response = await http.get(
+        Uri.parse('${Constants.apiHost}/api/positions'),
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ${authenticationProvider.token}',
+          'X-Requested-With': 'XMLHttpRequest'
+        }
+      );
+      
+      if(response.statusCode == 200) {
+        final Map<String, dynamic> data = jsonDecode(response.body);
 
-      setState(() {
-        _positions = (data['positions']! as List).map((position) => PositionModel.fromJson(position)).toList();
-      });
+        setState(() {
+          _positions = (data['positions']! as List).map((position) => PositionModel.fromJson(position)).toList();
+        });
+      }
+    } catch(error) {
+      //
     }
   }
   
@@ -71,15 +75,20 @@ class _PositionsViewState extends State<PositionsView> with RouteAware {
             title: Text(_positions[index].name)
           ),
           itemCount: _positions.length,
-        ) : Center(
-          child: Text(appLocalizations.positionsViewEmptyText)
+        ) : Stack(
+          children: [
+            Center(
+              child: Text(appLocalizations.positionsViewEmptyText)
+            ),
+            ListView()
+          ]
         )
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           navigatorState.restorablePushNamed(AddPositionView.routeName);
         },
-        child: const Icon(Icons.add)
+        child: const Icon(Icons.add_outlined)
       ),
     );
   }

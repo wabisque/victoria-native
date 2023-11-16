@@ -35,16 +35,16 @@ class _DashboardViewState extends State<DashboardView> {
               onPressed: () {
                 navigatorState.restorablePushNamed(SettingsView.routeName);
               },
-              icon: const Icon(Icons.settings)
+              icon: const Icon(Icons.settings_outlined)
             )
           ],
           bottom: const TabBar(
             tabs: [
               Tab(
-                icon: Icon(Icons.menu)
+                icon: Icon(Icons.menu_outlined)
               ),
               Tab(
-                icon: Icon(Icons.notifications)
+                icon: Icon(Icons.notifications_outlined)
               )
             ],
           ),
@@ -52,7 +52,7 @@ class _DashboardViewState extends State<DashboardView> {
         ),
         body: TabBarView(
           children: [
-            switch(authenticationProvider.user!.role!.name) {
+            switch(authenticationProvider.user?.role?.name) {
               'Follower' => const AspirantsTabView(),
               _ => const ActionsTabView()
             },
