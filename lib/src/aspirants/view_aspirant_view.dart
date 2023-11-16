@@ -66,48 +66,76 @@ class _ViewAspirantViewState extends State<ViewAspirantView> with RouteAware {
       appBar: AppBar(
         title: Text(appLocalizations.viewAspirantTitle),
         actions: [
-          IconButton(
-            onPressed: () {
-              showDialog(
-                context: context,
-                builder: (BuildContext context) => AlertDialog(
-                  content: Text(appLocalizations.deleteAspirantTitle),
-                  title: Text(appLocalizations.doYouWishToDeleteThisAspirantPrompt),
-                  actions: [
-                    TextButton(
-                      onPressed: () {
-                        navigatorState.pop();
-                      },
-                      child: Text(appLocalizations.noAction)
-                    ),
-                    TextButton(
-                      onPressed: () async {
-                        try {
-                          final http.Response response = await http.delete(
-                            Uri.parse('${Constants.apiHost}/api/aspirants/${_aspirant.id}'),
-                            headers: {
-                              'Accept': 'application/json',
-                              'Authorization': 'Bearer ${authenticationProvider.token}',
-                              'X-Requested-With': 'XMLHttpRequest'
-                            }
-                          );
+          switch(authenticationProvider.user?.role?.name) {
+            'Administrator' => IconButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) => AlertDialog(
+                    content: Text(appLocalizations.deleteAspirantTitle),
+                    title: Text(appLocalizations.doYouWishToDeleteThisAspirantPrompt),
+                    actions: [
+                      TextButton(
+                        onPressed: () {
+                          navigatorState.pop();
+                        },
+                        child: Text(appLocalizations.noAction)
+                      ),
+                      TextButton(
+                        onPressed: () async {
+                          try {
+                            final http.Response response = await http.delete(
+                              Uri.parse('${Constants.apiHost}/api/aspirants/${_aspirant.id}'),
+                              headers: {
+                                'Accept': 'application/json',
+                                'Authorization': 'Bearer ${authenticationProvider.token}',
+                                'X-Requested-With': 'XMLHttpRequest'
+                              }
+                            );
 
-                          if(response.statusCode == 200) {
-                            navigatorState.pop();
-                            navigatorState.pop();
+                            if(response.statusCode == 200) {
+                              navigatorState.pop();
+                              navigatorState.pop();
+                            }
+                          } catch(error) {
+                            //
                           }
-                        } catch(error) {
-                          //
-                        }
-                      },
-                      child: Text(appLocalizations.yesAction)
-                    ),
-                  ],
-                )
-              );
-            },
-            icon: const Icon(Icons.delete_outlined)
-          )
+                        },
+                        child: Text(appLocalizations.yesAction)
+                      ),
+                    ],
+                  )
+                );
+              },
+              icon: const Icon(Icons.delete_outlined)
+            ),
+            _ => IconButton(
+              color: _aspirant.isFollowed ? themeData.colorScheme.primary : null,
+              onPressed: () async {
+                try {
+                  final http.Response response = await http.post(
+                    Uri.parse('${Constants.apiHost}/api/aspirants/${_aspirant.id}/${_aspirant.isFollowed ? 'unfollow' : 'follow'}'),
+                    headers: {
+                      'Accept': 'application/json',
+                      'Authorization': 'Bearer ${authenticationProvider.token}',
+                      'X-Requested-With': 'XMLHttpRequest'
+                    }
+                  );
+
+                  if(response.statusCode == 200) {
+                    final Map<String, dynamic> data = jsonDecode(response.body);
+
+                    setState(() {
+                      _aspirant = AspirantModel.fromJson(data['aspirant']);
+                    });
+                  }
+                } catch(error) {
+                  //
+                }
+              },
+              icon: Icon(_aspirant.isFollowed ? Icons.person_remove_outlined : Icons.person_add_alt_outlined)
+            )
+          }
         ]
       ),
       body: RefreshIndicator(
@@ -130,55 +158,67 @@ class _ViewAspirantViewState extends State<ViewAspirantView> with RouteAware {
             const SizedBox(
               height: 21.0
             ),
-            Row(
+            Wrap(
+              crossAxisAlignment: WrapCrossAlignment.center,
               children: [
-                Text(appLocalizations.positionLabel),
+                Text('${appLocalizations.positionLabel}: '),
                 const SizedBox(
                   height: 3.5
                 ),
-                TextButton(
-                  onPressed: () {
-                    navigatorState.restorablePushNamed(
-                      ViewPositionView.routeName,
-                      arguments: _aspirant.position!.asJson
-                    );
-                  },
-                  child: Text(_aspirant.position!.name)
-                )
+                switch(authenticationProvider.user?.role?.name) {
+                  'Administrator' => TextButton(
+                    onPressed: () {
+                      navigatorState.restorablePushNamed(
+                        ViewPositionView.routeName,
+                        arguments: _aspirant.position!.asJson
+                      );
+                    },
+                    child: Text(_aspirant.position!.name)
+                  ),
+                  _ => Text(_aspirant.position!.name)
+                }
               ]
             ),
-            Row(
+            Wrap(
+              crossAxisAlignment: WrapCrossAlignment.center,
               children: [
-                Text(appLocalizations.partyLabel),
+                Text('${appLocalizations.partyLabel}: '),
                 const SizedBox(
                   height: 3.5
                 ),
-                TextButton(
-                  onPressed: () {
-                    navigatorState.restorablePushNamed(
-                      ViewPartyView.routeName,
-                      arguments: _aspirant.party!.asJson
-                    );
-                  },
-                  child: Text(_aspirant.party!.name)
-                )
+                switch(authenticationProvider.user?.role?.name) {
+                  'Administrator' => TextButton(
+                    onPressed: () {
+                      navigatorState.restorablePushNamed(
+                        ViewPartyView.routeName,
+                        arguments: _aspirant.party!.asJson
+                      );
+                    },
+                    child: Text(_aspirant.party!.name)
+                  ),
+                  _ => Text(_aspirant.party!.name)
+                }
               ]
             ),
-            Row(
+            Wrap(
+              crossAxisAlignment: WrapCrossAlignment.center,
               children: [
-                Text(appLocalizations.constituencyLabel),
+                Text('${appLocalizations.constituencyLabel}: '),
                 const SizedBox(
                   height: 3.5
                 ),
-                TextButton(
-                  onPressed: () {
-                    navigatorState.restorablePushNamed(
-                      ViewConstituencyView.routeName,
-                      arguments: _aspirant.constituency!.asJson
-                    );
-                  },
-                  child: Text('${_aspirant.constituency!.name} (${_aspirant.constituency!.region!.name})')
-                )
+                switch(authenticationProvider.user?.role?.name) {
+                  'Administrator' => TextButton(
+                    onPressed: () {
+                      navigatorState.restorablePushNamed(
+                        ViewConstituencyView.routeName,
+                        arguments: _aspirant.constituency!.asJson
+                      );
+                    },
+                    child: Text('${_aspirant.constituency!.name} (${_aspirant.constituency!.region!.name})')
+                  ),
+                  _ => Text('${_aspirant.constituency!.name} (${_aspirant.constituency!.region!.name})')
+                }
               ]
             ),
             const SizedBox(

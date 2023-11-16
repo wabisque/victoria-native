@@ -109,7 +109,7 @@ class _ViewAspirantUpdateRequestViewState extends State<ViewAspirantUpdateReques
                           navigatorState.pop();
                         }
                       },
-                      child: Text(appLocalizations.acceptAction)
+                      child: Text(appLocalizations.declineAction)
                     ),
                     TextButton(
                       onPressed: () async {
@@ -118,7 +118,7 @@ class _ViewAspirantUpdateRequestViewState extends State<ViewAspirantUpdateReques
                           navigatorState.pop();
                         }
                       },
-                      child: Text(appLocalizations.declineAction)
+                      child: Text(appLocalizations.acceptAction)
                     ),
                   ],
                 )
@@ -152,7 +152,8 @@ class _ViewAspirantUpdateRequestViewState extends State<ViewAspirantUpdateReques
             const SizedBox(
               height: 3.5
             ),
-            Row(
+            Wrap(
+              crossAxisAlignment: WrapCrossAlignment.center,
               children: [
                 TextButton(
                   onPressed: () {
@@ -163,23 +164,26 @@ class _ViewAspirantUpdateRequestViewState extends State<ViewAspirantUpdateReques
                   },
                   child: Text(_aspirantUpdateRequest.aspirant!.position!.name)
                 ),
-                const Text(' → '),
-                TextButton(
-                  onPressed: () {
-                    navigatorState.restorablePushNamed(
-                      ViewPositionView.routeName,
-                      arguments: _aspirantUpdateRequest.position!.asJson
-                    );
-                  },
-                  child: Text(_aspirantUpdateRequest.position!.name)
-                )
+                if(_aspirantUpdateRequest.aspirant!.position!.id != _aspirantUpdateRequest.position!.id) ...[
+                  const Text(' → '),
+                  TextButton(
+                    onPressed: () {
+                      navigatorState.restorablePushNamed(
+                        ViewPositionView.routeName,
+                        arguments: _aspirantUpdateRequest.position!.asJson
+                      );
+                    },
+                    child: Text(_aspirantUpdateRequest.position!.name)
+                  )
+                ]
               ],
             ),
             Text(appLocalizations.partyLabel),
             const SizedBox(
               height: 3.5
             ),
-            Row(
+            Wrap(
+              crossAxisAlignment: WrapCrossAlignment.center,
               children: [
                 TextButton(
                   onPressed: () {
@@ -190,23 +194,26 @@ class _ViewAspirantUpdateRequestViewState extends State<ViewAspirantUpdateReques
                   },
                   child: Text(_aspirantUpdateRequest.party!.name)
                 ),
-                const Text(' → '),
-                TextButton(
-                  onPressed: () {
-                    navigatorState.restorablePushNamed(
-                      ViewPartyView.routeName,
-                      arguments: _aspirantUpdateRequest.party!.asJson
-                    );
-                  },
-                  child: Text(_aspirantUpdateRequest.party!.name)
-                )
+                if(_aspirantUpdateRequest.party!.id != _aspirantUpdateRequest.party!.id) ...[
+                  const Text(' → '),
+                  TextButton(
+                    onPressed: () {
+                      navigatorState.restorablePushNamed(
+                        ViewPartyView.routeName,
+                        arguments: _aspirantUpdateRequest.party!.asJson
+                      );
+                    },
+                    child: Text(_aspirantUpdateRequest.party!.name)
+                  )
+                ]
               ]
             ),
             Text(appLocalizations.constituencyLabel),
             const SizedBox(
               height: 3.5
             ),
-            Row(
+            Wrap(
+              crossAxisAlignment: WrapCrossAlignment.center,
               children: [
                 TextButton(
                   onPressed: () {
@@ -217,16 +224,18 @@ class _ViewAspirantUpdateRequestViewState extends State<ViewAspirantUpdateReques
                   },
                   child: Text('${_aspirantUpdateRequest.constituency!.name} (${_aspirantUpdateRequest.constituency!.region!.name})')
                 ),
-                const Text(' → '),
-                TextButton(
-                  onPressed: () {
-                    navigatorState.restorablePushNamed(
-                      ViewConstituencyView.routeName,
-                      arguments: _aspirantUpdateRequest.constituency!.asJson
-                    );
-                  },
-                  child: Text('${_aspirantUpdateRequest.constituency!.name} (${_aspirantUpdateRequest.constituency!.region!.name})')
-                )
+                if(_aspirantUpdateRequest.constituency!.id != _aspirantUpdateRequest.constituency!.id) ...[
+                  const Text(' → '),
+                  TextButton(
+                    onPressed: () {
+                      navigatorState.restorablePushNamed(
+                        ViewConstituencyView.routeName,
+                        arguments: _aspirantUpdateRequest.constituency!.asJson
+                      );
+                    },
+                    child: Text('${_aspirantUpdateRequest.constituency!.name} (${_aspirantUpdateRequest.constituency!.region!.name})')
+                  )
+                ]
               ]
             ),
             const SizedBox(

@@ -71,8 +71,9 @@ class _EditPostViewState extends State<EditPostView> with RouteAware {
                     const SizedBox(
                       height: 21.0
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
+                    Wrap(
+                      alignment: WrapAlignment.end,
+                      crossAxisAlignment: WrapCrossAlignment.center,
                       children: [
                         FilledButton(
                           onPressed: () async {
@@ -91,8 +92,6 @@ class _EditPostViewState extends State<EditPostView> with RouteAware {
                                 }
                               );
                               final Map<String, dynamic> data = jsonDecode(response.body);
-
-                              print(response.body);
 
                               if(response.statusCode == 200) {
                                 navigatorState.pop();

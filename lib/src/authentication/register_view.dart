@@ -110,8 +110,9 @@ class _RegisterViewState extends State<RegisterView> {
                     const SizedBox(
                       height: 14.0
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
+                    Wrap(
+                      alignment: WrapAlignment.end,
+                      crossAxisAlignment: WrapCrossAlignment.center,
                       children: [
                         FilledButton(
                           onPressed: () async {

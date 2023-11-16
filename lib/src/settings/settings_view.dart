@@ -77,9 +77,7 @@ class SettingsView extends StatelessWidget {
               showModalBottomSheet(
                 context: context,
                 builder: (BuildContext context) => ListView.builder(
-                  padding: const EdgeInsets.only(
-                    top: 21.0
-                  ),
+                  padding: const EdgeInsets.all(21.0),
                   itemBuilder: (BuildContext context, int index) => ListTile(
                     onTap: () async {
                       await themeProvider.updateThemeMode(ThemeMode.values[index]);
@@ -106,9 +104,7 @@ class SettingsView extends StatelessWidget {
               showModalBottomSheet(
                 context: context,
                 builder: (BuildContext context) => ListView.builder(
-                  padding: const EdgeInsets.only(
-                    top: 21.0
-                  ),
+                  padding: const EdgeInsets.all(21.0),
                   itemBuilder: (BuildContext context, int index) => ListTile(
                     onTap: () async {
                       await localizationProvider.updateLocale(I10n.values[index].locale);

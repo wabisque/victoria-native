@@ -241,8 +241,9 @@ class _AspirantProfileViewState extends State<AspirantProfileView> with RouteAwa
                       const SizedBox(
                         height: 21.0
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
+                      Wrap(
+                        alignment: WrapAlignment.end,
+                        crossAxisAlignment: WrapCrossAlignment.center,
                         children: [
                           Badge(
                             isLabelVisible: authenticationProvider.user?.hasAspirantUpdateRequest ?? false,

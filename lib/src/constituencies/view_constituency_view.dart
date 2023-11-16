@@ -123,7 +123,8 @@ class _ViewConstituencyViewState extends State<ViewConstituencyView> with RouteA
         child: ListView(
           padding: const EdgeInsets.all(21.0),
           children: [
-            Row(
+            Wrap(
+              crossAxisAlignment: WrapCrossAlignment.center,
               children: [
                 Text(
                   _constituency.name,

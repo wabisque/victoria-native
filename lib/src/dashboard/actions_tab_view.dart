@@ -25,9 +25,7 @@ class _ActionsTabViewState extends State<ActionsTabView> {
     final NavigatorState navigatorState = Navigator.of(context);
 
     return ListView(
-      padding: const EdgeInsets.symmetric(
-        vertical: 21.0
-      ),
+      padding: const EdgeInsets.all(21.0),
       children: [
         ListTile(
           onTap: () {

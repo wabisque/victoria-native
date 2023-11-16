@@ -148,9 +148,10 @@ class _ViewAspirantCreationRequestViewState extends State<ViewAspirantCreationRe
             const SizedBox(
               height: 21.0
             ),
-            Row(
+            Wrap(
+              crossAxisAlignment: WrapCrossAlignment.center,
               children: [
-                Text(appLocalizations.positionLabel),
+                Text('${appLocalizations.positionLabel}: '),
                 const SizedBox(
                   height: 3.5
                 ),
@@ -165,9 +166,10 @@ class _ViewAspirantCreationRequestViewState extends State<ViewAspirantCreationRe
                 )
               ]
             ),
-            Row(
+            Wrap(
+              crossAxisAlignment: WrapCrossAlignment.center,
               children: [
-                Text(appLocalizations.partyLabel),
+                Text('${appLocalizations.partyLabel}: '),
                 const SizedBox(
                   height: 3.5
                 ),
@@ -182,9 +184,10 @@ class _ViewAspirantCreationRequestViewState extends State<ViewAspirantCreationRe
                 )
               ]
             ),
-            Row(
+            Wrap(
+              crossAxisAlignment: WrapCrossAlignment.center,
               children: [
-                Text(appLocalizations.constituencyLabel),
+                Text('${appLocalizations.constituencyLabel}: '),
                 const SizedBox(
                   height: 3.5
                 ),

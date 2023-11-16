@@ -78,8 +78,9 @@ class _LoginViewState extends State<LoginView> {
                     const SizedBox(
                       height: 14.0
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    Wrap(
+                      alignment: WrapAlignment.spaceBetween,
+                      crossAxisAlignment: WrapCrossAlignment.center,
                       children: [
                         TextButton(
                           onPressed: () {},

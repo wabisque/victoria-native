@@ -56,7 +56,7 @@ class _AspirantUpdateRequestsViewState extends State<AspirantUpdateRequestsView>
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(appLocalizations.aspirantsTitle)
+        title: Text(appLocalizations.aspirantUpdateRequestsTitle)
       ),
       body: RefreshIndicator(
         onRefresh: _getAspirantUpdateRequests,
@@ -70,7 +70,11 @@ class _AspirantUpdateRequestsViewState extends State<AspirantUpdateRequestsView>
               );
             },
             title: Text(_aspirantUpdateRequests[index].aspirant!.user!.name),
-            subtitle: Text('${_aspirantUpdateRequests[index].aspirant!.position!.name} → ${_aspirantUpdateRequests[index].position!.name} | ${_aspirantUpdateRequests[index].aspirant!.party!.name} → ${_aspirantUpdateRequests[index].party!.name} | ${_aspirantUpdateRequests[index].aspirant!.constituency!.name} (${_aspirantUpdateRequests[index].aspirant!.constituency!.region!.name}) → ${_aspirantUpdateRequests[index].constituency!.name} (${_aspirantUpdateRequests[index].constituency!.region!.name})'),
+            subtitle: Text([
+              '${_aspirantUpdateRequests[index].aspirant!.position!.name}${_aspirantUpdateRequests[index].aspirant!.position!.id != _aspirantUpdateRequests[index].position!.id ? ' → ${_aspirantUpdateRequests[index].position!.name}' : ''}',
+              '${_aspirantUpdateRequests[index].aspirant!.party!.name}${_aspirantUpdateRequests[index].aspirant!.party!.id != _aspirantUpdateRequests[index].party!.id ? ' → ${_aspirantUpdateRequests[index].party!.name}' : ''}',
+              '${_aspirantUpdateRequests[index].aspirant!.constituency!.name} (${_aspirantUpdateRequests[index].aspirant!.constituency!.region!.name})${_aspirantUpdateRequests[index].aspirant!.constituency!.id != _aspirantUpdateRequests[index].constituency!.id ? ' → ${_aspirantUpdateRequests[index].constituency!.name} (${_aspirantUpdateRequests[index].constituency!.region!.name})' : ''}'
+            ].join('\n')),
           ),
           itemCount: _aspirantUpdateRequests.length,
         ) : Stack(

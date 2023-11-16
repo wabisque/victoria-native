@@ -74,8 +74,9 @@ class _UserProfileViewState extends State<UserProfileView> with RouteAware {
                     const SizedBox(
                       height: 21.0
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
+                    Wrap(
+                      alignment: WrapAlignment.end,
+                      crossAxisAlignment: WrapCrossAlignment.center,
                       children: [
                         FilledButton(
                           onPressed: () async {

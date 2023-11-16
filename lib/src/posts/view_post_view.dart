@@ -66,7 +66,7 @@ class _ViewPostViewState extends State<ViewPostView> with RouteAware {
 
     return Scaffold(
       appBar: AppBar(
-        actions: [
+        actions: _post.aspirant!.user!.id == authenticationProvider.user?.id ? [
           IconButton(
             onPressed: () {
               navigatorState.restorablePushNamed(
@@ -83,7 +83,7 @@ class _ViewPostViewState extends State<ViewPostView> with RouteAware {
                 builder: (BuildContext context) => AlertDialog(
                   content: Text(appLocalizations.deletePostTitle),
                   title: Text(appLocalizations.doYouWishToDeleteThisPostPrompt),
-                  actions: _post.aspirant!.user!.id == authenticationProvider.user?.id ?[
+                  actions: [
                     TextButton(
                       onPressed: () {
                         navigatorState.pop();
@@ -112,13 +112,13 @@ class _ViewPostViewState extends State<ViewPostView> with RouteAware {
                       },
                       child: Text(appLocalizations.yesAction)
                     ),
-                  ] : null
+                  ]
                 )
               );
             },
             icon: const Icon(Icons.delete_outlined)
           )
-        ],
+        ] : null,
         title: Text(appLocalizations.viewPostTitle)
       ),
       body: RefreshIndicator(
@@ -136,7 +136,8 @@ class _ViewPostViewState extends State<ViewPostView> with RouteAware {
             ),
             if(_post.aspirant!.user!.id == authenticationProvider.user?.id) Text('${appLocalizations.createdByPrompt} → You'),
             if(_post.aspirant!.user!.id != authenticationProvider.user?.id) ...[
-              Row(
+              Wrap(
+                crossAxisAlignment: WrapCrossAlignment.center,
                 children: [
                   Text('${appLocalizations.createdByPrompt} → '),
                   TextButton(
@@ -151,7 +152,8 @@ class _ViewPostViewState extends State<ViewPostView> with RouteAware {
                 ],
               ),
               switch(authenticationProvider.user?.role?.name) {
-                'Administrator' => Row(
+                'Administrator' => Wrap(
+                  crossAxisAlignment: WrapCrossAlignment.center,
                   children: [
                     TextButton(
                       onPressed: () {

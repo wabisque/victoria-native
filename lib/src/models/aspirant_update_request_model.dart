@@ -33,7 +33,7 @@ class AspirantUpdateRequestModel extends Model {
     flyer: Uri.parse(json['flyer']),
     createdAt: DateTime.parse(json['created_at']),
     updatedAt: DateTime.parse(json['updated_at']),
-    aspirant: json['user'] != null ? AspirantModel.fromJson(json['user']) : null,
+    aspirant: json['aspirant'] != null ? AspirantModel.fromJson(json['aspirant']) : null,
     constituency: json['constituency'] != null ? ConstituencyModel.fromJson(json['constituency']) : null,
     party: json['party'] != null ? PartyModel.fromJson(json['party']) : null,
     position: json['position'] != null ? PositionModel.fromJson(json['position']) : null
